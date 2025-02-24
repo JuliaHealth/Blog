@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.47">
+<meta name="generator" content="quarto-1.7.6">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -72,10 +72,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-8908c8300ec2e31702a10363d6856c6e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-412249914c5e4fcf292edda2e0469c59.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -196,13 +196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
-<b>Navigation &amp; Tips:</b>
-
-<ul>
-    <li>Press <b>?</b> for search</li>
-    <li><b>"&lt;/&gt; Code"</b> for code nav</li>
-</ul>
-
+<p>partials/margin_header.html</p>
 </div></div>
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
@@ -469,8 +463,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -632,7 +624,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -973,47 +964,47 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-111"><a href="#cb3-111"></a>or from the *IPUMS* website. All functions were displayed successfully, giving the expected result, so it can be concluded that the translation from R to Julia is successful.</span>
 <span id="cb3-112"><a href="#cb3-112"></a></span>
 <span id="cb3-115"><a href="#cb3-115"></a><span class="in">```{julia}</span></span>
-<span id="cb3-116"><a href="#cb3-116"></a><span class="in">#| eval: false </span></span>
+<span id="cb3-116"><a href="#cb3-116"></a><span class="co">#| eval: false </span></span>
 <span id="cb3-117"><a href="#cb3-117"></a></span>
-<span id="cb3-118"><a href="#cb3-118"></a><span class="in">using IPUMS</span></span>
-<span id="cb3-119"><a href="#cb3-119"></a><span class="in">using OpenAPI</span></span>
+<span id="cb3-118"><a href="#cb3-118"></a><span class="im">using</span> <span class="bu">IPUMS</span></span>
+<span id="cb3-119"><a href="#cb3-119"></a><span class="im">using</span> <span class="bu">OpenAPI</span></span>
 <span id="cb3-120"><a href="#cb3-120"></a></span>
-<span id="cb3-121"><a href="#cb3-121"></a><span class="in">api_key = "insert your key here"</span></span>
+<span id="cb3-121"><a href="#cb3-121"></a>api_key <span class="op">=</span> <span class="st">"insert your key here"</span></span>
 <span id="cb3-122"><a href="#cb3-122"></a></span>
-<span id="cb3-123"><a href="#cb3-123"></a><span class="in">version = "2"</span></span>
-<span id="cb3-124"><a href="#cb3-124"></a><span class="in">page_number = 1</span></span>
-<span id="cb3-125"><a href="#cb3-125"></a><span class="in">page_size = 2500</span></span>
-<span id="cb3-126"><a href="#cb3-126"></a><span class="in">#media_type = </span></span>
+<span id="cb3-123"><a href="#cb3-123"></a>version <span class="op">=</span> <span class="st">"2"</span></span>
+<span id="cb3-124"><a href="#cb3-124"></a>page_number <span class="op">=</span> <span class="fl">1</span></span>
+<span id="cb3-125"><a href="#cb3-125"></a>page_size <span class="op">=</span> <span class="fl">2500</span></span>
+<span id="cb3-126"><a href="#cb3-126"></a><span class="co">#media_type = </span></span>
 <span id="cb3-127"><a href="#cb3-127"></a></span>
-<span id="cb3-128"><a href="#cb3-128"></a><span class="in">api = IPUMSAPI("https://api.ipums.org", Dict("Authorization" =&gt; api_key));</span></span>
+<span id="cb3-128"><a href="#cb3-128"></a>api <span class="op">=</span> <span class="fu">IPUMSAPI</span>(<span class="st">"https://api.ipums.org"</span>, <span class="fu">Dict</span>(<span class="st">"Authorization"</span> <span class="op">=&gt;</span> api_key));</span>
 <span id="cb3-129"><a href="#cb3-129"></a></span>
-<span id="cb3-130"><a href="#cb3-130"></a><span class="in">res1 = metadata_nhgis_data_tables_get(api, version)</span></span>
+<span id="cb3-130"><a href="#cb3-130"></a>res1 <span class="op">=</span> <span class="fu">metadata_nhgis_data_tables_get</span>(api, version)</span>
 <span id="cb3-131"><a href="#cb3-131"></a></span>
-<span id="cb3-132"><a href="#cb3-132"></a><span class="in">res2 = metadata_nhgis_datasets_dataset_get(api, "2022_ACS1", "2");</span></span>
+<span id="cb3-132"><a href="#cb3-132"></a>res2 <span class="op">=</span> <span class="fu">metadata_nhgis_datasets_dataset_get</span>(api, <span class="st">"2022_ACS1"</span>, <span class="st">"2"</span>);</span>
 <span id="cb3-133"><a href="#cb3-133"></a></span>
-<span id="cb3-134"><a href="#cb3-134"></a><span class="in">res3 = metadata_nhgis_datasets_dataset_data_tables_data_table_get(api, "2022_ACS1","B01001", "2");</span></span>
+<span id="cb3-134"><a href="#cb3-134"></a>res3 <span class="op">=</span> <span class="fu">metadata_nhgis_datasets_dataset_data_tables_data_table_get</span>(api, <span class="st">"2022_ACS1"</span>,<span class="st">"B01001"</span>, <span class="st">"2"</span>);</span>
 <span id="cb3-135"><a href="#cb3-135"></a></span>
-<span id="cb3-136"><a href="#cb3-136"></a><span class="in">res4 = metadata_nhgis_datasets_get(api, "2");</span></span>
+<span id="cb3-136"><a href="#cb3-136"></a>res4 <span class="op">=</span> <span class="fu">metadata_nhgis_datasets_get</span>(api, <span class="st">"2"</span>);</span>
 <span id="cb3-137"><a href="#cb3-137"></a><span class="in">```</span></span>
 <span id="cb3-138"><a href="#cb3-138"></a></span>
 <span id="cb3-139"><a href="#cb3-139"></a>An example of the output is: </span>
 <span id="cb3-140"><a href="#cb3-140"></a></span>
 <span id="cb3-143"><a href="#cb3-143"></a><span class="in">```{json}</span></span>
-<span id="cb3-144"><a href="#cb3-144"></a>. . .</span>
+<span id="cb3-144"><a href="#cb3-144"></a><span class="op">.</span> <span class="op">.</span> <span class="op">.</span></span>
 <span id="cb3-145"><a href="#cb3-145"></a></span>
-<span id="cb3-146"><a href="#cb3-146"></a><span class="fu">{</span></span>
-<span id="cb3-147"><a href="#cb3-147"></a>  <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"NT1"</span><span class="fu">,</span></span>
-<span id="cb3-148"><a href="#cb3-148"></a>  <span class="dt">"nhgisCode"</span><span class="fu">:</span> <span class="st">"AAA"</span><span class="fu">,</span></span>
-<span id="cb3-149"><a href="#cb3-149"></a>  <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"Total Population"</span><span class="fu">,</span></span>
-<span id="cb3-150"><a href="#cb3-150"></a>  <span class="dt">"universe"</span><span class="fu">:</span> <span class="st">"Persons"</span><span class="fu">,</span></span>
-<span id="cb3-151"><a href="#cb3-151"></a>  <span class="dt">"sequence"</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
-<span id="cb3-152"><a href="#cb3-152"></a>  <span class="dt">"datasetName"</span><span class="fu">:</span> <span class="st">"1790_cPop"</span><span class="fu">,</span></span>
-<span id="cb3-153"><a href="#cb3-153"></a>  <span class="dt">"nVariables"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb3-146"><a href="#cb3-146"></a>{</span>
+<span id="cb3-147"><a href="#cb3-147"></a>  <span class="st">"name"</span><span class="op">:</span> <span class="st">"NT1"</span><span class="op">,</span></span>
+<span id="cb3-148"><a href="#cb3-148"></a>  <span class="st">"nhgisCode"</span><span class="op">:</span> <span class="st">"AAA"</span><span class="op">,</span></span>
+<span id="cb3-149"><a href="#cb3-149"></a>  <span class="st">"description"</span><span class="op">:</span> <span class="st">"Total Population"</span><span class="op">,</span></span>
+<span id="cb3-150"><a href="#cb3-150"></a>  <span class="st">"universe"</span><span class="op">:</span> <span class="st">"Persons"</span><span class="op">,</span></span>
+<span id="cb3-151"><a href="#cb3-151"></a>  <span class="st">"sequence"</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></span>
+<span id="cb3-152"><a href="#cb3-152"></a>  <span class="st">"datasetName"</span><span class="op">:</span> <span class="st">"1790_cPop"</span><span class="op">,</span></span>
+<span id="cb3-153"><a href="#cb3-153"></a>  <span class="st">"nVariables"</span><span class="op">:</span> [</span>
 <span id="cb3-154"><a href="#cb3-154"></a>    <span class="dv">1</span></span>
-<span id="cb3-155"><a href="#cb3-155"></a>  <span class="ot">]</span></span>
-<span id="cb3-156"><a href="#cb3-156"></a><span class="fu">}</span></span>
+<span id="cb3-155"><a href="#cb3-155"></a>  ]</span>
+<span id="cb3-156"><a href="#cb3-156"></a>}</span>
 <span id="cb3-157"><a href="#cb3-157"></a></span>
-<span id="cb3-158"><a href="#cb3-158"></a>. . .</span>
+<span id="cb3-158"><a href="#cb3-158"></a><span class="op">.</span> <span class="op">.</span> <span class="op">.</span></span>
 <span id="cb3-159"><a href="#cb3-159"></a><span class="in">```</span></span>
 <span id="cb3-160"><a href="#cb3-160"></a></span>
 <span id="cb3-161"><a href="#cb3-161"></a><span class="fu"># Accomplished Goals and Future Development</span></span>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.47">
+<meta name="generator" content="quarto-1.7.6">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -72,10 +72,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-8908c8300ec2e31702a10363d6856c6e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-412249914c5e4fcf292edda2e0469c59.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -106,8 +106,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="GSoC ’24: Adding dataset-wide functions and integrations of augmentations – The JuliaHealth Blog">
 <meta property="og:description" content="MedPipe3D - Medical segmentation pipeline with dataset-wide functions and augmentations.">
+<meta property="og:image" content="https://juliahealth.org/JuliaHealthBlog/posts/JZubik-gsoc/Augmentations.png">
 <meta property="og:site_name" content="The JuliaHealth Blog">
 <meta property="og:locale" content="en_EN">
+<meta property="og:image:height" content="549">
+<meta property="og:image:width" content="569">
 </head>
 
 <body class="nav-fixed">
@@ -196,13 +199,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
-<b>Navigation &amp; Tips:</b>
-
-<ul>
-    <li>Press <b>?</b> for search</li>
-    <li><b>"&lt;/&gt; Code"</b> for code nav</li>
-</ul>
-
+<p>partials/margin_header.html</p>
 </div></div>
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
@@ -1119,8 +1116,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1282,7 +1277,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -1528,26 +1522,26 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb14-16"><a href="#cb14-16"></a><span class="fu"># 📝🩻📎📉 ➡️ 🗃️📚♻️🧑‍🏫 ➡️ 🤖👁️📈 ➡️ ❤️‍🩹  </span></span>
 <span id="cb14-17"><a href="#cb14-17"></a>*These emoticons may resemble **hieroglyphics**, but very soon you will realize that they **mean more than 1000s** of lines of code.*</span>
 <span id="cb14-18"><a href="#cb14-18"></a></span>
-<span id="cb14-19"><a href="#cb14-19"></a>&lt;details&gt;</span>
-<span id="cb14-20"><a href="#cb14-20"></a>  &lt;summary&gt;Description of the emojis used in the title&lt;/summary&gt;</span>
-<span id="cb14-21"><a href="#cb14-21"></a>  &lt;ul&gt;</span>
-<span id="cb14-22"><a href="#cb14-22"></a>    &lt;li&gt;📝 **Action Plan**: A clear, structured plan that guides each step of the MedPipe3D pipeline.&lt;/li&gt;</span>
-<span id="cb14-23"><a href="#cb14-23"></a>    &lt;li&gt;🩻 **3D Medical Images**: Medical imaging data, such as MRI scans in Nifti format.&lt;/li&gt;</span>
-<span id="cb14-24"><a href="#cb14-24"></a>    &lt;li&gt;📎 **AI Model**: The initial AI model that will be trained and refined within the pipeline.&lt;/li&gt;</span>
-<span id="cb14-25"><a href="#cb14-25"></a>    &lt;li&gt;📉 **Loss Function**: A function that measures the model’s performance during training, guiding the optimization process.&lt;/li&gt;    </span>
-<span id="cb14-26"><a href="#cb14-26"></a>    &lt;li&gt;🗃️ **Data Loading**: Preparation and loading of data and metadata into HDF5 format.&lt;/li&gt;</span>
-<span id="cb14-27"><a href="#cb14-27"></a>    &lt;li&gt;📚 **Data Splitting**: Dividing data into training, validation, and test sets.&lt;/li&gt;</span>
-<span id="cb14-28"><a href="#cb14-28"></a>    &lt;li&gt;♻️ **Data Augmentation**: Increasing data variability through augmentation.&lt;/li&gt;</span>
-<span id="cb14-29"><a href="#cb14-29"></a>    &lt;li&gt;🧑‍🏫 **AI Training**: Using Lux.jl framework to train the AI model.&lt;/li&gt;</span>
-<span id="cb14-30"><a href="#cb14-30"></a>    &lt;li&gt;🤖 **Model**: The trained AI model that can perform tasks like segmentation on medical images.&lt;/li&gt;</span>
-<span id="cb14-31"><a href="#cb14-31"></a>    &lt;li&gt;👁️ **Data for Visualization**: Output data, such as masks and segmentations.&lt;/li&gt;</span>
-<span id="cb14-32"><a href="#cb14-32"></a>    &lt;li&gt;📈 **Performance Logs**: Logs and metrics documenting the AI's performance.&lt;/li&gt;</span>
-<span id="cb14-33"><a href="#cb14-33"></a>    &lt;li&gt;❤️‍🩹 **Purpose of MedPipe3D**&lt;/li&gt;</span>
-<span id="cb14-34"><a href="#cb14-34"></a>  &lt;/ul&gt;</span>
+<span id="cb14-19"><a href="#cb14-19"></a><span class="dt">&lt;</span><span class="kw">details</span><span class="dt">&gt;</span></span>
+<span id="cb14-20"><a href="#cb14-20"></a>  <span class="dt">&lt;</span><span class="kw">summary</span><span class="dt">&gt;</span>Description of the emojis used in the title<span class="dt">&lt;/</span><span class="kw">summary</span><span class="dt">&gt;</span></span>
+<span id="cb14-21"><a href="#cb14-21"></a>  <span class="dt">&lt;</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb14-22"><a href="#cb14-22"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>📝 **Action Plan**: A clear, structured plan that guides each step of the MedPipe3D pipeline.<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb14-23"><a href="#cb14-23"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>🩻 **3D Medical Images**: Medical imaging data, such as MRI scans in Nifti format.<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb14-24"><a href="#cb14-24"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>📎 **AI Model**: The initial AI model that will be trained and refined within the pipeline.<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb14-25"><a href="#cb14-25"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>📉 **Loss Function**: A function that measures the model’s performance during training, guiding the optimization process.<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span>    </span>
+<span id="cb14-26"><a href="#cb14-26"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>🗃️ **Data Loading**: Preparation and loading of data and metadata into HDF5 format.<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb14-27"><a href="#cb14-27"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>📚 **Data Splitting**: Dividing data into training, validation, and test sets.<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb14-28"><a href="#cb14-28"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>♻️ **Data Augmentation**: Increasing data variability through augmentation.<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb14-29"><a href="#cb14-29"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>🧑‍🏫 **AI Training**: Using Lux.jl framework to train the AI model.<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb14-30"><a href="#cb14-30"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>🤖 **Model**: The trained AI model that can perform tasks like segmentation on medical images.<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb14-31"><a href="#cb14-31"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>👁️ **Data for Visualization**: Output data, such as masks and segmentations.<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb14-32"><a href="#cb14-32"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>📈 **Performance Logs**: Logs and metrics documenting the AI's performance.<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb14-33"><a href="#cb14-33"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>❤️‍🩹 **Purpose of MedPipe3D**<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb14-34"><a href="#cb14-34"></a>  <span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
 <span id="cb14-35"><a href="#cb14-35"></a></span>
-<span id="cb14-36"><a href="#cb14-36"></a>&lt;/details&gt;</span>
+<span id="cb14-36"><a href="#cb14-36"></a><span class="dt">&lt;/</span><span class="kw">details</span><span class="dt">&gt;</span></span>
 <span id="cb14-37"><a href="#cb14-37"></a></span>
-<span id="cb14-38"><a href="#cb14-38"></a>&lt;hr&gt;</span>
+<span id="cb14-38"><a href="#cb14-38"></a><span class="dt">&lt;</span><span class="kw">hr</span><span class="dt">&gt;</span></span>
 <span id="cb14-39"><a href="#cb14-39"></a>In this post, I'd like to summarize what I did this summer and everything I learned along the way, rebuilding the MedPipe3D medical imaging pipeline. I will not start typically, but so that anyone even a novice can visualize what this project has achieved, while the latter part is intended for more experienced readers. It will be easiest to divide it into 4 steps separated by ➡️ in the title above. Each emoji stands for a different piece of pipeliner and will be described below.</span>
 <span id="cb14-40"><a href="#cb14-40"></a></span>
 <span id="cb14-41"><a href="#cb14-41"></a>📝🩻📎📉 **What we need from the user**</span>
@@ -1597,7 +1591,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb14-85"><a href="#cb14-85"></a><span class="ss">- </span>❌ - Unreached</span>
 <span id="cb14-86"><a href="#cb14-86"></a></span>
 <span id="cb14-87"><a href="#cb14-87"></a>Full list of all major parts and minor tasks (all tasks set up in the original GSOC plan were completed at least minimum level, and many additional improvements above minimum were implemented)</span>
-<span id="cb14-88"><a href="#cb14-88"></a>&lt;details&gt;</span>
+<span id="cb14-88"><a href="#cb14-88"></a><span class="dt">&lt;</span><span class="kw">details</span><span class="dt">&gt;</span></span>
 <span id="cb14-89"><a href="#cb14-89"></a></span>
 <span id="cb14-90"><a href="#cb14-90"></a><span class="ss">1. </span>**Helpful functions to support the MedImage format ✅**</span>
 <span id="cb14-91"><a href="#cb14-91"></a><span class="ss">  - </span>Debugging rotations ✅</span>
@@ -1669,7 +1663,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb14-157"><a href="#cb14-157"></a><span class="ss">   - </span>Read me ⚠️</span>
 <span id="cb14-158"><a href="#cb14-158"></a><span class="ss">   - </span>Documentation on juliahealth.org ❌</span>
 <span id="cb14-159"><a href="#cb14-159"></a></span>
-<span id="cb14-160"><a href="#cb14-160"></a>&lt;/details&gt;</span>
+<span id="cb14-160"><a href="#cb14-160"></a><span class="dt">&lt;/</span><span class="kw">details</span><span class="dt">&gt;</span></span>
 <span id="cb14-161"><a href="#cb14-161"></a></span>
 <span id="cb14-162"><a href="#cb14-162"></a><span class="fu">## Integrate augmentations for medical data 🆙</span></span>
 <span id="cb14-163"><a href="#cb14-163"></a>Augmenting medical data is a crucial step for enhancing model robustness, especially given the variations in imaging conditions and patient anatomy. </span>
@@ -1699,129 +1693,129 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb14-187"><a href="#cb14-187"></a><span class="fu">## Invertible augmentations and support test time augmentations 🆙</span></span>
 <span id="cb14-188"><a href="#cb14-188"></a>This section focuses on the ability to apply reversible augmentations to test data, allowing the model to be evaluated with different transformations. Only rotation is available at this time. The function <span class="in">`evaluate_patches`</span> performs this evaluation by applying specified augmentations, dividing the test data into patches, and reconstructing the full image from the patches. During testing, one can choose to use of largest connected component post-processing. Metrics are calculated and results are saved for analysis.</span>
 <span id="cb14-189"><a href="#cb14-189"></a></span>
-<span id="cb14-190"><a href="#cb14-190"></a>&lt;details&gt;</span>
-<span id="cb14-191"><a href="#cb14-191"></a>&lt;summary&gt;evaluate_test:&lt;/summary&gt;</span>
+<span id="cb14-190"><a href="#cb14-190"></a><span class="dt">&lt;</span><span class="kw">details</span><span class="dt">&gt;</span></span>
+<span id="cb14-191"><a href="#cb14-191"></a><span class="dt">&lt;</span><span class="kw">summary</span><span class="dt">&gt;</span>evaluate_test:<span class="dt">&lt;/</span><span class="kw">summary</span><span class="dt">&gt;</span></span>
 <span id="cb14-192"><a href="#cb14-192"></a></span>
 <span id="cb14-193"><a href="#cb14-193"></a><span class="in">```julia</span></span>
-<span id="cb14-194"><a href="#cb14-194"></a><span class="in"># ...</span></span>
-<span id="cb14-195"><a href="#cb14-195"></a><span class="in">for test_group in test_groups</span></span>
-<span id="cb14-196"><a href="#cb14-196"></a><span class="in">    test_data, test_label, attributes = fetch_and_preprocess_data([test_group], h5, config)</span></span>
-<span id="cb14-197"><a href="#cb14-197"></a><span class="in">    results, test_metrics = evaluate_patches(test_data, test_label,  tstate, model, config)</span></span>
-<span id="cb14-198"><a href="#cb14-198"></a><span class="in">    y_pred, metr = process_results(results, test_metrics, config)</span></span>
-<span id="cb14-199"><a href="#cb14-199"></a><span class="in">    save_results(y_pred, attributes, config)</span></span>
-<span id="cb14-200"><a href="#cb14-200"></a><span class="in">    push!(all_test_metrics, metr)</span></span>
-<span id="cb14-201"><a href="#cb14-201"></a><span class="in">end</span></span>
-<span id="cb14-202"><a href="#cb14-202"></a><span class="in"># ...</span></span>
+<span id="cb14-194"><a href="#cb14-194"></a><span class="co"># ...</span></span>
+<span id="cb14-195"><a href="#cb14-195"></a><span class="cf">for</span> test_group <span class="kw">in</span> test_groups</span>
+<span id="cb14-196"><a href="#cb14-196"></a>    test_data, test_label, attributes <span class="op">=</span> <span class="fu">fetch_and_preprocess_data</span>([test_group], h5, config)</span>
+<span id="cb14-197"><a href="#cb14-197"></a>    results, test_metrics <span class="op">=</span> <span class="fu">evaluate_patches</span>(test_data, test_label,  tstate, model, config)</span>
+<span id="cb14-198"><a href="#cb14-198"></a>    y_pred, metr <span class="op">=</span> <span class="fu">process_results</span>(results, test_metrics, config)</span>
+<span id="cb14-199"><a href="#cb14-199"></a>    <span class="fu">save_results</span>(y_pred, attributes, config)</span>
+<span id="cb14-200"><a href="#cb14-200"></a>    <span class="fu">push!</span>(all_test_metrics, metr)</span>
+<span id="cb14-201"><a href="#cb14-201"></a><span class="cf">end</span></span>
+<span id="cb14-202"><a href="#cb14-202"></a><span class="co"># ...</span></span>
 <span id="cb14-203"><a href="#cb14-203"></a><span class="in">```</span></span>
 <span id="cb14-204"><a href="#cb14-204"></a></span>
 <span id="cb14-205"><a href="#cb14-205"></a><span class="in">```julia</span></span>
-<span id="cb14-206"><a href="#cb14-206"></a><span class="in">function evaluate_patches(test_data, test_label, tstate, model, config, axis, angle)</span></span>
-<span id="cb14-207"><a href="#cb14-207"></a><span class="in">    println("Evaluating patches...")</span></span>
-<span id="cb14-208"><a href="#cb14-208"></a><span class="in">    results = []</span></span>
-<span id="cb14-209"><a href="#cb14-209"></a><span class="in">    test_metrics = []</span></span>
-<span id="cb14-210"><a href="#cb14-210"></a><span class="in">    tstates = [tstate]</span></span>
-<span id="cb14-211"><a href="#cb14-211"></a><span class="in">    test_time_augs = []</span></span>
+<span id="cb14-206"><a href="#cb14-206"></a><span class="kw">function</span> <span class="fu">evaluate_patches</span>(test_data, test_label, tstate, model, config, axis, angle)</span>
+<span id="cb14-207"><a href="#cb14-207"></a>    <span class="fu">println</span>(<span class="st">"Evaluating patches..."</span>)</span>
+<span id="cb14-208"><a href="#cb14-208"></a>    results <span class="op">=</span> []</span>
+<span id="cb14-209"><a href="#cb14-209"></a>    test_metrics <span class="op">=</span> []</span>
+<span id="cb14-210"><a href="#cb14-210"></a>    tstates <span class="op">=</span> [tstate]</span>
+<span id="cb14-211"><a href="#cb14-211"></a>    test_time_augs <span class="op">=</span> []</span>
 <span id="cb14-212"><a href="#cb14-212"></a></span>
-<span id="cb14-213"><a href="#cb14-213"></a><span class="in">    for i in config["learning"]["n_invertible"]</span></span>
-<span id="cb14-214"><a href="#cb14-214"></a><span class="in">        data = rotate_mi(test_data, axis, angle)</span></span>
-<span id="cb14-215"><a href="#cb14-215"></a><span class="in">        for tstate_curr in tstates</span></span>
-<span id="cb14-216"><a href="#cb14-216"></a><span class="in">            patch_results = []</span></span>
-<span id="cb14-217"><a href="#cb14-217"></a><span class="in">            patch_size = Tuple(config["learning"]["patch_size"])</span></span>
-<span id="cb14-218"><a href="#cb14-218"></a><span class="in">            idx_and_patches, paded_data_size = divide_into_patches(test_data, patch_size)</span></span>
-<span id="cb14-219"><a href="#cb14-219"></a><span class="in">            coordinates = [patch[1] for patch in idx_and_patches]</span></span>
-<span id="cb14-220"><a href="#cb14-220"></a><span class="in">            patch_data = [patch[2] for patch in idx_and_patches]</span></span>
-<span id="cb14-221"><a href="#cb14-221"></a><span class="in">            for patch in patch_data</span></span>
-<span id="cb14-222"><a href="#cb14-222"></a><span class="in">                y_pred_patch, _ = infer_model(tstate_curr, model, patch)</span></span>
-<span id="cb14-223"><a href="#cb14-223"></a><span class="in">                push!(patch_results, y_pred_patch)</span></span>
-<span id="cb14-224"><a href="#cb14-224"></a><span class="in">            end</span></span>
-<span id="cb14-225"><a href="#cb14-225"></a><span class="in">            idx_and_y_pred_patch = zip(coordinates, patch_results)</span></span>
-<span id="cb14-226"><a href="#cb14-226"></a><span class="in">            y_pred = recreate_image_from_patches(idx_and_y_pred_patch, paded_data_size, patch_size, size(test_data))</span></span>
-<span id="cb14-227"><a href="#cb14-227"></a><span class="in">            if config["learning"]["largest_connected_component"]</span></span>
-<span id="cb14-228"><a href="#cb14-228"></a><span class="in">                y_pred = largest_connected_component(y_pred, config["learning"]["n_lcc"])</span></span>
-<span id="cb14-229"><a href="#cb14-229"></a><span class="in">            end</span></span>
-<span id="cb14-230"><a href="#cb14-230"></a><span class="in">            metr = evaluate_metric(y_pred, test_label, config["learning"]["metric"])</span></span>
-<span id="cb14-231"><a href="#cb14-231"></a><span class="in">            push!(test_metrics, metr)</span></span>
-<span id="cb14-232"><a href="#cb14-232"></a><span class="in">        end</span></span>
-<span id="cb14-233"><a href="#cb14-233"></a><span class="in">    end</span></span>
-<span id="cb14-234"><a href="#cb14-234"></a><span class="in">    return results, test_metrics</span></span>
-<span id="cb14-235"><a href="#cb14-235"></a><span class="in">end</span></span>
+<span id="cb14-213"><a href="#cb14-213"></a>    <span class="cf">for</span> i <span class="kw">in</span> config[<span class="st">"learning"</span>][<span class="st">"n_invertible"</span>]</span>
+<span id="cb14-214"><a href="#cb14-214"></a>        data <span class="op">=</span> <span class="fu">rotate_mi</span>(test_data, axis, angle)</span>
+<span id="cb14-215"><a href="#cb14-215"></a>        <span class="cf">for</span> tstate_curr <span class="kw">in</span> tstates</span>
+<span id="cb14-216"><a href="#cb14-216"></a>            patch_results <span class="op">=</span> []</span>
+<span id="cb14-217"><a href="#cb14-217"></a>            patch_size <span class="op">=</span> <span class="fu">Tuple</span>(config[<span class="st">"learning"</span>][<span class="st">"patch_size"</span>])</span>
+<span id="cb14-218"><a href="#cb14-218"></a>            idx_and_patches, paded_data_size <span class="op">=</span> <span class="fu">divide_into_patches</span>(test_data, patch_size)</span>
+<span id="cb14-219"><a href="#cb14-219"></a>            coordinates <span class="op">=</span> [patch[<span class="fl">1</span>] for patch <span class="kw">in</span> idx_and_patches]</span>
+<span id="cb14-220"><a href="#cb14-220"></a>            patch_data <span class="op">=</span> [patch[<span class="fl">2</span>] for patch <span class="kw">in</span> idx_and_patches]</span>
+<span id="cb14-221"><a href="#cb14-221"></a>            <span class="cf">for</span> patch <span class="kw">in</span> patch_data</span>
+<span id="cb14-222"><a href="#cb14-222"></a>                y_pred_patch, _ <span class="op">=</span> <span class="fu">infer_model</span>(tstate_curr, model, patch)</span>
+<span id="cb14-223"><a href="#cb14-223"></a>                <span class="fu">push!</span>(patch_results, y_pred_patch)</span>
+<span id="cb14-224"><a href="#cb14-224"></a>            <span class="cf">end</span></span>
+<span id="cb14-225"><a href="#cb14-225"></a>            idx_and_y_pred_patch <span class="op">=</span> <span class="fu">zip</span>(coordinates, patch_results)</span>
+<span id="cb14-226"><a href="#cb14-226"></a>            y_pred <span class="op">=</span> <span class="fu">recreate_image_from_patches</span>(idx_and_y_pred_patch, paded_data_size, patch_size, <span class="fu">size</span>(test_data))</span>
+<span id="cb14-227"><a href="#cb14-227"></a>            <span class="cf">if</span> config[<span class="st">"learning"</span>][<span class="st">"largest_connected_component"</span>]</span>
+<span id="cb14-228"><a href="#cb14-228"></a>                y_pred <span class="op">=</span> <span class="fu">largest_connected_component</span>(y_pred, config[<span class="st">"learning"</span>][<span class="st">"n_lcc"</span>])</span>
+<span id="cb14-229"><a href="#cb14-229"></a>            <span class="cf">end</span></span>
+<span id="cb14-230"><a href="#cb14-230"></a>            metr <span class="op">=</span> <span class="fu">evaluate_metric</span>(y_pred, test_label, config[<span class="st">"learning"</span>][<span class="st">"metric"</span>])</span>
+<span id="cb14-231"><a href="#cb14-231"></a>            <span class="fu">push!</span>(test_metrics, metr)</span>
+<span id="cb14-232"><a href="#cb14-232"></a>        <span class="cf">end</span></span>
+<span id="cb14-233"><a href="#cb14-233"></a>    <span class="cf">end</span></span>
+<span id="cb14-234"><a href="#cb14-234"></a>    <span class="cf">return</span> results, test_metrics</span>
+<span id="cb14-235"><a href="#cb14-235"></a><span class="kw">end</span></span>
 <span id="cb14-236"><a href="#cb14-236"></a><span class="in">```</span></span>
 <span id="cb14-237"><a href="#cb14-237"></a></span>
 <span id="cb14-238"><a href="#cb14-238"></a><span class="in">```julia</span></span>
-<span id="cb14-239"><a href="#cb14-239"></a><span class="in">function divide_into_patches(image::AbstractArray{T, 5}, patch_size::Tuple{Int, Int, Int}) where T</span></span>
-<span id="cb14-240"><a href="#cb14-240"></a><span class="in">    println("Dividing image into patches...")</span></span>
-<span id="cb14-241"><a href="#cb14-241"></a><span class="in">    println("Size of the image: ", size(image)) </span></span>
+<span id="cb14-239"><a href="#cb14-239"></a><span class="kw">function</span> <span class="fu">divide_into_patches</span>(image<span class="op">::</span><span class="dt">AbstractArray{T, 5}</span>, patch_size<span class="op">::</span><span class="dt">Tuple{Int, Int, Int}</span>) <span class="kw">where</span> T</span>
+<span id="cb14-240"><a href="#cb14-240"></a>    <span class="fu">println</span>(<span class="st">"Dividing image into patches..."</span>)</span>
+<span id="cb14-241"><a href="#cb14-241"></a>    <span class="fu">println</span>(<span class="st">"Size of the image: "</span>, <span class="fu">size</span>(image)) </span>
 <span id="cb14-242"><a href="#cb14-242"></a></span>
-<span id="cb14-243"><a href="#cb14-243"></a><span class="in">    # Calculate the required padding for each dimension (W, H, D)</span></span>
-<span id="cb14-244"><a href="#cb14-244"></a><span class="in">    pad_size = (</span></span>
-<span id="cb14-245"><a href="#cb14-245"></a><span class="in">        (size(image, 1) % patch_size[1]) != 0 ? patch_size[1] - size(image, 1) % patch_size[1] : 0,</span></span>
-<span id="cb14-246"><a href="#cb14-246"></a><span class="in">        (size(image, 2) % patch_size[2]) != 0 ? patch_size[2] - size(image, 2) % patch_size[2] : 0,</span></span>
-<span id="cb14-247"><a href="#cb14-247"></a><span class="in">        (size(image, 3) % patch_size[3]) != 0 ? patch_size[3] - size(image, 3) % patch_size[3] : 0</span></span>
-<span id="cb14-248"><a href="#cb14-248"></a><span class="in">    )</span></span>
+<span id="cb14-243"><a href="#cb14-243"></a>    <span class="co"># Calculate the required padding for each dimension (W, H, D)</span></span>
+<span id="cb14-244"><a href="#cb14-244"></a>    pad_size <span class="op">=</span> (</span>
+<span id="cb14-245"><a href="#cb14-245"></a>        (<span class="fu">size</span>(image, <span class="fl">1</span>) <span class="op">%</span> patch_size[<span class="fl">1</span>]) <span class="op">!=</span> <span class="fl">0</span> ? patch_size[<span class="fl">1</span>] <span class="op">-</span> <span class="fu">size</span>(image, <span class="fl">1</span>) <span class="op">%</span> patch_size[<span class="fl">1</span>] <span class="op">:</span> <span class="fl">0</span>,</span>
+<span id="cb14-246"><a href="#cb14-246"></a>        (<span class="fu">size</span>(image, <span class="fl">2</span>) <span class="op">%</span> patch_size[<span class="fl">2</span>]) <span class="op">!=</span> <span class="fl">0</span> ? patch_size[<span class="fl">2</span>] <span class="op">-</span> <span class="fu">size</span>(image, <span class="fl">2</span>) <span class="op">%</span> patch_size[<span class="fl">2</span>] <span class="op">:</span> <span class="fl">0</span>,</span>
+<span id="cb14-247"><a href="#cb14-247"></a>        (<span class="fu">size</span>(image, <span class="fl">3</span>) <span class="op">%</span> patch_size[<span class="fl">3</span>]) <span class="op">!=</span> <span class="fl">0</span> ? patch_size[<span class="fl">3</span>] <span class="op">-</span> <span class="fu">size</span>(image, <span class="fl">3</span>) <span class="op">%</span> patch_size[<span class="fl">3</span>] <span class="op">:</span> <span class="fl">0</span></span>
+<span id="cb14-248"><a href="#cb14-248"></a>    )</span>
 <span id="cb14-249"><a href="#cb14-249"></a></span>
-<span id="cb14-250"><a href="#cb14-250"></a><span class="in">    # Pad the image if necessary</span></span>
-<span id="cb14-251"><a href="#cb14-251"></a><span class="in">    padded_image = image</span></span>
-<span id="cb14-252"><a href="#cb14-252"></a><span class="in">    if any(pad_size .&gt; 0)</span></span>
-<span id="cb14-253"><a href="#cb14-253"></a><span class="in">        padded_image = crop_or_pad(image, (size(image, 1) + pad_size[1], size(image, 2) + pad_size[2], size(image, 3) + pad_size[3]))</span></span>
-<span id="cb14-254"><a href="#cb14-254"></a><span class="in">    end</span></span>
+<span id="cb14-250"><a href="#cb14-250"></a>    <span class="co"># Pad the image if necessary</span></span>
+<span id="cb14-251"><a href="#cb14-251"></a>    padded_image <span class="op">=</span> image</span>
+<span id="cb14-252"><a href="#cb14-252"></a>    <span class="cf">if</span> <span class="fu">any</span>(pad_size <span class="op">.&gt;</span> <span class="fl">0</span>)</span>
+<span id="cb14-253"><a href="#cb14-253"></a>        padded_image <span class="op">=</span> <span class="fu">crop_or_pad</span>(image, (<span class="fu">size</span>(image, <span class="fl">1</span>) <span class="op">+</span> pad_size[<span class="fl">1</span>], <span class="fu">size</span>(image, <span class="fl">2</span>) <span class="op">+</span> pad_size[<span class="fl">2</span>], <span class="fu">size</span>(image, <span class="fl">3</span>) <span class="op">+</span> pad_size[<span class="fl">3</span>]))</span>
+<span id="cb14-254"><a href="#cb14-254"></a>    <span class="cf">end</span></span>
 <span id="cb14-255"><a href="#cb14-255"></a></span>
-<span id="cb14-256"><a href="#cb14-256"></a><span class="in">    # Extract patches</span></span>
-<span id="cb14-257"><a href="#cb14-257"></a><span class="in">    patches = []</span></span>
-<span id="cb14-258"><a href="#cb14-258"></a><span class="in">    for x in 1:patch_size[1]:size(padded_image, 1)</span></span>
-<span id="cb14-259"><a href="#cb14-259"></a><span class="in">        for y in 1:patch_size[2]:size(padded_image, 2)</span></span>
-<span id="cb14-260"><a href="#cb14-260"></a><span class="in">            for z in 1:patch_size[3]:size(padded_image, 3)</span></span>
-<span id="cb14-261"><a href="#cb14-261"></a><span class="in">                patch = view(</span></span>
-<span id="cb14-262"><a href="#cb14-262"></a><span class="in">                    padded_image,</span></span>
-<span id="cb14-263"><a href="#cb14-263"></a><span class="in">                    x:min(x+patch_size[1]-1, size(padded_image, 1)),</span></span>
-<span id="cb14-264"><a href="#cb14-264"></a><span class="in">                    y:min(y+patch_size[2]-1, size(padded_image, 2)),</span></span>
-<span id="cb14-265"><a href="#cb14-265"></a><span class="in">                    z:min(z+patch_size[3]-1, size(padded_image, 3)),</span></span>
-<span id="cb14-266"><a href="#cb14-266"></a><span class="in">                    :,</span></span>
-<span id="cb14-267"><a href="#cb14-267"></a><span class="in">                    :</span></span>
-<span id="cb14-268"><a href="#cb14-268"></a><span class="in">                )</span></span>
-<span id="cb14-269"><a href="#cb14-269"></a><span class="in">                push!(patches, [(x, y, z), patch])</span></span>
-<span id="cb14-270"><a href="#cb14-270"></a><span class="in">            end</span></span>
-<span id="cb14-271"><a href="#cb14-271"></a><span class="in">        end</span></span>
-<span id="cb14-272"><a href="#cb14-272"></a><span class="in">    end</span></span>
-<span id="cb14-273"><a href="#cb14-273"></a><span class="in">    println("Size of padded image: ", size(padded_image))</span></span>
-<span id="cb14-274"><a href="#cb14-274"></a><span class="in">    return patches, size(padded_image)</span></span>
-<span id="cb14-275"><a href="#cb14-275"></a><span class="in">end</span></span>
+<span id="cb14-256"><a href="#cb14-256"></a>    <span class="co"># Extract patches</span></span>
+<span id="cb14-257"><a href="#cb14-257"></a>    patches <span class="op">=</span> []</span>
+<span id="cb14-258"><a href="#cb14-258"></a>    <span class="cf">for</span> x <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>patch_size[<span class="fl">1</span>]<span class="op">:</span><span class="fu">size</span>(padded_image, <span class="fl">1</span>)</span>
+<span id="cb14-259"><a href="#cb14-259"></a>        <span class="cf">for</span> y <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>patch_size[<span class="fl">2</span>]<span class="op">:</span><span class="fu">size</span>(padded_image, <span class="fl">2</span>)</span>
+<span id="cb14-260"><a href="#cb14-260"></a>            <span class="cf">for</span> z <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>patch_size[<span class="fl">3</span>]<span class="op">:</span><span class="fu">size</span>(padded_image, <span class="fl">3</span>)</span>
+<span id="cb14-261"><a href="#cb14-261"></a>                patch <span class="op">=</span> <span class="fu">view</span>(</span>
+<span id="cb14-262"><a href="#cb14-262"></a>                    padded_image,</span>
+<span id="cb14-263"><a href="#cb14-263"></a>                    x<span class="op">:</span><span class="fu">min</span>(x<span class="op">+</span>patch_size[<span class="fl">1</span>]<span class="op">-</span><span class="fl">1</span>, <span class="fu">size</span>(padded_image, <span class="fl">1</span>)),</span>
+<span id="cb14-264"><a href="#cb14-264"></a>                    y<span class="op">:</span><span class="fu">min</span>(y<span class="op">+</span>patch_size[<span class="fl">2</span>]<span class="op">-</span><span class="fl">1</span>, <span class="fu">size</span>(padded_image, <span class="fl">2</span>)),</span>
+<span id="cb14-265"><a href="#cb14-265"></a>                    z<span class="op">:</span><span class="fu">min</span>(z<span class="op">+</span>patch_size[<span class="fl">3</span>]<span class="op">-</span><span class="fl">1</span>, <span class="fu">size</span>(padded_image, <span class="fl">3</span>)),</span>
+<span id="cb14-266"><a href="#cb14-266"></a>                    <span class="op">:</span>,</span>
+<span id="cb14-267"><a href="#cb14-267"></a>                    <span class="op">:</span></span>
+<span id="cb14-268"><a href="#cb14-268"></a>                )</span>
+<span id="cb14-269"><a href="#cb14-269"></a>                <span class="fu">push!</span>(patches, [(x, y, z), patch])</span>
+<span id="cb14-270"><a href="#cb14-270"></a>            <span class="cf">end</span></span>
+<span id="cb14-271"><a href="#cb14-271"></a>        <span class="cf">end</span></span>
+<span id="cb14-272"><a href="#cb14-272"></a>    <span class="cf">end</span></span>
+<span id="cb14-273"><a href="#cb14-273"></a>    <span class="fu">println</span>(<span class="st">"Size of padded image: "</span>, <span class="fu">size</span>(padded_image))</span>
+<span id="cb14-274"><a href="#cb14-274"></a>    <span class="cf">return</span> patches, <span class="fu">size</span>(padded_image)</span>
+<span id="cb14-275"><a href="#cb14-275"></a><span class="kw">end</span></span>
 <span id="cb14-276"><a href="#cb14-276"></a></span>
-<span id="cb14-277"><a href="#cb14-277"></a><span class="in">function recreate_image_from_patches(</span></span>
-<span id="cb14-278"><a href="#cb14-278"></a><span class="in">    coords_with_patches,</span></span>
-<span id="cb14-279"><a href="#cb14-279"></a><span class="in">    padded_size,</span></span>
-<span id="cb14-280"><a href="#cb14-280"></a><span class="in">    patch_size,</span></span>
-<span id="cb14-281"><a href="#cb14-281"></a><span class="in">    original_size</span></span>
-<span id="cb14-282"><a href="#cb14-282"></a><span class="in">)</span></span>
-<span id="cb14-283"><a href="#cb14-283"></a><span class="in">    println("Recreating image from patches...")</span></span>
-<span id="cb14-284"><a href="#cb14-284"></a><span class="in">    reconstructed_image = zeros(Float32, padded_size...)</span></span>
-<span id="cb14-285"><a href="#cb14-285"></a><span class="in">    </span></span>
-<span id="cb14-286"><a href="#cb14-286"></a><span class="in">    # Place patches back into their original positions</span></span>
-<span id="cb14-287"><a href="#cb14-287"></a><span class="in">    for (coords, patch) in coords_with_patches</span></span>
-<span id="cb14-288"><a href="#cb14-288"></a><span class="in">        x, y, z = coords</span></span>
-<span id="cb14-289"><a href="#cb14-289"></a><span class="in">        reconstructed_image[</span></span>
-<span id="cb14-290"><a href="#cb14-290"></a><span class="in">            x:x+patch_size[1]-1,</span></span>
-<span id="cb14-291"><a href="#cb14-291"></a><span class="in">            y:y+patch_size[2]-1,</span></span>
-<span id="cb14-292"><a href="#cb14-292"></a><span class="in">            z:z+patch_size[3]-1,</span></span>
-<span id="cb14-293"><a href="#cb14-293"></a><span class="in">            :,</span></span>
-<span id="cb14-294"><a href="#cb14-294"></a><span class="in">            :</span></span>
-<span id="cb14-295"><a href="#cb14-295"></a><span class="in">        ] = patch</span></span>
-<span id="cb14-296"><a href="#cb14-296"></a><span class="in">    end</span></span>
+<span id="cb14-277"><a href="#cb14-277"></a><span class="kw">function</span> <span class="fu">recreate_image_from_patches</span>(</span>
+<span id="cb14-278"><a href="#cb14-278"></a>    coords_with_patches,</span>
+<span id="cb14-279"><a href="#cb14-279"></a>    padded_size,</span>
+<span id="cb14-280"><a href="#cb14-280"></a>    patch_size,</span>
+<span id="cb14-281"><a href="#cb14-281"></a>    original_size</span>
+<span id="cb14-282"><a href="#cb14-282"></a>)</span>
+<span id="cb14-283"><a href="#cb14-283"></a>    <span class="fu">println</span>(<span class="st">"Recreating image from patches..."</span>)</span>
+<span id="cb14-284"><a href="#cb14-284"></a>    reconstructed_image <span class="op">=</span> <span class="fu">zeros</span>(<span class="dt">Float32</span>, padded_size<span class="op">...</span>)</span>
+<span id="cb14-285"><a href="#cb14-285"></a>    </span>
+<span id="cb14-286"><a href="#cb14-286"></a>    <span class="co"># Place patches back into their original positions</span></span>
+<span id="cb14-287"><a href="#cb14-287"></a>    <span class="cf">for</span> (coords, patch) <span class="kw">in</span> coords_with_patches</span>
+<span id="cb14-288"><a href="#cb14-288"></a>        x, y, z <span class="op">=</span> coords</span>
+<span id="cb14-289"><a href="#cb14-289"></a>        reconstructed_image[</span>
+<span id="cb14-290"><a href="#cb14-290"></a>            x<span class="op">:</span>x<span class="op">+</span>patch_size[<span class="fl">1</span>]<span class="op">-</span><span class="fl">1</span>,</span>
+<span id="cb14-291"><a href="#cb14-291"></a>            y<span class="op">:</span>y<span class="op">+</span>patch_size[<span class="fl">2</span>]<span class="op">-</span><span class="fl">1</span>,</span>
+<span id="cb14-292"><a href="#cb14-292"></a>            z<span class="op">:</span>z<span class="op">+</span>patch_size[<span class="fl">3</span>]<span class="op">-</span><span class="fl">1</span>,</span>
+<span id="cb14-293"><a href="#cb14-293"></a>            <span class="op">:</span>,</span>
+<span id="cb14-294"><a href="#cb14-294"></a>            <span class="op">:</span></span>
+<span id="cb14-295"><a href="#cb14-295"></a>        ] <span class="op">=</span> patch</span>
+<span id="cb14-296"><a href="#cb14-296"></a>    <span class="cf">end</span></span>
 <span id="cb14-297"><a href="#cb14-297"></a></span>
-<span id="cb14-298"><a href="#cb14-298"></a><span class="in">    # Crop the reconstructed image to remove any padding</span></span>
-<span id="cb14-299"><a href="#cb14-299"></a><span class="in">    final_image = reconstructed_image[</span></span>
-<span id="cb14-300"><a href="#cb14-300"></a><span class="in">        1:original_size[1],</span></span>
-<span id="cb14-301"><a href="#cb14-301"></a><span class="in">        1:original_size[2],</span></span>
-<span id="cb14-302"><a href="#cb14-302"></a><span class="in">        1:original_size[3],</span></span>
-<span id="cb14-303"><a href="#cb14-303"></a><span class="in">        :,</span></span>
-<span id="cb14-304"><a href="#cb14-304"></a><span class="in">        :</span></span>
-<span id="cb14-305"><a href="#cb14-305"></a><span class="in">    ]</span></span>
-<span id="cb14-306"><a href="#cb14-306"></a><span class="in">    println("Size of the final image: ", size(final_image))</span></span>
-<span id="cb14-307"><a href="#cb14-307"></a><span class="in">    return final_image</span></span>
-<span id="cb14-308"><a href="#cb14-308"></a><span class="in">end</span></span>
+<span id="cb14-298"><a href="#cb14-298"></a>    <span class="co"># Crop the reconstructed image to remove any padding</span></span>
+<span id="cb14-299"><a href="#cb14-299"></a>    final_image <span class="op">=</span> reconstructed_image[</span>
+<span id="cb14-300"><a href="#cb14-300"></a>        <span class="fl">1</span><span class="op">:</span>original_size[<span class="fl">1</span>],</span>
+<span id="cb14-301"><a href="#cb14-301"></a>        <span class="fl">1</span><span class="op">:</span>original_size[<span class="fl">2</span>],</span>
+<span id="cb14-302"><a href="#cb14-302"></a>        <span class="fl">1</span><span class="op">:</span>original_size[<span class="fl">3</span>],</span>
+<span id="cb14-303"><a href="#cb14-303"></a>        <span class="op">:</span>,</span>
+<span id="cb14-304"><a href="#cb14-304"></a>        <span class="op">:</span></span>
+<span id="cb14-305"><a href="#cb14-305"></a>    ]</span>
+<span id="cb14-306"><a href="#cb14-306"></a>    <span class="fu">println</span>(<span class="st">"Size of the final image: "</span>, <span class="fu">size</span>(final_image))</span>
+<span id="cb14-307"><a href="#cb14-307"></a>    <span class="cf">return</span> final_image</span>
+<span id="cb14-308"><a href="#cb14-308"></a><span class="kw">end</span></span>
 <span id="cb14-309"><a href="#cb14-309"></a><span class="in">```</span></span>
-<span id="cb14-310"><a href="#cb14-310"></a>&lt;/details&gt;</span>
+<span id="cb14-310"><a href="#cb14-310"></a><span class="dt">&lt;/</span><span class="kw">details</span><span class="dt">&gt;</span></span>
 <span id="cb14-311"><a href="#cb14-311"></a></span>
-<span id="cb14-312"><a href="#cb14-312"></a>Comment:&lt;br&gt;</span>
+<span id="cb14-312"><a href="#cb14-312"></a>Comment:<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
 <span id="cb14-313"><a href="#cb14-313"></a>In this section, there is significant potential to incorporate additional types of invertible augmentations.</span>
 <span id="cb14-314"><a href="#cb14-314"></a></span>
 <span id="cb14-315"><a href="#cb14-315"></a><span class="fu">## Patch-based data loading with probabilistic oversampling ✅</span></span>
@@ -1829,110 +1823,110 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb14-317"><a href="#cb14-317"></a>Helper functions like <span class="in">`get_random_patch`</span> and <span class="in">`get_centered_patch`</span> determine the starting indices and dimensions for the patches based on given configurations, while padding methods ensure consistency even if the patch exceeds the original image dimensions. Probabilistic oversampling, as configured, allows for more balanced and informative data sampling, which improves the model's ability to detect specific medical features.</span>
 <span id="cb14-318"><a href="#cb14-318"></a></span>
 <span id="cb14-319"><a href="#cb14-319"></a></span>
-<span id="cb14-320"><a href="#cb14-320"></a>&lt;details&gt;</span>
-<span id="cb14-321"><a href="#cb14-321"></a>&lt;summary&gt;extract_patch:&lt;/summary&gt;</span>
+<span id="cb14-320"><a href="#cb14-320"></a><span class="dt">&lt;</span><span class="kw">details</span><span class="dt">&gt;</span></span>
+<span id="cb14-321"><a href="#cb14-321"></a><span class="dt">&lt;</span><span class="kw">summary</span><span class="dt">&gt;</span>extract_patch:<span class="dt">&lt;/</span><span class="kw">summary</span><span class="dt">&gt;</span></span>
 <span id="cb14-322"><a href="#cb14-322"></a></span>
 <span id="cb14-323"><a href="#cb14-323"></a><span class="in">```julia</span></span>
-<span id="cb14-324"><a href="#cb14-324"></a><span class="in">function extract_patch(image, label, patch_size, config)</span></span>
-<span id="cb14-325"><a href="#cb14-325"></a><span class="in">    # Fetch the oversampling probability from the config</span></span>
-<span id="cb14-326"><a href="#cb14-326"></a><span class="in">    println("Extracting patch.")</span></span>
-<span id="cb14-327"><a href="#cb14-327"></a><span class="in">    oversampling_probability = config["learning"]["oversampling_probability"]</span></span>
-<span id="cb14-328"><a href="#cb14-328"></a><span class="in">    # Generate a random number to decide which patch extraction method to use</span></span>
-<span id="cb14-329"><a href="#cb14-329"></a><span class="in">    random_choice = rand()</span></span>
+<span id="cb14-324"><a href="#cb14-324"></a><span class="kw">function</span> <span class="fu">extract_patch</span>(image, label, patch_size, config)</span>
+<span id="cb14-325"><a href="#cb14-325"></a>    <span class="co"># Fetch the oversampling probability from the config</span></span>
+<span id="cb14-326"><a href="#cb14-326"></a>    <span class="fu">println</span>(<span class="st">"Extracting patch."</span>)</span>
+<span id="cb14-327"><a href="#cb14-327"></a>    oversampling_probability <span class="op">=</span> config[<span class="st">"learning"</span>][<span class="st">"oversampling_probability"</span>]</span>
+<span id="cb14-328"><a href="#cb14-328"></a>    <span class="co"># Generate a random number to decide which patch extraction method to use</span></span>
+<span id="cb14-329"><a href="#cb14-329"></a>    random_choice <span class="op">=</span> <span class="fu">rand</span>()</span>
 <span id="cb14-330"><a href="#cb14-330"></a></span>
-<span id="cb14-331"><a href="#cb14-331"></a><span class="in">    if random_choice &lt;= oversampling_probability</span></span>
-<span id="cb14-332"><a href="#cb14-332"></a><span class="in">        return extract_nonzero_patch(image, label, patch_size)</span></span>
-<span id="cb14-333"><a href="#cb14-333"></a><span class="in">    else</span></span>
+<span id="cb14-331"><a href="#cb14-331"></a>    <span class="cf">if</span> random_choice <span class="op">&lt;=</span> oversampling_probability</span>
+<span id="cb14-332"><a href="#cb14-332"></a>        <span class="cf">return</span> <span class="fu">extract_nonzero_patch</span>(image, label, patch_size)</span>
+<span id="cb14-333"><a href="#cb14-333"></a>    <span class="cf">else</span></span>
 <span id="cb14-334"><a href="#cb14-334"></a></span>
-<span id="cb14-335"><a href="#cb14-335"></a><span class="in">        return get_random_patch(image, label, patch_size)</span></span>
-<span id="cb14-336"><a href="#cb14-336"></a><span class="in">    end</span></span>
-<span id="cb14-337"><a href="#cb14-337"></a><span class="in">end</span></span>
-<span id="cb14-338"><a href="#cb14-338"></a><span class="in">#Helper function, in case the mask is emptyClick to apply</span></span>
-<span id="cb14-339"><a href="#cb14-339"></a><span class="in">function extract_nonzero_patch(image, label, patch_size)</span></span>
-<span id="cb14-340"><a href="#cb14-340"></a><span class="in">    println("Extracting a patch centered around a non-zero label value.")</span></span>
-<span id="cb14-341"><a href="#cb14-341"></a><span class="in">    indices = findall(x -&gt; x != 0, label)</span></span>
-<span id="cb14-342"><a href="#cb14-342"></a><span class="in">    if isempty(indices)</span></span>
-<span id="cb14-343"><a href="#cb14-343"></a><span class="in">        # Fallback to random patch if no non-zero points are found</span></span>
-<span id="cb14-344"><a href="#cb14-344"></a><span class="in">        return get_random_patch(image, label, patch_size)</span></span>
-<span id="cb14-345"><a href="#cb14-345"></a><span class="in">    else</span></span>
-<span id="cb14-346"><a href="#cb14-346"></a><span class="in">        # Choose a random non-zero index to center the patch around</span></span>
-<span id="cb14-347"><a href="#cb14-347"></a><span class="in">        center = indices[rand(1:length(indices))]</span></span>
-<span id="cb14-348"><a href="#cb14-348"></a><span class="in">        return get_centered_patch(image, label, center, patch_size)</span></span>
-<span id="cb14-349"><a href="#cb14-349"></a><span class="in">    end</span></span>
-<span id="cb14-350"><a href="#cb14-350"></a><span class="in">end</span></span>
-<span id="cb14-351"><a href="#cb14-351"></a><span class="in"># Function to get a patch centered around a specific index</span></span>
-<span id="cb14-352"><a href="#cb14-352"></a><span class="in">function get_centered_patch(image, label, center, patch_size)</span></span>
-<span id="cb14-353"><a href="#cb14-353"></a><span class="in">    center_coords = Tuple(center)</span></span>
-<span id="cb14-354"><a href="#cb14-354"></a><span class="in">    half_patch = patch_size .÷ 2</span></span>
-<span id="cb14-355"><a href="#cb14-355"></a><span class="in">    start_indices = center_coords .- half_patch</span></span>
-<span id="cb14-356"><a href="#cb14-356"></a><span class="in">    end_indices = start_indices .+ patch_size .- 1</span></span>
+<span id="cb14-335"><a href="#cb14-335"></a>        <span class="cf">return</span> <span class="fu">get_random_patch</span>(image, label, patch_size)</span>
+<span id="cb14-336"><a href="#cb14-336"></a>    <span class="cf">end</span></span>
+<span id="cb14-337"><a href="#cb14-337"></a><span class="kw">end</span></span>
+<span id="cb14-338"><a href="#cb14-338"></a><span class="co">#Helper function, in case the mask is emptyClick to apply</span></span>
+<span id="cb14-339"><a href="#cb14-339"></a><span class="kw">function</span> <span class="fu">extract_nonzero_patch</span>(image, label, patch_size)</span>
+<span id="cb14-340"><a href="#cb14-340"></a>    <span class="fu">println</span>(<span class="st">"Extracting a patch centered around a non-zero label value."</span>)</span>
+<span id="cb14-341"><a href="#cb14-341"></a>    indices <span class="op">=</span> <span class="fu">findall</span>(x <span class="op">-&gt;</span> x <span class="op">!=</span> <span class="fl">0</span>, label)</span>
+<span id="cb14-342"><a href="#cb14-342"></a>    <span class="cf">if</span> <span class="fu">isempty</span>(indices)</span>
+<span id="cb14-343"><a href="#cb14-343"></a>        <span class="co"># Fallback to random patch if no non-zero points are found</span></span>
+<span id="cb14-344"><a href="#cb14-344"></a>        <span class="cf">return</span> <span class="fu">get_random_patch</span>(image, label, patch_size)</span>
+<span id="cb14-345"><a href="#cb14-345"></a>    <span class="cf">else</span></span>
+<span id="cb14-346"><a href="#cb14-346"></a>        <span class="co"># Choose a random non-zero index to center the patch around</span></span>
+<span id="cb14-347"><a href="#cb14-347"></a>        center <span class="op">=</span> indices[<span class="fu">rand</span>(<span class="fl">1</span><span class="op">:</span><span class="fu">length</span>(indices))]</span>
+<span id="cb14-348"><a href="#cb14-348"></a>        <span class="cf">return</span> <span class="fu">get_centered_patch</span>(image, label, center, patch_size)</span>
+<span id="cb14-349"><a href="#cb14-349"></a>    <span class="cf">end</span></span>
+<span id="cb14-350"><a href="#cb14-350"></a><span class="kw">end</span></span>
+<span id="cb14-351"><a href="#cb14-351"></a><span class="co"># Function to get a patch centered around a specific index</span></span>
+<span id="cb14-352"><a href="#cb14-352"></a><span class="kw">function</span> <span class="fu">get_centered_patch</span>(image, label, center, patch_size)</span>
+<span id="cb14-353"><a href="#cb14-353"></a>    center_coords <span class="op">=</span> <span class="fu">Tuple</span>(center)</span>
+<span id="cb14-354"><a href="#cb14-354"></a>    half_patch <span class="op">=</span> patch_size <span class="op">.÷</span> <span class="fl">2</span></span>
+<span id="cb14-355"><a href="#cb14-355"></a>    start_indices <span class="op">=</span> center_coords <span class="op">.-</span> half_patch</span>
+<span id="cb14-356"><a href="#cb14-356"></a>    end_indices <span class="op">=</span> start_indices <span class="op">.+</span> patch_size <span class="op">.-</span> <span class="fl">1</span></span>
 <span id="cb14-357"><a href="#cb14-357"></a></span>
-<span id="cb14-358"><a href="#cb14-358"></a><span class="in">    # Calculate padding needed</span></span>
-<span id="cb14-359"><a href="#cb14-359"></a><span class="in">    pad_beg = (</span></span>
-<span id="cb14-360"><a href="#cb14-360"></a><span class="in">        max(1 - start_indices[1], 0),</span></span>
-<span id="cb14-361"><a href="#cb14-361"></a><span class="in">        max(1 - start_indices[2], 0),</span></span>
-<span id="cb14-362"><a href="#cb14-362"></a><span class="in">        max(1 - start_indices[3], 0)</span></span>
-<span id="cb14-363"><a href="#cb14-363"></a><span class="in">    )</span></span>
-<span id="cb14-364"><a href="#cb14-364"></a><span class="in">    pad_end = (</span></span>
-<span id="cb14-365"><a href="#cb14-365"></a><span class="in">        max(end_indices[1] - size(image, 1), 0),</span></span>
-<span id="cb14-366"><a href="#cb14-366"></a><span class="in">        max(end_indices[2] - size(image, 2), 0),</span></span>
-<span id="cb14-367"><a href="#cb14-367"></a><span class="in">        max(end_indices[3] - size(image, 3), 0)</span></span>
-<span id="cb14-368"><a href="#cb14-368"></a><span class="in">    )</span></span>
+<span id="cb14-358"><a href="#cb14-358"></a>    <span class="co"># Calculate padding needed</span></span>
+<span id="cb14-359"><a href="#cb14-359"></a>    pad_beg <span class="op">=</span> (</span>
+<span id="cb14-360"><a href="#cb14-360"></a>        <span class="fu">max</span>(<span class="fl">1</span> <span class="op">-</span> start_indices[<span class="fl">1</span>], <span class="fl">0</span>),</span>
+<span id="cb14-361"><a href="#cb14-361"></a>        <span class="fu">max</span>(<span class="fl">1</span> <span class="op">-</span> start_indices[<span class="fl">2</span>], <span class="fl">0</span>),</span>
+<span id="cb14-362"><a href="#cb14-362"></a>        <span class="fu">max</span>(<span class="fl">1</span> <span class="op">-</span> start_indices[<span class="fl">3</span>], <span class="fl">0</span>)</span>
+<span id="cb14-363"><a href="#cb14-363"></a>    )</span>
+<span id="cb14-364"><a href="#cb14-364"></a>    pad_end <span class="op">=</span> (</span>
+<span id="cb14-365"><a href="#cb14-365"></a>        <span class="fu">max</span>(end_indices[<span class="fl">1</span>] <span class="op">-</span> <span class="fu">size</span>(image, <span class="fl">1</span>), <span class="fl">0</span>),</span>
+<span id="cb14-366"><a href="#cb14-366"></a>        <span class="fu">max</span>(end_indices[<span class="fl">2</span>] <span class="op">-</span> <span class="fu">size</span>(image, <span class="fl">2</span>), <span class="fl">0</span>),</span>
+<span id="cb14-367"><a href="#cb14-367"></a>        <span class="fu">max</span>(end_indices[<span class="fl">3</span>] <span class="op">-</span> <span class="fu">size</span>(image, <span class="fl">3</span>), <span class="fl">0</span>)</span>
+<span id="cb14-368"><a href="#cb14-368"></a>    )</span>
 <span id="cb14-369"><a href="#cb14-369"></a></span>
-<span id="cb14-370"><a href="#cb14-370"></a><span class="in">    # Adjust start_indices and end_indices after padding</span></span>
-<span id="cb14-371"><a href="#cb14-371"></a><span class="in">    start_indices_adj = start_indices .+ pad_beg</span></span>
-<span id="cb14-372"><a href="#cb14-372"></a><span class="in">    end_indices_adj = end_indices .+ pad_beg</span></span>
+<span id="cb14-370"><a href="#cb14-370"></a>    <span class="co"># Adjust start_indices and end_indices after padding</span></span>
+<span id="cb14-371"><a href="#cb14-371"></a>    start_indices_adj <span class="op">=</span> start_indices <span class="op">.+</span> pad_beg</span>
+<span id="cb14-372"><a href="#cb14-372"></a>    end_indices_adj <span class="op">=</span> end_indices <span class="op">.+</span> pad_beg</span>
 <span id="cb14-373"><a href="#cb14-373"></a></span>
-<span id="cb14-374"><a href="#cb14-374"></a><span class="in">    # Convert padding values to integers</span></span>
-<span id="cb14-375"><a href="#cb14-375"></a><span class="in">    pad_beg = Tuple(round.(Int, pad_beg))</span></span>
-<span id="cb14-376"><a href="#cb14-376"></a><span class="in">    pad_end = Tuple(round.(Int, pad_end))</span></span>
+<span id="cb14-374"><a href="#cb14-374"></a>    <span class="co"># Convert padding values to integers</span></span>
+<span id="cb14-375"><a href="#cb14-375"></a>    pad_beg <span class="op">=</span> <span class="fu">Tuple</span>(<span class="fu">round</span>.(<span class="dt">Int</span>, pad_beg))</span>
+<span id="cb14-376"><a href="#cb14-376"></a>    pad_end <span class="op">=</span> <span class="fu">Tuple</span>(<span class="fu">round</span>.(<span class="dt">Int</span>, pad_end))</span>
 <span id="cb14-377"><a href="#cb14-377"></a></span>
-<span id="cb14-378"><a href="#cb14-378"></a><span class="in">    # Pad the image and label using pad_mi</span></span>
-<span id="cb14-379"><a href="#cb14-379"></a><span class="in">    image_padded = pad_mi(image, pad_beg, pad_end, 0)</span></span>
-<span id="cb14-380"><a href="#cb14-380"></a><span class="in">    label_padded = pad_mi(label, pad_beg, pad_end, 0)</span></span>
+<span id="cb14-378"><a href="#cb14-378"></a>    <span class="co"># Pad the image and label using pad_mi</span></span>
+<span id="cb14-379"><a href="#cb14-379"></a>    image_padded <span class="op">=</span> <span class="fu">pad_mi</span>(image, pad_beg, pad_end, <span class="fl">0</span>)</span>
+<span id="cb14-380"><a href="#cb14-380"></a>    label_padded <span class="op">=</span> <span class="fu">pad_mi</span>(label, pad_beg, pad_end, <span class="fl">0</span>)</span>
 <span id="cb14-381"><a href="#cb14-381"></a></span>
-<span id="cb14-382"><a href="#cb14-382"></a><span class="in">    # Extract the patch</span></span>
-<span id="cb14-383"><a href="#cb14-383"></a><span class="in">    image_patch = image_padded[</span></span>
-<span id="cb14-384"><a href="#cb14-384"></a><span class="in">        start_indices_adj[1]:end_indices_adj[1],</span></span>
-<span id="cb14-385"><a href="#cb14-385"></a><span class="in">        start_indices_adj[2]:end_indices_adj[2],</span></span>
-<span id="cb14-386"><a href="#cb14-386"></a><span class="in">        start_indices_adj[3]:end_indices_adj[3]</span></span>
-<span id="cb14-387"><a href="#cb14-387"></a><span class="in">    ]</span></span>
-<span id="cb14-388"><a href="#cb14-388"></a><span class="in">    label_patch = label_padded[</span></span>
-<span id="cb14-389"><a href="#cb14-389"></a><span class="in">        start_indices_adj[1]:end_indices_adj[1],</span></span>
-<span id="cb14-390"><a href="#cb14-390"></a><span class="in">        start_indices_adj[2]:end_indices_adj[2],</span></span>
-<span id="cb14-391"><a href="#cb14-391"></a><span class="in">        start_indices_adj[3]:end_indices_adj[3]</span></span>
-<span id="cb14-392"><a href="#cb14-392"></a><span class="in">    ]</span></span>
+<span id="cb14-382"><a href="#cb14-382"></a>    <span class="co"># Extract the patch</span></span>
+<span id="cb14-383"><a href="#cb14-383"></a>    image_patch <span class="op">=</span> image_padded[</span>
+<span id="cb14-384"><a href="#cb14-384"></a>        start_indices_adj[<span class="fl">1</span>]<span class="op">:</span>end_indices_adj[<span class="fl">1</span>],</span>
+<span id="cb14-385"><a href="#cb14-385"></a>        start_indices_adj[<span class="fl">2</span>]<span class="op">:</span>end_indices_adj[<span class="fl">2</span>],</span>
+<span id="cb14-386"><a href="#cb14-386"></a>        start_indices_adj[<span class="fl">3</span>]<span class="op">:</span>end_indices_adj[<span class="fl">3</span>]</span>
+<span id="cb14-387"><a href="#cb14-387"></a>    ]</span>
+<span id="cb14-388"><a href="#cb14-388"></a>    label_patch <span class="op">=</span> label_padded[</span>
+<span id="cb14-389"><a href="#cb14-389"></a>        start_indices_adj[<span class="fl">1</span>]<span class="op">:</span>end_indices_adj[<span class="fl">1</span>],</span>
+<span id="cb14-390"><a href="#cb14-390"></a>        start_indices_adj[<span class="fl">2</span>]<span class="op">:</span>end_indices_adj[<span class="fl">2</span>],</span>
+<span id="cb14-391"><a href="#cb14-391"></a>        start_indices_adj[<span class="fl">3</span>]<span class="op">:</span>end_indices_adj[<span class="fl">3</span>]</span>
+<span id="cb14-392"><a href="#cb14-392"></a>    ]</span>
 <span id="cb14-393"><a href="#cb14-393"></a></span>
-<span id="cb14-394"><a href="#cb14-394"></a><span class="in">    return image_patch, label_patch</span></span>
-<span id="cb14-395"><a href="#cb14-395"></a><span class="in">end</span></span>
+<span id="cb14-394"><a href="#cb14-394"></a>    <span class="cf">return</span> image_patch, label_patch</span>
+<span id="cb14-395"><a href="#cb14-395"></a><span class="kw">end</span></span>
 <span id="cb14-396"><a href="#cb14-396"></a></span>
-<span id="cb14-397"><a href="#cb14-397"></a><span class="in">function get_random_patch(image, label, patch_size)</span></span>
-<span id="cb14-398"><a href="#cb14-398"></a><span class="in">    println("Extracting a random patch.")</span></span>
-<span id="cb14-399"><a href="#cb14-399"></a><span class="in">    # Check if the patch size is greater than the image dimensions</span></span>
-<span id="cb14-400"><a href="#cb14-400"></a><span class="in">    if any(patch_size .&gt; size(image))</span></span>
-<span id="cb14-401"><a href="#cb14-401"></a><span class="in">        # Calculate the needed size to fit the patch</span></span>
-<span id="cb14-402"><a href="#cb14-402"></a><span class="in">        needed_size = map(max, size(image), patch_size)</span></span>
-<span id="cb14-403"><a href="#cb14-403"></a><span class="in">        # Use crop_or_pad to ensure the image and label are at least as large as needed_size</span></span>
-<span id="cb14-404"><a href="#cb14-404"></a><span class="in">        image = crop_or_pad(image, needed_size)</span></span>
-<span id="cb14-405"><a href="#cb14-405"></a><span class="in">        label = crop_or_pad(label, needed_size)</span></span>
-<span id="cb14-406"><a href="#cb14-406"></a><span class="in">    end</span></span>
+<span id="cb14-397"><a href="#cb14-397"></a><span class="kw">function</span> <span class="fu">get_random_patch</span>(image, label, patch_size)</span>
+<span id="cb14-398"><a href="#cb14-398"></a>    <span class="fu">println</span>(<span class="st">"Extracting a random patch."</span>)</span>
+<span id="cb14-399"><a href="#cb14-399"></a>    <span class="co"># Check if the patch size is greater than the image dimensions</span></span>
+<span id="cb14-400"><a href="#cb14-400"></a>    <span class="cf">if</span> <span class="fu">any</span>(patch_size <span class="op">.&gt;</span> <span class="fu">size</span>(image))</span>
+<span id="cb14-401"><a href="#cb14-401"></a>        <span class="co"># Calculate the needed size to fit the patch</span></span>
+<span id="cb14-402"><a href="#cb14-402"></a>        needed_size <span class="op">=</span> <span class="fu">map</span>(max, <span class="fu">size</span>(image), patch_size)</span>
+<span id="cb14-403"><a href="#cb14-403"></a>        <span class="co"># Use crop_or_pad to ensure the image and label are at least as large as needed_size</span></span>
+<span id="cb14-404"><a href="#cb14-404"></a>        image <span class="op">=</span> <span class="fu">crop_or_pad</span>(image, needed_size)</span>
+<span id="cb14-405"><a href="#cb14-405"></a>        label <span class="op">=</span> <span class="fu">crop_or_pad</span>(label, needed_size)</span>
+<span id="cb14-406"><a href="#cb14-406"></a>    <span class="cf">end</span></span>
 <span id="cb14-407"><a href="#cb14-407"></a></span>
-<span id="cb14-408"><a href="#cb14-408"></a><span class="in">    # Calculate random start indices within the new allowable range</span></span>
-<span id="cb14-409"><a href="#cb14-409"></a><span class="in">    start_x = rand(1:size(image, 1) - patch_size[1] + 1)</span></span>
-<span id="cb14-410"><a href="#cb14-410"></a><span class="in">    start_y = rand(1:size(image, 2) - patch_size[2] + 1)</span></span>
-<span id="cb14-411"><a href="#cb14-411"></a><span class="in">    start_z = rand(1:size(image, 3) - patch_size[3] + 1)</span></span>
-<span id="cb14-412"><a href="#cb14-412"></a><span class="in">    start_indices = [start_x, start_y, start_z]</span></span>
-<span id="cb14-413"><a href="#cb14-413"></a><span class="in">    end_indices = start_indices .+ patch_size .- 1</span></span>
+<span id="cb14-408"><a href="#cb14-408"></a>    <span class="co"># Calculate random start indices within the new allowable range</span></span>
+<span id="cb14-409"><a href="#cb14-409"></a>    start_x <span class="op">=</span> <span class="fu">rand</span>(<span class="fl">1</span><span class="op">:</span><span class="fu">size</span>(image, <span class="fl">1</span>) <span class="op">-</span> patch_size[<span class="fl">1</span>] <span class="op">+</span> <span class="fl">1</span>)</span>
+<span id="cb14-410"><a href="#cb14-410"></a>    start_y <span class="op">=</span> <span class="fu">rand</span>(<span class="fl">1</span><span class="op">:</span><span class="fu">size</span>(image, <span class="fl">2</span>) <span class="op">-</span> patch_size[<span class="fl">2</span>] <span class="op">+</span> <span class="fl">1</span>)</span>
+<span id="cb14-411"><a href="#cb14-411"></a>    start_z <span class="op">=</span> <span class="fu">rand</span>(<span class="fl">1</span><span class="op">:</span><span class="fu">size</span>(image, <span class="fl">3</span>) <span class="op">-</span> patch_size[<span class="fl">3</span>] <span class="op">+</span> <span class="fl">1</span>)</span>
+<span id="cb14-412"><a href="#cb14-412"></a>    start_indices <span class="op">=</span> [start_x, start_y, start_z]</span>
+<span id="cb14-413"><a href="#cb14-413"></a>    end_indices <span class="op">=</span> start_indices <span class="op">.+</span> patch_size <span class="op">.-</span> <span class="fl">1</span></span>
 <span id="cb14-414"><a href="#cb14-414"></a></span>
-<span id="cb14-415"><a href="#cb14-415"></a><span class="in">    # Extract the patch directly when within bounds</span></span>
-<span id="cb14-416"><a href="#cb14-416"></a><span class="in">    image_patch = image[start_indices[1]:end_indices[1], start_indices[2]:end_indices[2], start_indices[3]:end_indices[3]]</span></span>
-<span id="cb14-417"><a href="#cb14-417"></a><span class="in">    label_patch = label[start_indices[1]:end_indices[1], start_indices[2]:end_indices[2], start_indices[3]:end_indices[3]]</span></span>
+<span id="cb14-415"><a href="#cb14-415"></a>    <span class="co"># Extract the patch directly when within bounds</span></span>
+<span id="cb14-416"><a href="#cb14-416"></a>    image_patch <span class="op">=</span> image[start_indices[<span class="fl">1</span>]<span class="op">:</span>end_indices[<span class="fl">1</span>], start_indices[<span class="fl">2</span>]<span class="op">:</span>end_indices[<span class="fl">2</span>], start_indices[<span class="fl">3</span>]<span class="op">:</span>end_indices[<span class="fl">3</span>]]</span>
+<span id="cb14-417"><a href="#cb14-417"></a>    label_patch <span class="op">=</span> label[start_indices[<span class="fl">1</span>]<span class="op">:</span>end_indices[<span class="fl">1</span>], start_indices[<span class="fl">2</span>]<span class="op">:</span>end_indices[<span class="fl">2</span>], start_indices[<span class="fl">3</span>]<span class="op">:</span>end_indices[<span class="fl">3</span>]]</span>
 <span id="cb14-418"><a href="#cb14-418"></a></span>
-<span id="cb14-419"><a href="#cb14-419"></a><span class="in">    return image_patch, label_patch</span></span>
-<span id="cb14-420"><a href="#cb14-420"></a><span class="in">end</span></span>
+<span id="cb14-419"><a href="#cb14-419"></a>    <span class="cf">return</span> image_patch, label_patch</span>
+<span id="cb14-420"><a href="#cb14-420"></a><span class="kw">end</span></span>
 <span id="cb14-421"><a href="#cb14-421"></a></span>
 <span id="cb14-422"><a href="#cb14-422"></a><span class="in">```</span></span>
-<span id="cb14-423"><a href="#cb14-423"></a>&lt;/details&gt;</span>
+<span id="cb14-423"><a href="#cb14-423"></a><span class="dt">&lt;/</span><span class="kw">details</span><span class="dt">&gt;</span></span>
 <span id="cb14-424"><a href="#cb14-424"></a></span>
 <span id="cb14-425"><a href="#cb14-425"></a><span class="fu">## Calculate Median and Mean Spacing with resampling 🆙</span></span>
 <span id="cb14-426"><a href="#cb14-426"></a>This part ensures that all images in the dataset have consistent real coordinates, spacing, and shape. It's a critical factor in medical imaging for accurate analysis. Calculating and applying set values, median or mean across images ensures uniformity.</span>
@@ -1941,307 +1935,307 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb14-429"><a href="#cb14-429"></a>This step aligns each image to the reference coordinates of the main image, ensuring that all images share a common spatial alignment. The <span class="in">`resample_to_image`</span> function from MedImage.jl is used here, applying interpolation to adjust each image.</span>
 <span id="cb14-430"><a href="#cb14-430"></a></span>
 <span id="cb14-431"><a href="#cb14-431"></a></span>
-<span id="cb14-432"><a href="#cb14-432"></a>&lt;details&gt;</span>
-<span id="cb14-433"><a href="#cb14-433"></a>&lt;summary&gt;resample_images_to_target:&lt;/summary&gt;</span>
+<span id="cb14-432"><a href="#cb14-432"></a><span class="dt">&lt;</span><span class="kw">details</span><span class="dt">&gt;</span></span>
+<span id="cb14-433"><a href="#cb14-433"></a><span class="dt">&lt;</span><span class="kw">summary</span><span class="dt">&gt;</span>resample_images_to_target:<span class="dt">&lt;/</span><span class="kw">summary</span><span class="dt">&gt;</span></span>
 <span id="cb14-434"><a href="#cb14-434"></a></span>
 <span id="cb14-435"><a href="#cb14-435"></a><span class="in">```julia</span></span>
-<span id="cb14-436"><a href="#cb14-436"></a><span class="in">if resample_images_to_target &amp;&amp; !isempty(Med_images)</span></span>
-<span id="cb14-437"><a href="#cb14-437"></a><span class="in">    println("Resampling $channel_type files in channel '$channel_folder' to the first $channel_type in the channel.")</span></span>
-<span id="cb14-438"><a href="#cb14-438"></a><span class="in">    reference_image = Med_images[1]</span></span>
-<span id="cb14-439"><a href="#cb14-439"></a><span class="in">    Med_images = [resample_to_image(reference_image, img, interpolator) for img in Med_images]</span></span>
-<span id="cb14-440"><a href="#cb14-440"></a><span class="in">end</span></span>
+<span id="cb14-436"><a href="#cb14-436"></a><span class="cf">if</span> resample_images_to_target <span class="op">&amp;&amp;</span> !<span class="fu">isempty</span>(Med_images)</span>
+<span id="cb14-437"><a href="#cb14-437"></a>    <span class="fu">println</span>(<span class="st">"Resampling </span><span class="sc">$</span>channel_type<span class="st"> files in channel '</span><span class="sc">$</span>channel_folder<span class="st">' to the first </span><span class="sc">$</span>channel_type<span class="st"> in the channel."</span>)</span>
+<span id="cb14-438"><a href="#cb14-438"></a>    reference_image <span class="op">=</span> Med_images[<span class="fl">1</span>]</span>
+<span id="cb14-439"><a href="#cb14-439"></a>    Med_images <span class="op">=</span> [<span class="fu">resample_to_image</span>(reference_image, img, interpolator) for img <span class="kw">in</span> Med_images]</span>
+<span id="cb14-440"><a href="#cb14-440"></a><span class="cf">end</span></span>
 <span id="cb14-441"><a href="#cb14-441"></a><span class="in">```</span></span>
-<span id="cb14-442"><a href="#cb14-442"></a>&lt;/details&gt;</span>
+<span id="cb14-442"><a href="#cb14-442"></a><span class="dt">&lt;/</span><span class="kw">details</span><span class="dt">&gt;</span></span>
 <span id="cb14-443"><a href="#cb14-443"></a></span>
-<span id="cb14-444"><a href="#cb14-444"></a>Comment:&lt;br&gt;</span>
+<span id="cb14-444"><a href="#cb14-444"></a>Comment:<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
 <span id="cb14-445"><a href="#cb14-445"></a><span class="in">`Resample_to_image`</span> uses interpolation that is not yet GPU-accelerated in this implementation, this step slows down the data preparation phase significantly.</span>
 <span id="cb14-446"><a href="#cb14-446"></a></span>
 <span id="cb14-447"><a href="#cb14-447"></a><span class="fu">#### Ensure uniform spacing across the entire dataset 🆙</span></span>
 <span id="cb14-448"><a href="#cb14-448"></a>This step brings all images to a consistent voxel spacing across the dataset using <span class="in">`resample_to_spacing`</span> from MedImage.jl. This uniform spacing is crucial for creating a standardized dataset where each image voxel represents the same physical volume.</span>
 <span id="cb14-449"><a href="#cb14-449"></a></span>
 <span id="cb14-450"><a href="#cb14-450"></a></span>
-<span id="cb14-451"><a href="#cb14-451"></a>&lt;details&gt;</span>
-<span id="cb14-452"><a href="#cb14-452"></a>&lt;summary&gt;esample_to_spacing:&lt;/summary&gt;</span>
+<span id="cb14-451"><a href="#cb14-451"></a><span class="dt">&lt;</span><span class="kw">details</span><span class="dt">&gt;</span></span>
+<span id="cb14-452"><a href="#cb14-452"></a><span class="dt">&lt;</span><span class="kw">summary</span><span class="dt">&gt;</span>esample_to_spacing:<span class="dt">&lt;/</span><span class="kw">summary</span><span class="dt">&gt;</span></span>
 <span id="cb14-453"><a href="#cb14-453"></a></span>
 <span id="cb14-454"><a href="#cb14-454"></a><span class="in">```julia</span></span>
-<span id="cb14-455"><a href="#cb14-455"></a><span class="in">if resample_images_spacing == "set"</span></span>
-<span id="cb14-456"><a href="#cb14-456"></a><span class="in">    println("Resampling all $channel_type files to target spacing: $target_spacing")</span></span>
-<span id="cb14-457"><a href="#cb14-457"></a><span class="in">    target_spacing = Tuple(Float32(s) for s in target_spacing)</span></span>
-<span id="cb14-458"><a href="#cb14-458"></a><span class="in">    channels_data = [[resample_to_spacing(img, target_spacing, interpolator) for img in channel] for channel in channels_data]</span></span>
-<span id="cb14-459"><a href="#cb14-459"></a><span class="in">elseif resample_images_spacing == "avg"</span></span>
-<span id="cb14-460"><a href="#cb14-460"></a><span class="in">    println("Calculating average spacing across all $channel_type files and resampling.")</span></span>
-<span id="cb14-461"><a href="#cb14-461"></a><span class="in">    all_spacings = [img.spacing for channel in channels_data for img in channel]</span></span>
-<span id="cb14-462"><a href="#cb14-462"></a><span class="in">    avg_spacing = Tuple(Float32(mean(s)) for s in zip(all_spacings...))</span></span>
-<span id="cb14-463"><a href="#cb14-463"></a><span class="in">    println("Average spacing calculated: $avg_spacing")</span></span>
-<span id="cb14-464"><a href="#cb14-464"></a><span class="in">    channels_data = [[resample_to_spacing(img, avg_spacing, interpolator) for img in channel] for channel in channels_data]</span></span>
-<span id="cb14-465"><a href="#cb14-465"></a><span class="in">elseif resample_images_spacing == "median"</span></span>
-<span id="cb14-466"><a href="#cb14-466"></a><span class="in">    println("Calculating median spacing across all $channel_type files and resampling.")</span></span>
-<span id="cb14-467"><a href="#cb14-467"></a><span class="in">    all_spacings = [img.spacing for channel in channels_data for img in channel]</span></span>
-<span id="cb14-468"><a href="#cb14-468"></a><span class="in">    median_spacing = Tuple(Float32(median(s)) for s in all_spacings)</span></span>
-<span id="cb14-469"><a href="#cb14-469"></a><span class="in">    println("Median spacing calculated: $median_spacing")</span></span>
-<span id="cb14-470"><a href="#cb14-470"></a><span class="in">    channels_data = [[resample_to_spacing(img, median_spacing, interpolator) for img in channel] for channel in channels_data]</span></span>
-<span id="cb14-471"><a href="#cb14-471"></a><span class="in">elseif resample_images_spacing == false</span></span>
-<span id="cb14-472"><a href="#cb14-472"></a><span class="in">    println("Skipping resampling of $channel_type files.")</span></span>
-<span id="cb14-473"><a href="#cb14-473"></a><span class="in">    # No resampling will be applied, channels_data remains unchanged.</span></span>
-<span id="cb14-474"><a href="#cb14-474"></a><span class="in">end</span></span>
-<span id="cb14-475"><a href="#cb14-475"></a><span class="in">```</span></span>
-<span id="cb14-476"><a href="#cb14-476"></a>&lt;/details&gt;</span>
+<span id="cb14-455"><a href="#cb14-455"></a><span class="cf">if</span> resample_images_spacing <span class="op">==</span> <span class="st">"set"</span></span>
+<span id="cb14-456"><a href="#cb14-456"></a>    <span class="fu">println</span>(<span class="st">"Resampling all </span><span class="sc">$</span>channel_type<span class="st"> files to target spacing: </span><span class="sc">$</span>target_spacing<span class="st">"</span>)</span>
+<span id="cb14-457"><a href="#cb14-457"></a>    target_spacing <span class="op">=</span> <span class="fu">Tuple</span>(<span class="fu">Float32</span>(s) <span class="cf">for</span> s <span class="kw">in</span> target_spacing)</span>
+<span id="cb14-458"><a href="#cb14-458"></a>    channels_data <span class="op">=</span> [[<span class="fu">resample_to_spacing</span>(img, target_spacing, interpolator) for img <span class="kw">in</span> channel] for channel <span class="kw">in</span> channels_data]</span>
+<span id="cb14-459"><a href="#cb14-459"></a><span class="cf">elseif</span> resample_images_spacing <span class="op">==</span> <span class="st">"avg"</span></span>
+<span id="cb14-460"><a href="#cb14-460"></a>    <span class="fu">println</span>(<span class="st">"Calculating average spacing across all </span><span class="sc">$</span>channel_type<span class="st"> files and resampling."</span>)</span>
+<span id="cb14-461"><a href="#cb14-461"></a>    all_spacings <span class="op">=</span> [img.spacing for channel <span class="kw">in</span> channels_data for img <span class="kw">in</span> channel]</span>
+<span id="cb14-462"><a href="#cb14-462"></a>    avg_spacing <span class="op">=</span> <span class="fu">Tuple</span>(<span class="fu">Float32</span>(<span class="fu">mean</span>(s)) <span class="cf">for</span> s <span class="kw">in</span> <span class="fu">zip</span>(all_spacings<span class="op">...</span>))</span>
+<span id="cb14-463"><a href="#cb14-463"></a>    <span class="fu">println</span>(<span class="st">"Average spacing calculated: </span><span class="sc">$</span>avg_spacing<span class="st">"</span>)</span>
+<span id="cb14-464"><a href="#cb14-464"></a>    channels_data <span class="op">=</span> [[<span class="fu">resample_to_spacing</span>(img, avg_spacing, interpolator) for img <span class="kw">in</span> channel] for channel <span class="kw">in</span> channels_data]</span>
+<span id="cb14-465"><a href="#cb14-465"></a><span class="cf">elseif</span> resample_images_spacing <span class="op">==</span> <span class="st">"median"</span></span>
+<span id="cb14-466"><a href="#cb14-466"></a>    <span class="fu">println</span>(<span class="st">"Calculating median spacing across all </span><span class="sc">$</span>channel_type<span class="st"> files and resampling."</span>)</span>
+<span id="cb14-467"><a href="#cb14-467"></a>    all_spacings <span class="op">=</span> [img.spacing for channel <span class="kw">in</span> channels_data for img <span class="kw">in</span> channel]</span>
+<span id="cb14-468"><a href="#cb14-468"></a>    median_spacing <span class="op">=</span> <span class="fu">Tuple</span>(<span class="fu">Float32</span>(<span class="fu">median</span>(s)) <span class="cf">for</span> s <span class="kw">in</span> all_spacings)</span>
+<span id="cb14-469"><a href="#cb14-469"></a>    <span class="fu">println</span>(<span class="st">"Median spacing calculated: </span><span class="sc">$</span>median_spacing<span class="st">"</span>)</span>
+<span id="cb14-470"><a href="#cb14-470"></a>    channels_data <span class="op">=</span> [[<span class="fu">resample_to_spacing</span>(img, median_spacing, interpolator) for img <span class="kw">in</span> channel] for channel <span class="kw">in</span> channels_data]</span>
+<span id="cb14-471"><a href="#cb14-471"></a><span class="cf">elseif</span> resample_images_spacing <span class="op">==</span> <span class="cn">false</span></span>
+<span id="cb14-472"><a href="#cb14-472"></a>    <span class="fu">println</span>(<span class="st">"Skipping resampling of </span><span class="sc">$</span>channel_type<span class="st"> files."</span>)</span>
+<span id="cb14-473"><a href="#cb14-473"></a>    <span class="co"># No resampling will be applied, channels_data remains unchanged.</span></span>
+<span id="cb14-474"><a href="#cb14-474"></a><span class="cf">end</span></span>
+<span id="cb14-475"><a href="#cb14-475"></a><span class="ss">```</span></span>
+<span id="cb14-476"><a href="#cb14-476"></a><span class="ss">&lt;/details&gt;</span></span>
 <span id="cb14-477"><a href="#cb14-477"></a></span>
-<span id="cb14-478"><a href="#cb14-478"></a>Comment:&lt;br&gt;</span>
-<span id="cb14-479"><a href="#cb14-479"></a><span class="in">`Resample_to_spacing`</span> uses interpolation that is not yet GPU-accelerated in this implementation, this step slows down the data preparation phase significantly.</span>
+<span id="cb14-478"><a href="#cb14-478"></a><span class="ss">Comment:&lt;br&gt;</span></span>
+<span id="cb14-479"><a href="#cb14-479"></a><span class="ss">`Resample_to_spacing` uses interpolation that is not yet GPU-accelerated in this implementation, this step slows down the data preparation phase significantly.</span></span>
 <span id="cb14-480"><a href="#cb14-480"></a></span>
-<span id="cb14-481"><a href="#cb14-481"></a><span class="fu">#### Resizing all channel files to average or target size ✅</span></span>
-<span id="cb14-482"><a href="#cb14-482"></a>To create a cohesive 5D tensor, all images in each channel are resized to a uniform shape, either the average size of all images or a specific target size. This resizing process uses <span class="in">`crop_or_pad`</span>, ensuring that all images match the specified dimensions, making them suitable for model input.</span>
+<span id="cb14-481"><a href="#cb14-481"></a><span class="ss">#### Resizing all channel files to average or target size ✅</span></span>
+<span id="cb14-482"><a href="#cb14-482"></a><span class="ss">To create a cohesive 5D tensor, all images in each channel are resized to a uniform shape, either the average size of all images or a specific target size. This resizing process uses `crop_or_pad`, ensuring that all images match the specified dimensions, making them suitable for model input.</span></span>
 <span id="cb14-483"><a href="#cb14-483"></a></span>
-<span id="cb14-484"><a href="#cb14-484"></a>&lt;details&gt;</span>
-<span id="cb14-485"><a href="#cb14-485"></a>&lt;summary&gt;crop_or_pad:&lt;/summary&gt;</span>
+<span id="cb14-484"><a href="#cb14-484"></a><span class="ss">&lt;details&gt;</span></span>
+<span id="cb14-485"><a href="#cb14-485"></a><span class="ss">&lt;summary&gt;crop_or_pad:&lt;/summary&gt;</span></span>
 <span id="cb14-486"><a href="#cb14-486"></a></span>
-<span id="cb14-487"><a href="#cb14-487"></a><span class="in">```julia</span></span>
-<span id="cb14-488"><a href="#cb14-488"></a><span class="in">if resample_size == "avg"</span></span>
-<span id="cb14-489"><a href="#cb14-489"></a><span class="in">    sizes = [size(img.voxel_data) for img in channels_data for img in img]  # Get sizes from all images</span></span>
-<span id="cb14-490"><a href="#cb14-490"></a><span class="in">    avg_dim = map(mean, zip(sizes...))</span></span>
-<span id="cb14-491"><a href="#cb14-491"></a><span class="in">    avg_dim = Tuple(Int(round(d)) for d in avg_dim)</span></span>
-<span id="cb14-492"><a href="#cb14-492"></a><span class="in">    println("Resizing all $channel_type files to average dimension: $avg_dim")</span></span>
-<span id="cb14-493"><a href="#cb14-493"></a><span class="in">    channels_data = [[crop_or_pad(img, avg_dim) for img in channel] for channel in channels_data]</span></span>
-<span id="cb14-494"><a href="#cb14-494"></a><span class="in">elseif resample_size != "avg"</span></span>
-<span id="cb14-495"><a href="#cb14-495"></a><span class="in">    target_dim = Tuple(resample_size)</span></span>
-<span id="cb14-496"><a href="#cb14-496"></a><span class="in">    println("Resizing all $channel_type files to target dimension: $target_dim")</span></span>
-<span id="cb14-497"><a href="#cb14-497"></a><span class="in">    channels_data = [[crop_or_pad(img, target_dim) for img in channel] for channel in channels_data]</span></span>
-<span id="cb14-498"><a href="#cb14-498"></a><span class="in">end</span></span>
-<span id="cb14-499"><a href="#cb14-499"></a><span class="in">```</span></span>
-<span id="cb14-500"><a href="#cb14-500"></a>&lt;/details&gt;</span>
+<span id="cb14-487"><a href="#cb14-487"></a><span class="ss">```</span>julia</span>
+<span id="cb14-488"><a href="#cb14-488"></a><span class="cf">if</span> resample_size <span class="op">==</span> <span class="st">"avg"</span></span>
+<span id="cb14-489"><a href="#cb14-489"></a>    sizes <span class="op">=</span> [<span class="fu">size</span>(img.voxel_data) for img <span class="kw">in</span> channels_data for img <span class="kw">in</span> img]  <span class="co"># Get sizes from all images</span></span>
+<span id="cb14-490"><a href="#cb14-490"></a>    avg_dim <span class="op">=</span> <span class="fu">map</span>(mean, <span class="fu">zip</span>(sizes<span class="op">...</span>))</span>
+<span id="cb14-491"><a href="#cb14-491"></a>    avg_dim <span class="op">=</span> <span class="fu">Tuple</span>(<span class="fu">Int</span>(<span class="fu">round</span>(d)) <span class="cf">for</span> d <span class="kw">in</span> avg_dim)</span>
+<span id="cb14-492"><a href="#cb14-492"></a>    <span class="fu">println</span>(<span class="st">"Resizing all </span><span class="sc">$</span>channel_type<span class="st"> files to average dimension: </span><span class="sc">$</span>avg_dim<span class="st">"</span>)</span>
+<span id="cb14-493"><a href="#cb14-493"></a>    channels_data <span class="op">=</span> [[<span class="fu">crop_or_pad</span>(img, avg_dim) for img <span class="kw">in</span> channel] for channel <span class="kw">in</span> channels_data]</span>
+<span id="cb14-494"><a href="#cb14-494"></a><span class="cf">elseif</span> resample_size <span class="op">!=</span> <span class="st">"avg"</span></span>
+<span id="cb14-495"><a href="#cb14-495"></a>    target_dim <span class="op">=</span> <span class="fu">Tuple</span>(resample_size)</span>
+<span id="cb14-496"><a href="#cb14-496"></a>    <span class="fu">println</span>(<span class="st">"Resizing all </span><span class="sc">$</span>channel_type<span class="st"> files to target dimension: </span><span class="sc">$</span>target_dim<span class="st">"</span>)</span>
+<span id="cb14-497"><a href="#cb14-497"></a>    channels_data <span class="op">=</span> [[<span class="fu">crop_or_pad</span>(img, target_dim) for img <span class="kw">in</span> channel] for channel <span class="kw">in</span> channels_data]</span>
+<span id="cb14-498"><a href="#cb14-498"></a><span class="cf">end</span></span>
+<span id="cb14-499"><a href="#cb14-499"></a><span class="ss">```</span></span>
+<span id="cb14-500"><a href="#cb14-500"></a><span class="ss">&lt;/details&gt;</span></span>
 <span id="cb14-501"><a href="#cb14-501"></a></span>
-<span id="cb14-502"><a href="#cb14-502"></a><span class="fu">## Basic Post-processing operations</span></span>
-<span id="cb14-503"><a href="#cb14-503"></a>Post-processing operations involve the algorithm <span class="in">`largest_connected_components`</span>. It is achieved by label initialization and propagation in the segmented mask.</span>
-<span id="cb14-504"><a href="#cb14-504"></a>The <span class="in">`initialize_labels_kernel`</span> function assigns unique labels to different regions.</span>
+<span id="cb14-502"><a href="#cb14-502"></a><span class="ss">## Basic Post-processing operations</span></span>
+<span id="cb14-503"><a href="#cb14-503"></a><span class="ss">Post-processing operations involve the algorithm `largest_connected_components`. It is achieved by label initialization and propagation in the segmented mask.</span></span>
+<span id="cb14-504"><a href="#cb14-504"></a><span class="ss">The `initialize_labels_kernel` function assigns unique labels to different regions.</span></span>
 <span id="cb14-505"><a href="#cb14-505"></a></span>
-<span id="cb14-506"><a href="#cb14-506"></a>&lt;details&gt;</span>
-<span id="cb14-507"><a href="#cb14-507"></a>&lt;summary&gt;initialize_labels_kernel:&lt;/summary&gt;</span>
+<span id="cb14-506"><a href="#cb14-506"></a><span class="ss">&lt;details&gt;</span></span>
+<span id="cb14-507"><a href="#cb14-507"></a><span class="ss">&lt;summary&gt;initialize_labels_kernel:&lt;/summary&gt;</span></span>
 <span id="cb14-508"><a href="#cb14-508"></a></span>
-<span id="cb14-509"><a href="#cb14-509"></a><span class="in">```julia</span></span>
-<span id="cb14-510"><a href="#cb14-510"></a><span class="in">@kernel function initialize_labels_kernel(mask, labels, width, height, depth)</span></span>
-<span id="cb14-511"><a href="#cb14-511"></a><span class="in">    idx = @index(Global, Cartesian)</span></span>
-<span id="cb14-512"><a href="#cb14-512"></a><span class="in">    i = idx[1]</span></span>
-<span id="cb14-513"><a href="#cb14-513"></a><span class="in">    j = idx[2]</span></span>
-<span id="cb14-514"><a href="#cb14-514"></a><span class="in">    k = idx[3]</span></span>
-<span id="cb14-515"><a href="#cb14-515"></a><span class="in">    </span></span>
-<span id="cb14-516"><a href="#cb14-516"></a><span class="in">    if i &gt;= 1 &amp;&amp; i &lt;= width &amp;&amp; j &gt;= 1 &amp;&amp; j &lt;= height &amp;&amp; k &gt;= 1 &amp;&amp; k &lt;= depth</span></span>
-<span id="cb14-517"><a href="#cb14-517"></a><span class="in">        if mask[i, j, k] == 1</span></span>
-<span id="cb14-518"><a href="#cb14-518"></a><span class="in">            labels[i, j, k] = i + (j - 1) * width + (k - 1) * width * height</span></span>
-<span id="cb14-519"><a href="#cb14-519"></a><span class="in">        else</span></span>
-<span id="cb14-520"><a href="#cb14-520"></a><span class="in">            labels[i, j, k] = 0</span></span>
-<span id="cb14-521"><a href="#cb14-521"></a><span class="in">        end</span></span>
-<span id="cb14-522"><a href="#cb14-522"></a><span class="in">    end</span></span>
-<span id="cb14-523"><a href="#cb14-523"></a><span class="in">end</span></span>
-<span id="cb14-524"><a href="#cb14-524"></a><span class="in">```</span></span>
-<span id="cb14-525"><a href="#cb14-525"></a>&lt;/details&gt;</span>
-<span id="cb14-526"><a href="#cb14-526"></a>Propagate_labels_kernel iteratively updates the labels to maintain connected regions.</span>
-<span id="cb14-527"><a href="#cb14-527"></a>propagate_labels_kernel:</span>
-<span id="cb14-528"><a href="#cb14-528"></a>&lt;details&gt;</span>
+<span id="cb14-509"><a href="#cb14-509"></a><span class="ss">```</span>julia</span>
+<span id="cb14-510"><a href="#cb14-510"></a><span class="pp">@kernel</span> <span class="kw">function</span> <span class="fu">initialize_labels_kernel</span>(mask, labels, width, height, depth)</span>
+<span id="cb14-511"><a href="#cb14-511"></a>    idx <span class="op">=</span> <span class="pp">@index</span>(Global, Cartesian)</span>
+<span id="cb14-512"><a href="#cb14-512"></a>    i <span class="op">=</span> idx[<span class="fl">1</span>]</span>
+<span id="cb14-513"><a href="#cb14-513"></a>    j <span class="op">=</span> idx[<span class="fl">2</span>]</span>
+<span id="cb14-514"><a href="#cb14-514"></a>    k <span class="op">=</span> idx[<span class="fl">3</span>]</span>
+<span id="cb14-515"><a href="#cb14-515"></a>    </span>
+<span id="cb14-516"><a href="#cb14-516"></a>    <span class="cf">if</span> i <span class="op">&gt;=</span> <span class="fl">1</span> <span class="op">&amp;&amp;</span> i <span class="op">&lt;=</span> width <span class="op">&amp;&amp;</span> j <span class="op">&gt;=</span> <span class="fl">1</span> <span class="op">&amp;&amp;</span> j <span class="op">&lt;=</span> height <span class="op">&amp;&amp;</span> k <span class="op">&gt;=</span> <span class="fl">1</span> <span class="op">&amp;&amp;</span> k <span class="op">&lt;=</span> depth</span>
+<span id="cb14-517"><a href="#cb14-517"></a>        <span class="cf">if</span> mask[i, j, k] <span class="op">==</span> <span class="fl">1</span></span>
+<span id="cb14-518"><a href="#cb14-518"></a>            labels[i, j, k] <span class="op">=</span> i <span class="op">+</span> (j <span class="op">-</span> <span class="fl">1</span>) <span class="op">*</span> width <span class="op">+</span> (k <span class="op">-</span> <span class="fl">1</span>) <span class="op">*</span> width <span class="op">*</span> height</span>
+<span id="cb14-519"><a href="#cb14-519"></a>        <span class="cf">else</span></span>
+<span id="cb14-520"><a href="#cb14-520"></a>            labels[i, j, k] <span class="op">=</span> <span class="fl">0</span></span>
+<span id="cb14-521"><a href="#cb14-521"></a>        <span class="cf">end</span></span>
+<span id="cb14-522"><a href="#cb14-522"></a>    <span class="cf">end</span></span>
+<span id="cb14-523"><a href="#cb14-523"></a><span class="cf">end</span></span>
+<span id="cb14-524"><a href="#cb14-524"></a><span class="ss">```</span></span>
+<span id="cb14-525"><a href="#cb14-525"></a><span class="ss">&lt;/details&gt;</span></span>
+<span id="cb14-526"><a href="#cb14-526"></a><span class="ss">Propagate_labels_kernel iteratively updates the labels to maintain connected regions.</span></span>
+<span id="cb14-527"><a href="#cb14-527"></a><span class="ss">propagate_labels_kernel:</span></span>
+<span id="cb14-528"><a href="#cb14-528"></a><span class="ss">&lt;details&gt;</span></span>
 <span id="cb14-529"><a href="#cb14-529"></a></span>
-<span id="cb14-530"><a href="#cb14-530"></a><span class="in">```julia</span></span>
-<span id="cb14-531"><a href="#cb14-531"></a><span class="in">@kernel function propagate_labels_kernel(mask, labels, width, height, depth)</span></span>
-<span id="cb14-532"><a href="#cb14-532"></a><span class="in">    idx= @index(Global, Cartesian)</span></span>
-<span id="cb14-533"><a href="#cb14-533"></a><span class="in">    i = idx[1]</span></span>
-<span id="cb14-534"><a href="#cb14-534"></a><span class="in">    j = idx[2]</span></span>
-<span id="cb14-535"><a href="#cb14-535"></a><span class="in">    k = idx[3]</span></span>
+<span id="cb14-530"><a href="#cb14-530"></a><span class="ss">```</span>julia</span>
+<span id="cb14-531"><a href="#cb14-531"></a><span class="pp">@kernel</span> <span class="kw">function</span> <span class="fu">propagate_labels_kernel</span>(mask, labels, width, height, depth)</span>
+<span id="cb14-532"><a href="#cb14-532"></a>    idx<span class="op">=</span> <span class="pp">@index</span>(Global, Cartesian)</span>
+<span id="cb14-533"><a href="#cb14-533"></a>    i <span class="op">=</span> idx[<span class="fl">1</span>]</span>
+<span id="cb14-534"><a href="#cb14-534"></a>    j <span class="op">=</span> idx[<span class="fl">2</span>]</span>
+<span id="cb14-535"><a href="#cb14-535"></a>    k <span class="op">=</span> idx[<span class="fl">3</span>]</span>
 <span id="cb14-536"><a href="#cb14-536"></a></span>
-<span id="cb14-537"><a href="#cb14-537"></a><span class="in">    if i &gt;= 1 &amp;&amp; i &lt;= width &amp;&amp; j &gt;= 1 &amp;&amp; j &lt;= height &amp;&amp; k &gt;= 1 &amp;&amp; k &lt;= depth</span></span>
-<span id="cb14-538"><a href="#cb14-538"></a><span class="in">        if mask[i, j, k] == 1</span></span>
-<span id="cb14-539"><a href="#cb14-539"></a><span class="in">            current_label = labels[i, j, k]</span></span>
-<span id="cb14-540"><a href="#cb14-540"></a><span class="in">            for di in -1:1</span></span>
-<span id="cb14-541"><a href="#cb14-541"></a><span class="in">                for dj in -1:1</span></span>
-<span id="cb14-542"><a href="#cb14-542"></a><span class="in">                    for dk in -1:1</span></span>
-<span id="cb14-543"><a href="#cb14-543"></a><span class="in">                        if di == 0 &amp;&amp; dj == 0 &amp;&amp; dk == 0</span></span>
-<span id="cb14-544"><a href="#cb14-544"></a><span class="in">                            continue</span></span>
-<span id="cb14-545"><a href="#cb14-545"></a><span class="in">                        end</span></span>
-<span id="cb14-546"><a href="#cb14-546"></a><span class="in">                        ni = i + di</span></span>
-<span id="cb14-547"><a href="#cb14-547"></a><span class="in">                        nj = j + dj</span></span>
-<span id="cb14-548"><a href="#cb14-548"></a><span class="in">                        nk = k + dk</span></span>
-<span id="cb14-549"><a href="#cb14-549"></a><span class="in">                        if ni &gt;= 1 &amp;&amp; ni &lt;= width &amp;&amp; nj &gt;= 1 &amp;&amp; nj &lt;= height &amp;&amp; nk &gt;= 1 &amp;&amp; nk &lt;= depth</span></span>
-<span id="cb14-550"><a href="#cb14-550"></a><span class="in">                            if mask[ni, nj, nk] == 1 &amp;&amp; labels[ni, nj, nk] &lt; current_label</span></span>
-<span id="cb14-551"><a href="#cb14-551"></a><span class="in">                                labels[i, j, k] = labels[ni, nj, nk]</span></span>
-<span id="cb14-552"><a href="#cb14-552"></a><span class="in">                            end</span></span>
-<span id="cb14-553"><a href="#cb14-553"></a><span class="in">                        end</span></span>
-<span id="cb14-554"><a href="#cb14-554"></a><span class="in">                    end</span></span>
-<span id="cb14-555"><a href="#cb14-555"></a><span class="in">                end</span></span>
-<span id="cb14-556"><a href="#cb14-556"></a><span class="in">            end</span></span>
-<span id="cb14-557"><a href="#cb14-557"></a><span class="in">        end</span></span>
-<span id="cb14-558"><a href="#cb14-558"></a><span class="in">    end</span></span>
-<span id="cb14-559"><a href="#cb14-559"></a><span class="in">end</span></span>
-<span id="cb14-560"><a href="#cb14-560"></a><span class="in">```</span></span>
-<span id="cb14-561"><a href="#cb14-561"></a>&lt;/details&gt;</span>
-<span id="cb14-562"><a href="#cb14-562"></a>This process facilitates the identification of the largest connected components in 3D space, helping to isolate relevant medical structures, such as tumors, in the segmented mask. Allowing determining how many such areas are to be returned.</span>
+<span id="cb14-537"><a href="#cb14-537"></a>    <span class="cf">if</span> i <span class="op">&gt;=</span> <span class="fl">1</span> <span class="op">&amp;&amp;</span> i <span class="op">&lt;=</span> width <span class="op">&amp;&amp;</span> j <span class="op">&gt;=</span> <span class="fl">1</span> <span class="op">&amp;&amp;</span> j <span class="op">&lt;=</span> height <span class="op">&amp;&amp;</span> k <span class="op">&gt;=</span> <span class="fl">1</span> <span class="op">&amp;&amp;</span> k <span class="op">&lt;=</span> depth</span>
+<span id="cb14-538"><a href="#cb14-538"></a>        <span class="cf">if</span> mask[i, j, k] <span class="op">==</span> <span class="fl">1</span></span>
+<span id="cb14-539"><a href="#cb14-539"></a>            current_label <span class="op">=</span> labels[i, j, k]</span>
+<span id="cb14-540"><a href="#cb14-540"></a>            <span class="cf">for</span> di <span class="kw">in</span> <span class="op">-</span><span class="fl">1</span><span class="op">:</span><span class="fl">1</span></span>
+<span id="cb14-541"><a href="#cb14-541"></a>                <span class="cf">for</span> dj <span class="kw">in</span> <span class="op">-</span><span class="fl">1</span><span class="op">:</span><span class="fl">1</span></span>
+<span id="cb14-542"><a href="#cb14-542"></a>                    <span class="cf">for</span> dk <span class="kw">in</span> <span class="op">-</span><span class="fl">1</span><span class="op">:</span><span class="fl">1</span></span>
+<span id="cb14-543"><a href="#cb14-543"></a>                        <span class="cf">if</span> di <span class="op">==</span> <span class="fl">0</span> <span class="op">&amp;&amp;</span> dj <span class="op">==</span> <span class="fl">0</span> <span class="op">&amp;&amp;</span> dk <span class="op">==</span> <span class="fl">0</span></span>
+<span id="cb14-544"><a href="#cb14-544"></a>                            <span class="cf">continue</span></span>
+<span id="cb14-545"><a href="#cb14-545"></a>                        <span class="cf">end</span></span>
+<span id="cb14-546"><a href="#cb14-546"></a>                        ni <span class="op">=</span> i <span class="op">+</span> di</span>
+<span id="cb14-547"><a href="#cb14-547"></a>                        nj <span class="op">=</span> j <span class="op">+</span> dj</span>
+<span id="cb14-548"><a href="#cb14-548"></a>                        nk <span class="op">=</span> k <span class="op">+</span> dk</span>
+<span id="cb14-549"><a href="#cb14-549"></a>                        <span class="cf">if</span> ni <span class="op">&gt;=</span> <span class="fl">1</span> <span class="op">&amp;&amp;</span> ni <span class="op">&lt;=</span> width <span class="op">&amp;&amp;</span> nj <span class="op">&gt;=</span> <span class="fl">1</span> <span class="op">&amp;&amp;</span> nj <span class="op">&lt;=</span> height <span class="op">&amp;&amp;</span> nk <span class="op">&gt;=</span> <span class="fl">1</span> <span class="op">&amp;&amp;</span> nk <span class="op">&lt;=</span> depth</span>
+<span id="cb14-550"><a href="#cb14-550"></a>                            <span class="cf">if</span> mask[ni, nj, nk] <span class="op">==</span> <span class="fl">1</span> <span class="op">&amp;&amp;</span> labels[ni, nj, nk] <span class="op">&lt;</span> current_label</span>
+<span id="cb14-551"><a href="#cb14-551"></a>                                labels[i, j, k] <span class="op">=</span> labels[ni, nj, nk]</span>
+<span id="cb14-552"><a href="#cb14-552"></a>                            <span class="cf">end</span></span>
+<span id="cb14-553"><a href="#cb14-553"></a>                        <span class="cf">end</span></span>
+<span id="cb14-554"><a href="#cb14-554"></a>                    <span class="cf">end</span></span>
+<span id="cb14-555"><a href="#cb14-555"></a>                <span class="cf">end</span></span>
+<span id="cb14-556"><a href="#cb14-556"></a>            <span class="cf">end</span></span>
+<span id="cb14-557"><a href="#cb14-557"></a>        <span class="cf">end</span></span>
+<span id="cb14-558"><a href="#cb14-558"></a>    <span class="cf">end</span></span>
+<span id="cb14-559"><a href="#cb14-559"></a><span class="cf">end</span></span>
+<span id="cb14-560"><a href="#cb14-560"></a><span class="ss">```</span></span>
+<span id="cb14-561"><a href="#cb14-561"></a><span class="ss">&lt;/details&gt;</span></span>
+<span id="cb14-562"><a href="#cb14-562"></a><span class="ss">This process facilitates the identification of the largest connected components in 3D space, helping to isolate relevant medical structures, such as tumors, in the segmented mask. Allowing determining how many such areas are to be returned.</span></span>
 <span id="cb14-563"><a href="#cb14-563"></a></span>
-<span id="cb14-564"><a href="#cb14-564"></a>&lt;details&gt;</span>
-<span id="cb14-565"><a href="#cb14-565"></a>&lt;summary&gt;largest_connected_components:&lt;/summary&gt;</span>
+<span id="cb14-564"><a href="#cb14-564"></a><span class="ss">&lt;details&gt;</span></span>
+<span id="cb14-565"><a href="#cb14-565"></a><span class="ss">&lt;summary&gt;largest_connected_components:&lt;/summary&gt;</span></span>
 <span id="cb14-566"><a href="#cb14-566"></a></span>
-<span id="cb14-567"><a href="#cb14-567"></a><span class="in">```julia</span></span>
-<span id="cb14-568"><a href="#cb14-568"></a><span class="in">function largest_connected_components(mask::Array{Int32, 3}, n_lcc::Int)</span></span>
-<span id="cb14-569"><a href="#cb14-569"></a><span class="in">    width, height, depth = size(mask)</span></span>
-<span id="cb14-570"><a href="#cb14-570"></a><span class="in">    mask_gpu = CuArray(mask)</span></span>
-<span id="cb14-571"><a href="#cb14-571"></a><span class="in">    labels_gpu = CUDA.fill(0, size(mask))</span></span>
-<span id="cb14-572"><a href="#cb14-572"></a><span class="in">    dev = get_backend(labels_gpu)</span></span>
-<span id="cb14-573"><a href="#cb14-573"></a><span class="in">    ndrange = (width, height, depth)</span></span>
-<span id="cb14-574"><a href="#cb14-574"></a><span class="in">    workgroupsize = (3, 3, 3)</span></span>
+<span id="cb14-567"><a href="#cb14-567"></a><span class="ss">```</span>julia</span>
+<span id="cb14-568"><a href="#cb14-568"></a><span class="kw">function</span> <span class="fu">largest_connected_components</span>(mask<span class="op">::</span><span class="dt">Array{Int32, 3}</span>, n_lcc<span class="op">::</span><span class="dt">Int</span>)</span>
+<span id="cb14-569"><a href="#cb14-569"></a>    width, height, depth <span class="op">=</span> <span class="fu">size</span>(mask)</span>
+<span id="cb14-570"><a href="#cb14-570"></a>    mask_gpu <span class="op">=</span> <span class="fu">CuArray</span>(mask)</span>
+<span id="cb14-571"><a href="#cb14-571"></a>    labels_gpu <span class="op">=</span> CUDA.<span class="fu">fill</span>(<span class="fl">0</span>, <span class="fu">size</span>(mask))</span>
+<span id="cb14-572"><a href="#cb14-572"></a>    dev <span class="op">=</span> <span class="fu">get_backend</span>(labels_gpu)</span>
+<span id="cb14-573"><a href="#cb14-573"></a>    ndrange <span class="op">=</span> (width, height, depth)</span>
+<span id="cb14-574"><a href="#cb14-574"></a>    workgroupsize <span class="op">=</span> (<span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">3</span>)</span>
 <span id="cb14-575"><a href="#cb14-575"></a></span>
-<span id="cb14-576"><a href="#cb14-576"></a><span class="in">    # Initialize labels</span></span>
-<span id="cb14-577"><a href="#cb14-577"></a><span class="in">    initialize_labels_kernel(dev)(mask_gpu, labels_gpu, width, height, depth, ndrange = ndrange)</span></span>
-<span id="cb14-578"><a href="#cb14-578"></a><span class="in">    CUDA.synchronize()</span></span>
+<span id="cb14-576"><a href="#cb14-576"></a>    <span class="co"># Initialize labels</span></span>
+<span id="cb14-577"><a href="#cb14-577"></a>    <span class="fu">initialize_labels_kernel</span>(dev)(mask_gpu, labels_gpu, width, height, depth, ndrange <span class="op">=</span> ndrange)</span>
+<span id="cb14-578"><a href="#cb14-578"></a>    CUDA.<span class="fu">synchronize</span>()</span>
 <span id="cb14-579"><a href="#cb14-579"></a></span>
-<span id="cb14-580"><a href="#cb14-580"></a><span class="in">    # Propagate labels iteratively</span></span>
-<span id="cb14-581"><a href="#cb14-581"></a><span class="in">    for _ in 1:10 </span></span>
-<span id="cb14-582"><a href="#cb14-582"></a><span class="in">        propagate_labels_kernel(dev, workgroupsize)(mask_gpu, labels_gpu, width, height, depth, ndrange = ndrange)</span></span>
-<span id="cb14-583"><a href="#cb14-583"></a><span class="in">        CUDA.synchronize()</span></span>
-<span id="cb14-584"><a href="#cb14-584"></a><span class="in">    end</span></span>
+<span id="cb14-580"><a href="#cb14-580"></a>    <span class="co"># Propagate labels iteratively</span></span>
+<span id="cb14-581"><a href="#cb14-581"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span> </span>
+<span id="cb14-582"><a href="#cb14-582"></a>        <span class="fu">propagate_labels_kernel</span>(dev, workgroupsize)(mask_gpu, labels_gpu, width, height, depth, ndrange <span class="op">=</span> ndrange)</span>
+<span id="cb14-583"><a href="#cb14-583"></a>        CUDA.<span class="fu">synchronize</span>()</span>
+<span id="cb14-584"><a href="#cb14-584"></a>    <span class="cf">end</span></span>
 <span id="cb14-585"><a href="#cb14-585"></a></span>
-<span id="cb14-586"><a href="#cb14-586"></a><span class="in">    # Download labels back to CPU</span></span>
-<span id="cb14-587"><a href="#cb14-587"></a><span class="in">    labels_cpu = Array(labels_gpu)</span></span>
-<span id="cb14-588"><a href="#cb14-588"></a><span class="in">    </span></span>
-<span id="cb14-589"><a href="#cb14-589"></a><span class="in">    # Find all unique labels and their sizes</span></span>
-<span id="cb14-590"><a href="#cb14-590"></a><span class="in">    unique_labels = unique(labels_cpu)</span></span>
-<span id="cb14-591"><a href="#cb14-591"></a><span class="in">    label_sizes = [(label, count(labels_cpu .== label)) for label in unique_labels if label != 0]</span></span>
+<span id="cb14-586"><a href="#cb14-586"></a>    <span class="co"># Download labels back to CPU</span></span>
+<span id="cb14-587"><a href="#cb14-587"></a>    labels_cpu <span class="op">=</span> <span class="fu">Array</span>(labels_gpu)</span>
+<span id="cb14-588"><a href="#cb14-588"></a>    </span>
+<span id="cb14-589"><a href="#cb14-589"></a>    <span class="co"># Find all unique labels and their sizes</span></span>
+<span id="cb14-590"><a href="#cb14-590"></a>    unique_labels <span class="op">=</span> <span class="fu">unique</span>(labels_cpu)</span>
+<span id="cb14-591"><a href="#cb14-591"></a>    label_sizes <span class="op">=</span> [(label, <span class="fu">count</span>(labels_cpu <span class="op">.==</span> label)) for label <span class="kw">in</span> unique_labels if label <span class="op">!=</span> <span class="fl">0</span>]</span>
 <span id="cb14-592"><a href="#cb14-592"></a></span>
-<span id="cb14-593"><a href="#cb14-593"></a><span class="in">    # Sort labels by size and get the top n_lcc</span></span>
-<span id="cb14-594"><a href="#cb14-594"></a><span class="in">    sort!(label_sizes, by = x -&gt; x[2], rev = true)</span></span>
-<span id="cb14-595"><a href="#cb14-595"></a><span class="in">    top_labels = label_sizes[1:min(n_lcc, length(label_sizes))]</span></span>
+<span id="cb14-593"><a href="#cb14-593"></a>    <span class="co"># Sort labels by size and get the top n_lcc</span></span>
+<span id="cb14-594"><a href="#cb14-594"></a>    <span class="fu">sort!</span>(label_sizes, by <span class="op">=</span> x <span class="op">-&gt;</span> x[<span class="fl">2</span>], rev <span class="op">=</span> <span class="cn">true</span>)</span>
+<span id="cb14-595"><a href="#cb14-595"></a>    top_labels <span class="op">=</span> label_sizes[<span class="fl">1</span><span class="op">:</span><span class="fu">min</span>(n_lcc, <span class="fu">length</span>(label_sizes))]</span>
 <span id="cb14-596"><a href="#cb14-596"></a></span>
-<span id="cb14-597"><a href="#cb14-597"></a><span class="in">    # Create a mask for each of the top n_lcc components</span></span>
-<span id="cb14-598"><a href="#cb14-598"></a><span class="in">    components = [labels_cpu .== label[1] for label in top_labels]</span></span>
-<span id="cb14-599"><a href="#cb14-599"></a><span class="in">    return components</span></span>
-<span id="cb14-600"><a href="#cb14-600"></a><span class="in">end</span></span>
-<span id="cb14-601"><a href="#cb14-601"></a><span class="in">```</span></span>
-<span id="cb14-602"><a href="#cb14-602"></a>&lt;/details&gt;</span>
+<span id="cb14-597"><a href="#cb14-597"></a>    <span class="co"># Create a mask for each of the top n_lcc components</span></span>
+<span id="cb14-598"><a href="#cb14-598"></a>    components <span class="op">=</span> [labels_cpu <span class="op">.==</span> label[<span class="fl">1</span>] for label <span class="kw">in</span> top_labels]</span>
+<span id="cb14-599"><a href="#cb14-599"></a>    <span class="cf">return</span> components</span>
+<span id="cb14-600"><a href="#cb14-600"></a><span class="cf">end</span></span>
+<span id="cb14-601"><a href="#cb14-601"></a><span class="ss">```</span></span>
+<span id="cb14-602"><a href="#cb14-602"></a><span class="ss">&lt;/details&gt;</span></span>
 <span id="cb14-603"><a href="#cb14-603"></a></span>
-<span id="cb14-604"><a href="#cb14-604"></a><span class="fu">## Structured configuration of all hyperparameters 🆙</span></span>
+<span id="cb14-604"><a href="#cb14-604"></a><span class="ss">## Structured configuration of all hyperparameters 🆙</span></span>
 <span id="cb14-605"><a href="#cb14-605"></a></span>
-<span id="cb14-606"><a href="#cb14-606"></a>Hyperparameters for the entire pipeline are stored in a JSON configuration file, enabling straightforward adjustments for experimentation (just swap values, save and resume the study). This structured setup allows easy modification of key parameters, such as data set preparation, training settings, data augmentation, and resampling options.</span>
+<span id="cb14-606"><a href="#cb14-606"></a><span class="ss">Hyperparameters for the entire pipeline are stored in a JSON configuration file, enabling straightforward adjustments for experimentation (just swap values, save and resume the study). This structured setup allows easy modification of key parameters, such as data set preparation, training settings, data augmentation, and resampling options.</span></span>
 <span id="cb14-607"><a href="#cb14-607"></a></span>
 <span id="cb14-608"><a href="#cb14-608"></a></span>
-<span id="cb14-609"><a href="#cb14-609"></a>&lt;details&gt;</span>
-<span id="cb14-610"><a href="#cb14-610"></a>&lt;summary&gt;Example configuration:&lt;/summary&gt;</span>
+<span id="cb14-609"><a href="#cb14-609"></a><span class="ss">&lt;details&gt;</span></span>
+<span id="cb14-610"><a href="#cb14-610"></a><span class="ss">&lt;summary&gt;Example configuration:&lt;/summary&gt;</span></span>
 <span id="cb14-611"><a href="#cb14-611"></a></span>
-<span id="cb14-612"><a href="#cb14-612"></a><span class="in">```JSON</span></span>
-<span id="cb14-613"><a href="#cb14-613"></a><span class="fu">{</span></span>
-<span id="cb14-614"><a href="#cb14-614"></a>    <span class="dt">"model"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb14-615"><a href="#cb14-615"></a>        <span class="dt">"patience"</span><span class="fu">:</span> <span class="dv">10</span><span class="fu">,</span></span>
-<span id="cb14-616"><a href="#cb14-616"></a>        <span class="dt">"early_stopping_metric"</span><span class="fu">:</span> <span class="st">"val_loss"</span><span class="fu">,</span></span>
-<span id="cb14-617"><a href="#cb14-617"></a>        <span class="dt">"optimizer_name"</span><span class="fu">:</span> <span class="st">"Adam"</span><span class="fu">,</span></span>
-<span id="cb14-618"><a href="#cb14-618"></a>        <span class="dt">"loss_function_name"</span><span class="fu">:</span> <span class="st">"l1"</span><span class="fu">,</span></span>
-<span id="cb14-619"><a href="#cb14-619"></a>        <span class="dt">"early_stopping"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb14-620"><a href="#cb14-620"></a>        <span class="dt">"early_stopping_min_delta"</span><span class="fu">:</span> <span class="dv">0</span><span class="er">.01</span><span class="fu">,</span></span>
-<span id="cb14-621"><a href="#cb14-621"></a>        <span class="dt">"optimizer_args"</span><span class="fu">:</span> <span class="st">"lr=0.001"</span><span class="fu">,</span></span>
-<span id="cb14-622"><a href="#cb14-622"></a>        <span class="dt">"num_epochs"</span><span class="fu">:</span> <span class="dv">10</span></span>
-<span id="cb14-623"><a href="#cb14-623"></a>    <span class="fu">},</span></span>
-<span id="cb14-624"><a href="#cb14-624"></a>    <span class="dt">"data"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb14-625"><a href="#cb14-625"></a>        <span class="dt">"batch_complete"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
-<span id="cb14-626"><a href="#cb14-626"></a>        <span class="dt">"resample_size"</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">200</span><span class="ot">,</span><span class="dv">101</span><span class="ot">,</span><span class="dv">49</span><span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb14-627"><a href="#cb14-627"></a>        <span class="dt">"resample_to_target"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
-<span id="cb14-628"><a href="#cb14-628"></a>        <span class="dt">"resample_to_spacing"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
-<span id="cb14-629"><a href="#cb14-629"></a>        <span class="dt">"batch_size"</span><span class="fu">:</span> <span class="dv">3</span><span class="fu">,</span></span>
-<span id="cb14-630"><a href="#cb14-630"></a>        <span class="dt">"standardization"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
-<span id="cb14-631"><a href="#cb14-631"></a>        <span class="dt">"target_spacing"</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
-<span id="cb14-632"><a href="#cb14-632"></a>        <span class="dt">"channel_size"</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
-<span id="cb14-633"><a href="#cb14-633"></a>        <span class="dt">"normalization"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
-<span id="cb14-634"><a href="#cb14-634"></a>        <span class="dt">"has_mask"</span><span class="fu">:</span> <span class="kw">true</span></span>
-<span id="cb14-635"><a href="#cb14-635"></a>    <span class="fu">},</span></span>
-<span id="cb14-636"><a href="#cb14-636"></a>    <span class="dt">"augmentation"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb14-637"><a href="#cb14-637"></a>        <span class="dt">"augmentations"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb14-638"><a href="#cb14-638"></a>            <span class="dt">"Brightness transform"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb14-639"><a href="#cb14-639"></a>                <span class="dt">"mode"</span><span class="fu">:</span> <span class="st">"additive"</span><span class="fu">,</span></span>
-<span id="cb14-640"><a href="#cb14-640"></a>                <span class="dt">"value"</span><span class="fu">:</span> <span class="dv">0</span><span class="er">.</span><span class="dv">2</span></span>
-<span id="cb14-641"><a href="#cb14-641"></a>            <span class="fu">}</span></span>
-<span id="cb14-642"><a href="#cb14-642"></a>        <span class="fu">},</span></span>
-<span id="cb14-643"><a href="#cb14-643"></a>        <span class="dt">"p_rand"</span><span class="fu">:</span> <span class="dv">0</span><span class="er">.</span><span class="dv">5</span><span class="fu">,</span></span>
-<span id="cb14-644"><a href="#cb14-644"></a>        <span class="dt">"processing_unit"</span><span class="fu">:</span> <span class="st">"GPU"</span><span class="fu">,</span></span>
-<span id="cb14-645"><a href="#cb14-645"></a>        <span class="dt">"order"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb14-612"><a href="#cb14-612"></a><span class="ss">```</span>JSON</span>
+<span id="cb14-613"><a href="#cb14-613"></a>{</span>
+<span id="cb14-614"><a href="#cb14-614"></a>    <span class="st">"model"</span><span class="op">:</span> {</span>
+<span id="cb14-615"><a href="#cb14-615"></a>        <span class="st">"patience"</span><span class="op">:</span> <span class="fl">10</span>,</span>
+<span id="cb14-616"><a href="#cb14-616"></a>        <span class="st">"early_stopping_metric"</span><span class="op">:</span> <span class="st">"val_loss"</span>,</span>
+<span id="cb14-617"><a href="#cb14-617"></a>        <span class="st">"optimizer_name"</span><span class="op">:</span> <span class="st">"Adam"</span>,</span>
+<span id="cb14-618"><a href="#cb14-618"></a>        <span class="st">"loss_function_name"</span><span class="op">:</span> <span class="st">"l1"</span>,</span>
+<span id="cb14-619"><a href="#cb14-619"></a>        <span class="st">"early_stopping"</span><span class="op">:</span> <span class="cn">true</span>,</span>
+<span id="cb14-620"><a href="#cb14-620"></a>        <span class="st">"early_stopping_min_delta"</span><span class="op">:</span> <span class="fl">0.01</span>,</span>
+<span id="cb14-621"><a href="#cb14-621"></a>        <span class="st">"optimizer_args"</span><span class="op">:</span> <span class="st">"lr=0.001"</span>,</span>
+<span id="cb14-622"><a href="#cb14-622"></a>        <span class="st">"num_epochs"</span><span class="op">:</span> <span class="fl">10</span></span>
+<span id="cb14-623"><a href="#cb14-623"></a>    },</span>
+<span id="cb14-624"><a href="#cb14-624"></a>    <span class="st">"data"</span><span class="op">:</span> {</span>
+<span id="cb14-625"><a href="#cb14-625"></a>        <span class="st">"batch_complete"</span><span class="op">:</span> <span class="cn">false</span>,</span>
+<span id="cb14-626"><a href="#cb14-626"></a>        <span class="st">"resample_size"</span><span class="op">:</span> [<span class="fl">200</span>,<span class="fl">101</span>,<span class="fl">49</span>],</span>
+<span id="cb14-627"><a href="#cb14-627"></a>        <span class="st">"resample_to_target"</span><span class="op">:</span> <span class="cn">false</span>,</span>
+<span id="cb14-628"><a href="#cb14-628"></a>        <span class="st">"resample_to_spacing"</span><span class="op">:</span> <span class="cn">false</span>,</span>
+<span id="cb14-629"><a href="#cb14-629"></a>        <span class="st">"batch_size"</span><span class="op">:</span> <span class="fl">3</span>,</span>
+<span id="cb14-630"><a href="#cb14-630"></a>        <span class="st">"standardization"</span><span class="op">:</span> <span class="cn">false</span>,</span>
+<span id="cb14-631"><a href="#cb14-631"></a>        <span class="st">"target_spacing"</span><span class="op">:</span> null,</span>
+<span id="cb14-632"><a href="#cb14-632"></a>        <span class="st">"channel_size"</span><span class="op">:</span> <span class="fl">1</span>,</span>
+<span id="cb14-633"><a href="#cb14-633"></a>        <span class="st">"normalization"</span><span class="op">:</span> <span class="cn">false</span>,</span>
+<span id="cb14-634"><a href="#cb14-634"></a>        <span class="st">"has_mask"</span><span class="op">:</span> <span class="cn">true</span></span>
+<span id="cb14-635"><a href="#cb14-635"></a>    },</span>
+<span id="cb14-636"><a href="#cb14-636"></a>    <span class="st">"augmentation"</span><span class="op">:</span> {</span>
+<span id="cb14-637"><a href="#cb14-637"></a>        <span class="st">"augmentations"</span><span class="op">:</span> {</span>
+<span id="cb14-638"><a href="#cb14-638"></a>            <span class="st">"Brightness transform"</span><span class="op">:</span> {</span>
+<span id="cb14-639"><a href="#cb14-639"></a>                <span class="st">"mode"</span><span class="op">:</span> <span class="st">"additive"</span>,</span>
+<span id="cb14-640"><a href="#cb14-640"></a>                <span class="st">"value"</span><span class="op">:</span> <span class="fl">0.2</span></span>
+<span id="cb14-641"><a href="#cb14-641"></a>            }</span>
+<span id="cb14-642"><a href="#cb14-642"></a>        },</span>
+<span id="cb14-643"><a href="#cb14-643"></a>        <span class="st">"p_rand"</span><span class="op">:</span> <span class="fl">0.5</span>,</span>
+<span id="cb14-644"><a href="#cb14-644"></a>        <span class="st">"processing_unit"</span><span class="op">:</span> <span class="st">"GPU"</span>,</span>
+<span id="cb14-645"><a href="#cb14-645"></a>        <span class="st">"order"</span><span class="op">:</span> [</span>
 <span id="cb14-646"><a href="#cb14-646"></a>            <span class="st">"Brightness transform"</span></span>
-<span id="cb14-647"><a href="#cb14-647"></a>        <span class="ot">]</span></span>
-<span id="cb14-648"><a href="#cb14-648"></a>    <span class="fu">},</span></span>
-<span id="cb14-649"><a href="#cb14-649"></a>    <span class="dt">"learning"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb14-650"><a href="#cb14-650"></a>        <span class="dt">"Train_Val_Test_JSON"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
-<span id="cb14-651"><a href="#cb14-651"></a>        <span class="dt">"largest_connected_component"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
-<span id="cb14-652"><a href="#cb14-652"></a>        <span class="dt">"n_lcc"</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
-<span id="cb14-653"><a href="#cb14-653"></a>        <span class="dt">"n_folds"</span><span class="fu">:</span> <span class="dv">3</span><span class="fu">,</span></span>
-<span id="cb14-654"><a href="#cb14-654"></a>        <span class="dt">"invertible_augmentations"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
-<span id="cb14-655"><a href="#cb14-655"></a>        <span class="dt">"n_invertible"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb14-647"><a href="#cb14-647"></a>        ]</span>
+<span id="cb14-648"><a href="#cb14-648"></a>    },</span>
+<span id="cb14-649"><a href="#cb14-649"></a>    <span class="st">"learning"</span><span class="op">:</span> {</span>
+<span id="cb14-650"><a href="#cb14-650"></a>        <span class="st">"Train_Val_Test_JSON"</span><span class="op">:</span> <span class="cn">false</span>,</span>
+<span id="cb14-651"><a href="#cb14-651"></a>        <span class="st">"largest_connected_component"</span><span class="op">:</span> <span class="cn">false</span>,</span>
+<span id="cb14-652"><a href="#cb14-652"></a>        <span class="st">"n_lcc"</span><span class="op">:</span> <span class="fl">1</span>,</span>
+<span id="cb14-653"><a href="#cb14-653"></a>        <span class="st">"n_folds"</span><span class="op">:</span> <span class="fl">3</span>,</span>
+<span id="cb14-654"><a href="#cb14-654"></a>        <span class="st">"invertible_augmentations"</span><span class="op">:</span> <span class="cn">false</span>,</span>
+<span id="cb14-655"><a href="#cb14-655"></a>        <span class="st">"n_invertible"</span><span class="op">:</span> <span class="cn">true</span>,</span>
 <span id="cb14-656"><a href="#cb14-656"></a>        </span>
-<span id="cb14-657"><a href="#cb14-657"></a>        <span class="dt">"class_JSON_path"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
-<span id="cb14-658"><a href="#cb14-658"></a>        <span class="dt">"additional_JSON_path"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
-<span id="cb14-659"><a href="#cb14-659"></a>        <span class="dt">"patch_size"</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">50</span><span class="ot">,</span><span class="dv">50</span><span class="ot">,</span><span class="dv">50</span><span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb14-660"><a href="#cb14-660"></a>        <span class="dt">"metric"</span><span class="fu">:</span> <span class="st">"dice"</span><span class="fu">,</span></span>
-<span id="cb14-661"><a href="#cb14-661"></a>        <span class="dt">"n_cross_val"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
-<span id="cb14-662"><a href="#cb14-662"></a>        <span class="dt">"patch_probabilistic_oversampling"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
-<span id="cb14-663"><a href="#cb14-663"></a>        <span class="dt">"oversampling_probability"</span><span class="fu">:</span> <span class="fl">1.0</span><span class="fu">,</span></span>
-<span id="cb14-664"><a href="#cb14-664"></a>        <span class="dt">"test_train_validation"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb14-665"><a href="#cb14-665"></a>            <span class="dv">0</span><span class="er">.</span><span class="dv">6</span><span class="ot">,</span></span>
-<span id="cb14-666"><a href="#cb14-666"></a>            <span class="dv">0</span><span class="er">.</span><span class="dv">2</span><span class="ot">,</span></span>
-<span id="cb14-667"><a href="#cb14-667"></a>            <span class="dv">0</span><span class="er">.</span><span class="dv">2</span></span>
-<span id="cb14-668"><a href="#cb14-668"></a>        <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb14-669"><a href="#cb14-669"></a>        <span class="dt">"shuffle"</span><span class="fu">:</span> <span class="kw">false</span></span>
-<span id="cb14-670"><a href="#cb14-670"></a>    <span class="fu">}</span></span>
-<span id="cb14-671"><a href="#cb14-671"></a><span class="fu">}</span></span>
+<span id="cb14-657"><a href="#cb14-657"></a>        <span class="st">"class_JSON_path"</span><span class="op">:</span> <span class="cn">false</span>,</span>
+<span id="cb14-658"><a href="#cb14-658"></a>        <span class="st">"additional_JSON_path"</span><span class="op">:</span> <span class="cn">false</span>,</span>
+<span id="cb14-659"><a href="#cb14-659"></a>        <span class="st">"patch_size"</span><span class="op">:</span> [<span class="fl">50</span>,<span class="fl">50</span>,<span class="fl">50</span>],</span>
+<span id="cb14-660"><a href="#cb14-660"></a>        <span class="st">"metric"</span><span class="op">:</span> <span class="st">"dice"</span>,</span>
+<span id="cb14-661"><a href="#cb14-661"></a>        <span class="st">"n_cross_val"</span><span class="op">:</span> <span class="cn">false</span>,</span>
+<span id="cb14-662"><a href="#cb14-662"></a>        <span class="st">"patch_probabilistic_oversampling"</span><span class="op">:</span> <span class="cn">false</span>,</span>
+<span id="cb14-663"><a href="#cb14-663"></a>        <span class="st">"oversampling_probability"</span><span class="op">:</span> <span class="fl">1.0</span>,</span>
+<span id="cb14-664"><a href="#cb14-664"></a>        <span class="st">"test_train_validation"</span><span class="op">:</span> [</span>
+<span id="cb14-665"><a href="#cb14-665"></a>            <span class="fl">0.6</span>,</span>
+<span id="cb14-666"><a href="#cb14-666"></a>            <span class="fl">0.2</span>,</span>
+<span id="cb14-667"><a href="#cb14-667"></a>            <span class="fl">0.2</span></span>
+<span id="cb14-668"><a href="#cb14-668"></a>        ],</span>
+<span id="cb14-669"><a href="#cb14-669"></a>        <span class="st">"shuffle"</span><span class="op">:</span> <span class="cn">false</span></span>
+<span id="cb14-670"><a href="#cb14-670"></a>    }</span>
+<span id="cb14-671"><a href="#cb14-671"></a>}</span>
 <span id="cb14-672"><a href="#cb14-672"></a></span>
-<span id="cb14-673"><a href="#cb14-673"></a><span class="in">```</span></span>
-<span id="cb14-674"><a href="#cb14-674"></a>&lt;/details&gt;</span>
+<span id="cb14-673"><a href="#cb14-673"></a><span class="ss">```</span></span>
+<span id="cb14-674"><a href="#cb14-674"></a><span class="ss">&lt;/details&gt;</span></span>
 <span id="cb14-675"><a href="#cb14-675"></a></span>
-<span id="cb14-676"><a href="#cb14-676"></a>Comments:&lt;br&gt;</span>
-<span id="cb14-677"><a href="#cb14-677"></a>The current configuration is loaded as a dictionary, which simplifies access and modification. This setup presents a strong foundation for integrating automated search algorithms for hyperparameter tuning, enabling more efficient model optimization.&lt;br&gt;</span>
-<span id="cb14-678"><a href="#cb14-678"></a>The configuration structure could be reorganized and re-named to improve readability, making it easier for users to locate and adjust specific parameters.</span>
+<span id="cb14-676"><a href="#cb14-676"></a><span class="ss">Comments:&lt;br&gt;</span></span>
+<span id="cb14-677"><a href="#cb14-677"></a><span class="ss">The current configuration is loaded as a dictionary, which simplifies access and modification. This setup presents a strong foundation for integrating automated search algorithms for hyperparameter tuning, enabling more efficient model optimization.&lt;br&gt;</span></span>
+<span id="cb14-678"><a href="#cb14-678"></a><span class="ss">The configuration structure could be reorganized and re-named to improve readability, making it easier for users to locate and adjust specific parameters.</span></span>
 <span id="cb14-679"><a href="#cb14-679"></a></span>
-<span id="cb14-680"><a href="#cb14-680"></a><span class="fu">## Visualization of algorithm outputs ⚠️</span></span>
-<span id="cb14-681"><a href="#cb14-681"></a>This module provides basic visualization functionality by saving output masks and images first to MedImage format and then to Nifti format. The <span class="in">`create_nii_from_medimage`</span> function from MedImage.jl generates Nifti files, which can be loaded into MedEye3D for 3D visualization.</span>
+<span id="cb14-680"><a href="#cb14-680"></a><span class="ss">## Visualization of algorithm outputs ⚠️</span></span>
+<span id="cb14-681"><a href="#cb14-681"></a><span class="ss">This module provides basic visualization functionality by saving output masks and images first to MedImage format and then to Nifti format. The `create_nii_from_medimage` function from MedImage.jl generates Nifti files, which can be loaded into MedEye3D for 3D visualization.</span></span>
 <span id="cb14-682"><a href="#cb14-682"></a></span>
-<span id="cb14-683"><a href="#cb14-683"></a>Comments:&lt;br&gt;</span>
-<span id="cb14-684"><a href="#cb14-684"></a>Integrating this visualization module more fully with the pipeline could eliminate unnecessary steps. By automatically loading output masks and images as raw data into MedEye3D for 3D visualization and supporting a more efficient end-to-end workflow. </span>
+<span id="cb14-683"><a href="#cb14-683"></a><span class="ss">Comments:&lt;br&gt;</span></span>
+<span id="cb14-684"><a href="#cb14-684"></a><span class="ss">Integrating this visualization module more fully with the pipeline could eliminate unnecessary steps. By automatically loading output masks and images as raw data into MedEye3D for 3D visualization and supporting a more efficient end-to-end workflow. </span></span>
 <span id="cb14-685"><a href="#cb14-685"></a></span>
-<span id="cb14-686"><a href="#cb14-686"></a><span class="fu">## K-fold cross-validation functionality ✅</span></span>
-<span id="cb14-687"><a href="#cb14-687"></a>K-fold cross-validation is implemented to evaluate model performance more robustly. The data is split into multiple folds, with each fold serving as a validation set once, while the others form the training set. This functionality provides a better assessment of model performance across different subsets of the data.</span>
+<span id="cb14-686"><a href="#cb14-686"></a><span class="ss">## K-fold cross-validation functionality ✅</span></span>
+<span id="cb14-687"><a href="#cb14-687"></a><span class="ss">K-fold cross-validation is implemented to evaluate model performance more robustly. The data is split into multiple folds, with each fold serving as a validation set once, while the others form the training set. This functionality provides a better assessment of model performance across different subsets of the data.</span></span>
 <span id="cb14-688"><a href="#cb14-688"></a></span>
-<span id="cb14-689"><a href="#cb14-689"></a>&lt;details&gt;</span>
-<span id="cb14-690"><a href="#cb14-690"></a>&lt;summary&gt;K-fold cross-validation functionality:&lt;/summary&gt;</span>
+<span id="cb14-689"><a href="#cb14-689"></a><span class="ss">&lt;details&gt;</span></span>
+<span id="cb14-690"><a href="#cb14-690"></a><span class="ss">&lt;summary&gt;K-fold cross-validation functionality:&lt;/summary&gt;</span></span>
 <span id="cb14-691"><a href="#cb14-691"></a></span>
-<span id="cb14-692"><a href="#cb14-692"></a><span class="in">```julia</span></span>
-<span id="cb14-693"><a href="#cb14-693"></a><span class="in">...</span></span>
-<span id="cb14-694"><a href="#cb14-694"></a><span class="in">  tstate = initialize_train_state(rng, model, optimizer)</span></span>
-<span id="cb14-695"><a href="#cb14-695"></a><span class="in">  if config["learning"]["n_cross_val"]</span></span>
-<span id="cb14-696"><a href="#cb14-696"></a><span class="in">      n_folds = config["learning"]["n_folds"]</span></span>
-<span id="cb14-697"><a href="#cb14-697"></a><span class="in">      all_tstate = []</span></span>
-<span id="cb14-698"><a href="#cb14-698"></a><span class="in">      combined_indices = [indices_dict["train"]; indices_dict["validation"]]</span></span>
-<span id="cb14-699"><a href="#cb14-699"></a><span class="in">      shuffled_indices = shuffle(rng, combined_indices)</span></span>
-<span id="cb14-700"><a href="#cb14-700"></a><span class="in">      for fold in 1:n_folds</span></span>
-<span id="cb14-701"><a href="#cb14-701"></a><span class="in">          println("Starting fold $fold/$n_folds")</span></span>
-<span id="cb14-702"><a href="#cb14-702"></a><span class="in">          train_groups, validation_groups = k_fold_split(combined_indices, n_folds, fold, rng)</span></span>
-<span id="cb14-703"><a href="#cb14-703"></a><span class="in">          </span></span>
-<span id="cb14-704"><a href="#cb14-704"></a><span class="in">          tstate = initialize_train_state(rng, model, optimizer)</span></span>
-<span id="cb14-705"><a href="#cb14-705"></a><span class="in">          final_tstate = epoch_loop(num_epochs, train_groups, validation_groups, h5, model, tstate, config, loss_function, num_classes)</span></span>
-<span id="cb14-706"><a href="#cb14-706"></a><span class="in">          </span></span>
-<span id="cb14-707"><a href="#cb14-707"></a><span class="in">          push!(all_tstate, final_tstate)</span></span>
-<span id="cb14-708"><a href="#cb14-708"></a><span class="in">      end</span></span>
-<span id="cb14-709"><a href="#cb14-709"></a><span class="in">  else</span></span>
-<span id="cb14-710"><a href="#cb14-710"></a><span class="in">      final_tstate = epoch_loop(num_epochs, train_groups, validation_groups, h5, model, tstate, config, loss_function, num_classes)</span></span>
-<span id="cb14-711"><a href="#cb14-711"></a><span class="in">  end</span></span>
-<span id="cb14-712"><a href="#cb14-712"></a><span class="in">  return final_tstate</span></span>
-<span id="cb14-713"><a href="#cb14-713"></a><span class="in">...  </span></span>
-<span id="cb14-714"><a href="#cb14-714"></a><span class="in">```</span></span>
-<span id="cb14-715"><a href="#cb14-715"></a>&lt;/details&gt;</span>
+<span id="cb14-692"><a href="#cb14-692"></a><span class="ss">```</span>julia</span>
+<span id="cb14-693"><a href="#cb14-693"></a><span class="op">...</span></span>
+<span id="cb14-694"><a href="#cb14-694"></a>  tstate <span class="op">=</span> <span class="fu">initialize_train_state</span>(rng, model, optimizer)</span>
+<span id="cb14-695"><a href="#cb14-695"></a>  <span class="cf">if</span> config[<span class="st">"learning"</span>][<span class="st">"n_cross_val"</span>]</span>
+<span id="cb14-696"><a href="#cb14-696"></a>      n_folds <span class="op">=</span> config[<span class="st">"learning"</span>][<span class="st">"n_folds"</span>]</span>
+<span id="cb14-697"><a href="#cb14-697"></a>      all_tstate <span class="op">=</span> []</span>
+<span id="cb14-698"><a href="#cb14-698"></a>      combined_indices <span class="op">=</span> [indices_dict[<span class="st">"train"</span>]; indices_dict[<span class="st">"validation"</span>]]</span>
+<span id="cb14-699"><a href="#cb14-699"></a>      shuffled_indices <span class="op">=</span> <span class="fu">shuffle</span>(rng, combined_indices)</span>
+<span id="cb14-700"><a href="#cb14-700"></a>      <span class="cf">for</span> fold <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>n_folds</span>
+<span id="cb14-701"><a href="#cb14-701"></a>          <span class="fu">println</span>(<span class="st">"Starting fold </span><span class="sc">$</span>fold<span class="st">/</span><span class="sc">$</span>n_folds<span class="st">"</span>)</span>
+<span id="cb14-702"><a href="#cb14-702"></a>          train_groups, validation_groups <span class="op">=</span> <span class="fu">k_fold_split</span>(combined_indices, n_folds, fold, rng)</span>
+<span id="cb14-703"><a href="#cb14-703"></a>          </span>
+<span id="cb14-704"><a href="#cb14-704"></a>          tstate <span class="op">=</span> <span class="fu">initialize_train_state</span>(rng, model, optimizer)</span>
+<span id="cb14-705"><a href="#cb14-705"></a>          final_tstate <span class="op">=</span> <span class="fu">epoch_loop</span>(num_epochs, train_groups, validation_groups, h5, model, tstate, config, loss_function, num_classes)</span>
+<span id="cb14-706"><a href="#cb14-706"></a>          </span>
+<span id="cb14-707"><a href="#cb14-707"></a>          <span class="fu">push!</span>(all_tstate, final_tstate)</span>
+<span id="cb14-708"><a href="#cb14-708"></a>      <span class="cf">end</span></span>
+<span id="cb14-709"><a href="#cb14-709"></a>  <span class="cf">else</span></span>
+<span id="cb14-710"><a href="#cb14-710"></a>      final_tstate <span class="op">=</span> <span class="fu">epoch_loop</span>(num_epochs, train_groups, validation_groups, h5, model, tstate, config, loss_function, num_classes)</span>
+<span id="cb14-711"><a href="#cb14-711"></a>  <span class="cf">end</span></span>
+<span id="cb14-712"><a href="#cb14-712"></a>  <span class="cf">return</span> final_tstate</span>
+<span id="cb14-713"><a href="#cb14-713"></a><span class="op">...</span>  </span>
+<span id="cb14-714"><a href="#cb14-714"></a><span class="ss">```</span></span>
+<span id="cb14-715"><a href="#cb14-715"></a><span class="ss">&lt;/details&gt;</span></span>
 <span id="cb14-716"><a href="#cb14-716"></a></span>
-<span id="cb14-717"><a href="#cb14-717"></a>The <span class="in">`k_fold_split`</span> function organizes the indices for each fold, ensuring comprehensive coverage of the dataset during training.</span>
+<span id="cb14-717"><a href="#cb14-717"></a><span class="ss">The `k_fold_split` function organizes the indices for each fold, ensuring comprehensive coverage of the dataset during training.</span></span>
 <span id="cb14-718"><a href="#cb14-718"></a></span>
-<span id="cb14-719"><a href="#cb14-719"></a>&lt;details&gt;</span>
-<span id="cb14-720"><a href="#cb14-720"></a>&lt;summary&gt;k_fold_split&lt;/summary&gt;</span>
+<span id="cb14-719"><a href="#cb14-719"></a><span class="ss">&lt;details&gt;</span></span>
+<span id="cb14-720"><a href="#cb14-720"></a><span class="ss">&lt;summary&gt;k_fold_split&lt;/summary&gt;</span></span>
 <span id="cb14-721"><a href="#cb14-721"></a></span>
-<span id="cb14-722"><a href="#cb14-722"></a><span class="in">```julia</span></span>
-<span id="cb14-723"><a href="#cb14-723"></a><span class="in">function k_fold_split(data, n_folds, current_fold)</span></span>
-<span id="cb14-724"><a href="#cb14-724"></a><span class="in">    fold_size = length(data) ÷ n_folds</span></span>
-<span id="cb14-725"><a href="#cb14-725"></a><span class="in">    validation_start = (current_fold - 1) * fold_size + 1</span></span>
-<span id="cb14-726"><a href="#cb14-726"></a><span class="in">    validation_end = validation_start + fold_size - 1</span></span>
-<span id="cb14-727"><a href="#cb14-727"></a><span class="in">    validation_indices = data[validation_start:validation_end]</span></span>
-<span id="cb14-728"><a href="#cb14-728"></a><span class="in">    train_indices = [data[1:validation_start-1]; data[validation_end+1:end]]</span></span>
-<span id="cb14-729"><a href="#cb14-729"></a><span class="in">    return train_indices, validation_indices</span></span>
-<span id="cb14-730"><a href="#cb14-730"></a><span class="in">end</span></span>
+<span id="cb14-722"><a href="#cb14-722"></a><span class="ss">```</span>julia</span>
+<span id="cb14-723"><a href="#cb14-723"></a><span class="kw">function</span> <span class="fu">k_fold_split</span>(data, n_folds, current_fold)</span>
+<span id="cb14-724"><a href="#cb14-724"></a>    fold_size <span class="op">=</span> <span class="fu">length</span>(data) <span class="op">÷</span> n_folds</span>
+<span id="cb14-725"><a href="#cb14-725"></a>    validation_start <span class="op">=</span> (current_fold <span class="op">-</span> <span class="fl">1</span>) <span class="op">*</span> fold_size <span class="op">+</span> <span class="fl">1</span></span>
+<span id="cb14-726"><a href="#cb14-726"></a>    validation_end <span class="op">=</span> validation_start <span class="op">+</span> fold_size <span class="op">-</span> <span class="fl">1</span></span>
+<span id="cb14-727"><a href="#cb14-727"></a>    validation_indices <span class="op">=</span> data[validation_start<span class="op">:</span>validation_end]</span>
+<span id="cb14-728"><a href="#cb14-728"></a>    train_indices <span class="op">=</span> [data[<span class="fl">1</span><span class="op">:</span>validation_start<span class="op">-</span><span class="fl">1</span>]; data[validation_end<span class="op">+</span><span class="fl">1</span><span class="op">:</span><span class="kw">end</span>]]</span>
+<span id="cb14-729"><a href="#cb14-729"></a>    <span class="cf">return</span> train_indices, validation_indices</span>
+<span id="cb14-730"><a href="#cb14-730"></a><span class="cf">end</span></span>
 <span id="cb14-731"><a href="#cb14-731"></a><span class="in">```</span></span>
-<span id="cb14-732"><a href="#cb14-732"></a>&lt;/details&gt;</span>
+<span id="cb14-732"><a href="#cb14-732"></a><span class="dt">&lt;/</span><span class="kw">details</span><span class="dt">&gt;</span></span>
 <span id="cb14-733"><a href="#cb14-733"></a></span>
 <span id="cb14-734"><a href="#cb14-734"></a><span class="fu"># Conclusions and Future Development</span></span>
 <span id="cb14-735"><a href="#cb14-735"></a>I have successfully established a foundation for a medical imaging pipeline, addressing significant challenges in data handling, model training, and augmentation integration. The integration of dataset-wide functions has significantly enhanced the reproducibility and handling of batched data with GPU support enabling scalability of experiments, making it easier for researchers and practitioners to produce better results.</span>
