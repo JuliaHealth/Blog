@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.47">
+<meta name="generator" content="quarto-1.7.6">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -92,10 +92,10 @@ div.csl-indent {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-8908c8300ec2e31702a10363d6856c6e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-412249914c5e4fcf292edda2e0469c59.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -216,13 +216,7 @@ div.csl-indent {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
-<b>Navigation &amp; Tips:</b>
-
-<ul>
-    <li>Press <b>?</b> for search</li>
-    <li><b>"&lt;/&gt; Code"</b> for code nav</li>
-</ul>
-
+<p>partials/margin_header.html</p>
 </div></div>
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
@@ -703,8 +697,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -866,7 +858,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -1163,17 +1154,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-67"><a href="#cb9-67"></a>Initially, there was significant screen-tearing evident from the pixelated display of the rendered text and main image which, furthermore exhibited flickering upon scrolling through the slices in the relevant displayed image's planar views i.e (Transversal, Coronal and Saggital). Troubleshooting along the way, we narrowed down the issue within the Rocket's actor-subscription mechanism and decided to integrate Julia's Base.Channel within <span class="co">[</span><span class="ot">MedEye3d.jl</span><span class="co">](https://github.com/Juliahealth/MedEye3d.jl)</span> for handling the event and state management routine. Julia has asynchronous, threadsafe <span class="co">[</span><span class="ot">channels</span><span class="co">](https://docs.julialang.org/en/v1/manual/asynchronous-programming/#Communicating-with-Channels)</span> which facilitate in asynchronous programming with the help of a producer-consumer mechanism. An example usage of Base.Channel is as follows:</span>
 <span id="cb9-68"><a href="#cb9-68"></a></span>
 <span id="cb9-69"><a href="#cb9-69"></a><span class="in">```julia</span></span>
-<span id="cb9-70"><a href="#cb9-70"></a><span class="in">function consumer(channel::Base.Channel)</span></span>
-<span id="cb9-71"><a href="#cb9-71"></a><span class="in">    while(true)</span></span>
-<span id="cb9-72"><a href="#cb9-72"></a><span class="in">    channelData::String = take!(channel)</span></span>
-<span id="cb9-73"><a href="#cb9-73"></a><span class="in">    println("Channel got " * channelData)</span></span>
-<span id="cb9-74"><a href="#cb9-74"></a><span class="in">    end</span></span>
-<span id="cb9-75"><a href="#cb9-75"></a><span class="in">end</span></span>
+<span id="cb9-70"><a href="#cb9-70"></a><span class="kw">function</span> <span class="fu">consumer</span>(channel<span class="op">::</span><span class="dt">Base.Channel</span>)</span>
+<span id="cb9-71"><a href="#cb9-71"></a>    <span class="cf">while</span>(<span class="cn">true</span>)</span>
+<span id="cb9-72"><a href="#cb9-72"></a>    channelData<span class="op">::</span><span class="dt">String </span><span class="op">=</span> <span class="fu">take!</span>(channel)</span>
+<span id="cb9-73"><a href="#cb9-73"></a>    <span class="fu">println</span>(<span class="st">"Channel got "</span> <span class="op">*</span> channelData)</span>
+<span id="cb9-74"><a href="#cb9-74"></a>    <span class="cf">end</span></span>
+<span id="cb9-75"><a href="#cb9-75"></a><span class="kw">end</span></span>
 <span id="cb9-76"><a href="#cb9-76"></a></span>
-<span id="cb9-77"><a href="#cb9-77"></a><span class="in">newChannel = Base.Channel(100)</span></span>
+<span id="cb9-77"><a href="#cb9-77"></a>newChannel <span class="op">=</span> <span class="bu">Base</span>.<span class="fu">Channel</span>(<span class="fl">100</span>)</span>
 <span id="cb9-78"><a href="#cb9-78"></a></span>
-<span id="cb9-79"><a href="#cb9-79"></a><span class="in">@async consumer(newChannel)</span></span>
-<span id="cb9-80"><a href="#cb9-80"></a><span class="in">put!(newChannel, "apples")</span></span>
+<span id="cb9-79"><a href="#cb9-79"></a><span class="pp">@async</span> <span class="fu">consumer</span>(newChannel)</span>
+<span id="cb9-80"><a href="#cb9-80"></a><span class="fu">put!</span>(newChannel, <span class="st">"apples"</span>)</span>
 <span id="cb9-81"><a href="#cb9-81"></a><span class="in">```</span></span>
 <span id="cb9-82"><a href="#cb9-82"></a></span>
 <span id="cb9-83"><a href="#cb9-83"></a>Julia’s multiple dispatch made for the architectural setup of MedEye3d, facilitated fixing the issue of screen tearing. Below is how the <span class="in">`on_next!`</span> function, invokes different reactive components based on the types of arguments it is dealing with.</span>
@@ -1201,30 +1192,30 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-105"><a href="#cb9-105"></a>In order to simplify basic usage, high-level abstractions were put in place with the help of <span class="co">[</span><span class="ot">MedImages.jl</span><span class="co">](https://github.com/MedImages.jl)</span> (under ongoing development) library to load images in the form of MedImage objects to formulate a single display function for the user. Further simplifications were made to accommodate options for the user to manipulate the imaging data that is displayed currently in the visualizer i.e retrieval of voxel arrays and their modification. Taking this in mind, the following relevant functions were exposed:</span>
 <span id="cb9-106"><a href="#cb9-106"></a></span>
 <span id="cb9-107"><a href="#cb9-107"></a><span class="in">```julia</span></span>
-<span id="cb9-108"><a href="#cb9-108"></a><span class="in">MedEye3d.SegmentationDisplay.displayImage()</span></span>
+<span id="cb9-108"><a href="#cb9-108"></a>MedEye3d.SegmentationDisplay.<span class="fu">displayImage</span>()</span>
 <span id="cb9-109"><a href="#cb9-109"></a><span class="in">```</span></span>
 <span id="cb9-110"><a href="#cb9-110"></a></span>
 <span id="cb9-111"><a href="#cb9-111"></a><span class="in">```julia</span></span>
-<span id="cb9-112"><a href="#cb9-112"></a><span class="in">MedEye3d.DisplayDataManag.getDisplayedData()</span></span>
+<span id="cb9-112"><a href="#cb9-112"></a>MedEye3d.DisplayDataManag.<span class="fu">getDisplayedData</span>()</span>
 <span id="cb9-113"><a href="#cb9-113"></a><span class="in">```</span></span>
 <span id="cb9-114"><a href="#cb9-114"></a></span>
 <span id="cb9-115"><a href="#cb9-115"></a><span class="in">```julia</span></span>
-<span id="cb9-116"><a href="#cb9-116"></a><span class="in">MedEye3d.DisplayDataManag.setDisplayedData()</span></span>
+<span id="cb9-116"><a href="#cb9-116"></a>MedEye3d.DisplayDataManag.<span class="fu">setDisplayedData</span>()</span>
 <span id="cb9-117"><a href="#cb9-117"></a><span class="in">```</span></span>
 <span id="cb9-118"><a href="#cb9-118"></a></span>
 <span id="cb9-119"><a href="#cb9-119"></a>Putting all of the above functions to use together, we can launch the visualizer, retrieve the displayed voxel data and modify it to our liking. A sample script to achieve the former, is highlighted below:</span>
 <span id="cb9-120"><a href="#cb9-120"></a></span>
 <span id="cb9-121"><a href="#cb9-121"></a><span class="in">```julia</span></span>
-<span id="cb9-122"><a href="#cb9-122"></a><span class="in">using MedEye3d</span></span>
-<span id="cb9-123"><a href="#cb9-123"></a><span class="in">ctNiftiImage = "/home/hurtbadly/Downloads/ct_soft_study.nii.gz"</span></span>
-<span id="cb9-124"><a href="#cb9-124"></a><span class="in">medEyeStruct = MedEye3d.SegmentationDisplay.displayImage(ctNiftiImage)</span></span>
-<span id="cb9-125"><a href="#cb9-125"></a><span class="in">displayData = MedEye3d.DisplayDataManag.getDisplayedData(medEyeStruct, [Int32(1), Int32(2)]) #passing the active texture number</span></span>
+<span id="cb9-122"><a href="#cb9-122"></a><span class="im">using</span> <span class="bu">MedEye3d</span></span>
+<span id="cb9-123"><a href="#cb9-123"></a>ctNiftiImage <span class="op">=</span> <span class="st">"/home/hurtbadly/Downloads/ct_soft_study.nii.gz"</span></span>
+<span id="cb9-124"><a href="#cb9-124"></a>medEyeStruct <span class="op">=</span> MedEye3d.SegmentationDisplay.<span class="fu">displayImage</span>(ctNiftiImage)</span>
+<span id="cb9-125"><a href="#cb9-125"></a>displayData <span class="op">=</span> MedEye3d.DisplayDataManag.<span class="fu">getDisplayedData</span>(medEyeStruct, [<span class="fu">Int32</span>(<span class="fl">1</span>), <span class="fu">Int32</span>(<span class="fl">2</span>)]) <span class="co">#passing the active texture number</span></span>
 <span id="cb9-126"><a href="#cb9-126"></a></span>
-<span id="cb9-127"><a href="#cb9-127"></a><span class="in"># We need to check if the return type of the displayData is a single Array{Float32,3} or a vector{Array{Float32,3}}</span></span>
-<span id="cb9-128"><a href="#cb9-128"></a><span class="in"># Now in this case we are setting Gaussian noise over the manualModif Texture voxel layer, and the manualModif texture defaults to 2 for active number</span></span>
+<span id="cb9-127"><a href="#cb9-127"></a><span class="co"># We need to check if the return type of the displayData is a single Array{Float32,3} or a vector{Array{Float32,3}}</span></span>
+<span id="cb9-128"><a href="#cb9-128"></a><span class="co"># Now in this case we are setting Gaussian noise over the manualModif Texture voxel layer, and the manualModif texture defaults to 2 for active number</span></span>
 <span id="cb9-129"><a href="#cb9-129"></a></span>
-<span id="cb9-130"><a href="#cb9-130"></a><span class="in">displayData[2][:, :, :] = randn(Float32, size(displayData[2]))</span></span>
-<span id="cb9-131"><a href="#cb9-131"></a><span class="in">MedEye3d.DisplayDataManag.setDisplayedData(medEyeStruct, displayData)</span></span>
+<span id="cb9-130"><a href="#cb9-130"></a>displayData[<span class="fl">2</span>][<span class="op">:</span>, <span class="op">:</span>, <span class="op">:</span>] <span class="op">=</span> <span class="fu">randn</span>(<span class="dt">Float32</span>, <span class="fu">size</span>(displayData[<span class="fl">2</span>]))</span>
+<span id="cb9-131"><a href="#cb9-131"></a>MedEye3d.DisplayDataManag.<span class="fu">setDisplayedData</span>(medEyeStruct, displayData)</span>
 <span id="cb9-132"><a href="#cb9-132"></a><span class="in">```</span></span>
 <span id="cb9-133"><a href="#cb9-133"></a></span>
 <span id="cb9-134"><a href="#cb9-134"></a>The result of this <span class="co">[</span><span class="ot">Gaussian noise</span><span class="co">](https://www.sfu.ca/sonic-studio-webdav/handbook/Gaussian_Noise.html)</span> within the annotation layer, made for an outcome like the following:</span>
@@ -1275,46 +1266,46 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-179"><a href="#cb9-179"></a><span class="ss">2.  </span>Updates the uniforms for the texture specification using the <span class="in">`controlMinMaxUniformVals`</span> function.</span>
 <span id="cb9-180"><a href="#cb9-180"></a></span>
 <span id="cb9-181"><a href="#cb9-181"></a><span class="in">```julia</span></span>
-<span id="cb9-182"><a href="#cb9-182"></a><span class="in">function setTextureWindow(activeTextur::TextureSpec, stateObject::StateDataFields, windowControlStruct::WindowControlStruct)</span></span>
-<span id="cb9-183"><a href="#cb9-183"></a><span class="in">    activeTexturName = activeTextur.name</span></span>
-<span id="cb9-184"><a href="#cb9-184"></a><span class="in">    displayRange = activeTextur.minAndMaxValue[2] - activeTextur.minAndMaxValue[1]</span></span>
-<span id="cb9-185"><a href="#cb9-185"></a><span class="in">    activeTexturStudyType = activeTextur.studyType</span></span>
-<span id="cb9-186"><a href="#cb9-186"></a><span class="in">    if windowControlStruct.letterCode == "F1"</span></span>
-<span id="cb9-187"><a href="#cb9-187"></a><span class="in">        if activeTexturStudyType == "CT"</span></span>
-<span id="cb9-188"><a href="#cb9-188"></a><span class="in">            #Bone windowing in CT</span></span>
-<span id="cb9-189"><a href="#cb9-189"></a><span class="in">            activeTextur.minAndMaxValue = Float32.([400, 1000])</span></span>
-<span id="cb9-190"><a href="#cb9-190"></a><span class="in">        elseif activeTexturStudyType == "PET"</span></span>
-<span id="cb9-191"><a href="#cb9-191"></a><span class="in">            activeTextur.minAndMaxValue[1] += 0.10 * displayRange #windowing for pet, in the case of PET simply increase the minimum by 20% , doing the same in f1,f2 and f3</span></span>
-<span id="cb9-192"><a href="#cb9-192"></a><span class="in">        end</span></span>
-<span id="cb9-193"><a href="#cb9-193"></a><span class="in">    elseif windowControlStruct.letterCode == "F2"</span></span>
-<span id="cb9-194"><a href="#cb9-194"></a><span class="in">        if activeTexturStudyType == "CT"</span></span>
-<span id="cb9-195"><a href="#cb9-195"></a><span class="in">            activeTextur.minAndMaxValue = Float32.([-40, 350])</span></span>
-<span id="cb9-196"><a href="#cb9-196"></a><span class="in">        elseif activeTexturStudyType == "PET"</span></span>
-<span id="cb9-197"><a href="#cb9-197"></a><span class="in">            activeTextur.minAndMaxValue[1] += 0.10 * displayRange</span></span>
-<span id="cb9-198"><a href="#cb9-198"></a><span class="in">        end</span></span>
-<span id="cb9-199"><a href="#cb9-199"></a><span class="in">    elseif windowControlStruct.letterCode == "F3"</span></span>
-<span id="cb9-200"><a href="#cb9-200"></a><span class="in">        if activeTexturStudyType == "CT"</span></span>
-<span id="cb9-201"><a href="#cb9-201"></a><span class="in">            activeTextur.minAndMaxValue = Float32.([-426, 1000])</span></span>
-<span id="cb9-202"><a href="#cb9-202"></a><span class="in">        elseif activeTexturStudyType == "PET"</span></span>
-<span id="cb9-203"><a href="#cb9-203"></a><span class="in">            activeTextur.minAndMaxValue[1] += 0.10 * displayRange</span></span>
-<span id="cb9-204"><a href="#cb9-204"></a><span class="in">        end</span></span>
-<span id="cb9-205"><a href="#cb9-205"></a><span class="in">    elseif windowControlStruct.letterCode == "F4"</span></span>
-<span id="cb9-206"><a href="#cb9-206"></a><span class="in">        activeTextur.minAndMaxValue[1] -= 0.20 * displayRange</span></span>
-<span id="cb9-207"><a href="#cb9-207"></a><span class="in">    elseif windowControlStruct.letterCode == "F5"</span></span>
-<span id="cb9-208"><a href="#cb9-208"></a><span class="in">        activeTextur.minAndMaxValue[1] += 0.20 * displayRange</span></span>
-<span id="cb9-209"><a href="#cb9-209"></a><span class="in">    elseif windowControlStruct.letterCode == "F6"</span></span>
-<span id="cb9-210"><a href="#cb9-210"></a><span class="in">        activeTextur.minAndMaxValue[2] -= 0.20 * displayRange</span></span>
-<span id="cb9-211"><a href="#cb9-211"></a><span class="in">    elseif windowControlStruct.letterCode == "F7"</span></span>
-<span id="cb9-212"><a href="#cb9-212"></a><span class="in">        activeTextur.minAndMaxValue[2] += 0.20 * displayRange</span></span>
-<span id="cb9-213"><a href="#cb9-213"></a><span class="in">    elseif windowControlStruct.letterCode == "F8"</span></span>
-<span id="cb9-214"><a href="#cb9-214"></a><span class="in">        activeTextur.uniforms.maskContribution -= 0.10</span></span>
-<span id="cb9-215"><a href="#cb9-215"></a><span class="in">    elseif windowControlStruct.letterCode == "F9"</span></span>
-<span id="cb9-216"><a href="#cb9-216"></a><span class="in">        activeTextur.uniforms.maskContribution += 0.10</span></span>
-<span id="cb9-217"><a href="#cb9-217"></a><span class="in">    end</span></span>
+<span id="cb9-182"><a href="#cb9-182"></a><span class="kw">function</span> <span class="fu">setTextureWindow</span>(activeTextur<span class="op">::</span><span class="dt">TextureSpec</span>, stateObject<span class="op">::</span><span class="dt">StateDataFields</span>, windowControlStruct<span class="op">::</span><span class="dt">WindowControlStruct</span>)</span>
+<span id="cb9-183"><a href="#cb9-183"></a>    activeTexturName <span class="op">=</span> activeTextur.name</span>
+<span id="cb9-184"><a href="#cb9-184"></a>    displayRange <span class="op">=</span> activeTextur.minAndMaxValue[<span class="fl">2</span>] <span class="op">-</span> activeTextur.minAndMaxValue[<span class="fl">1</span>]</span>
+<span id="cb9-185"><a href="#cb9-185"></a>    activeTexturStudyType <span class="op">=</span> activeTextur.studyType</span>
+<span id="cb9-186"><a href="#cb9-186"></a>    <span class="cf">if</span> windowControlStruct.letterCode <span class="op">==</span> <span class="st">"F1"</span></span>
+<span id="cb9-187"><a href="#cb9-187"></a>        <span class="cf">if</span> activeTexturStudyType <span class="op">==</span> <span class="st">"CT"</span></span>
+<span id="cb9-188"><a href="#cb9-188"></a>            <span class="co">#Bone windowing in CT</span></span>
+<span id="cb9-189"><a href="#cb9-189"></a>            activeTextur.minAndMaxValue <span class="op">=</span> <span class="fu">Float32</span>.([<span class="fl">400</span>, <span class="fl">1000</span>])</span>
+<span id="cb9-190"><a href="#cb9-190"></a>        <span class="cf">elseif</span> activeTexturStudyType <span class="op">==</span> <span class="st">"PET"</span></span>
+<span id="cb9-191"><a href="#cb9-191"></a>            activeTextur.minAndMaxValue[<span class="fl">1</span>] <span class="op">+=</span> <span class="fl">0.10</span> <span class="op">*</span> displayRange <span class="co">#windowing for pet, in the case of PET simply increase the minimum by 20% , doing the same in f1,f2 and f3</span></span>
+<span id="cb9-192"><a href="#cb9-192"></a>        <span class="cf">end</span></span>
+<span id="cb9-193"><a href="#cb9-193"></a>    <span class="cf">elseif</span> windowControlStruct.letterCode <span class="op">==</span> <span class="st">"F2"</span></span>
+<span id="cb9-194"><a href="#cb9-194"></a>        <span class="cf">if</span> activeTexturStudyType <span class="op">==</span> <span class="st">"CT"</span></span>
+<span id="cb9-195"><a href="#cb9-195"></a>            activeTextur.minAndMaxValue <span class="op">=</span> <span class="fu">Float32</span>.([<span class="op">-</span><span class="fl">40</span>, <span class="fl">350</span>])</span>
+<span id="cb9-196"><a href="#cb9-196"></a>        <span class="cf">elseif</span> activeTexturStudyType <span class="op">==</span> <span class="st">"PET"</span></span>
+<span id="cb9-197"><a href="#cb9-197"></a>            activeTextur.minAndMaxValue[<span class="fl">1</span>] <span class="op">+=</span> <span class="fl">0.10</span> <span class="op">*</span> displayRange</span>
+<span id="cb9-198"><a href="#cb9-198"></a>        <span class="cf">end</span></span>
+<span id="cb9-199"><a href="#cb9-199"></a>    <span class="cf">elseif</span> windowControlStruct.letterCode <span class="op">==</span> <span class="st">"F3"</span></span>
+<span id="cb9-200"><a href="#cb9-200"></a>        <span class="cf">if</span> activeTexturStudyType <span class="op">==</span> <span class="st">"CT"</span></span>
+<span id="cb9-201"><a href="#cb9-201"></a>            activeTextur.minAndMaxValue <span class="op">=</span> <span class="fu">Float32</span>.([<span class="op">-</span><span class="fl">426</span>, <span class="fl">1000</span>])</span>
+<span id="cb9-202"><a href="#cb9-202"></a>        <span class="cf">elseif</span> activeTexturStudyType <span class="op">==</span> <span class="st">"PET"</span></span>
+<span id="cb9-203"><a href="#cb9-203"></a>            activeTextur.minAndMaxValue[<span class="fl">1</span>] <span class="op">+=</span> <span class="fl">0.10</span> <span class="op">*</span> displayRange</span>
+<span id="cb9-204"><a href="#cb9-204"></a>        <span class="cf">end</span></span>
+<span id="cb9-205"><a href="#cb9-205"></a>    <span class="cf">elseif</span> windowControlStruct.letterCode <span class="op">==</span> <span class="st">"F4"</span></span>
+<span id="cb9-206"><a href="#cb9-206"></a>        activeTextur.minAndMaxValue[<span class="fl">1</span>] <span class="op">-=</span> <span class="fl">0.20</span> <span class="op">*</span> displayRange</span>
+<span id="cb9-207"><a href="#cb9-207"></a>    <span class="cf">elseif</span> windowControlStruct.letterCode <span class="op">==</span> <span class="st">"F5"</span></span>
+<span id="cb9-208"><a href="#cb9-208"></a>        activeTextur.minAndMaxValue[<span class="fl">1</span>] <span class="op">+=</span> <span class="fl">0.20</span> <span class="op">*</span> displayRange</span>
+<span id="cb9-209"><a href="#cb9-209"></a>    <span class="cf">elseif</span> windowControlStruct.letterCode <span class="op">==</span> <span class="st">"F6"</span></span>
+<span id="cb9-210"><a href="#cb9-210"></a>        activeTextur.minAndMaxValue[<span class="fl">2</span>] <span class="op">-=</span> <span class="fl">0.20</span> <span class="op">*</span> displayRange</span>
+<span id="cb9-211"><a href="#cb9-211"></a>    <span class="cf">elseif</span> windowControlStruct.letterCode <span class="op">==</span> <span class="st">"F7"</span></span>
+<span id="cb9-212"><a href="#cb9-212"></a>        activeTextur.minAndMaxValue[<span class="fl">2</span>] <span class="op">+=</span> <span class="fl">0.20</span> <span class="op">*</span> displayRange</span>
+<span id="cb9-213"><a href="#cb9-213"></a>    <span class="cf">elseif</span> windowControlStruct.letterCode <span class="op">==</span> <span class="st">"F8"</span></span>
+<span id="cb9-214"><a href="#cb9-214"></a>        activeTextur.uniforms.maskContribution <span class="op">-=</span> <span class="fl">0.10</span></span>
+<span id="cb9-215"><a href="#cb9-215"></a>    <span class="cf">elseif</span> windowControlStruct.letterCode <span class="op">==</span> <span class="st">"F9"</span></span>
+<span id="cb9-216"><a href="#cb9-216"></a>        activeTextur.uniforms.maskContribution <span class="op">+=</span> <span class="fl">0.10</span></span>
+<span id="cb9-217"><a href="#cb9-217"></a>    <span class="cf">end</span></span>
 <span id="cb9-218"><a href="#cb9-218"></a></span>
-<span id="cb9-219"><a href="#cb9-219"></a><span class="in">    stateObject.mainForDisplayObjects.listOfTextSpecifications = map(texture -&gt; texture.name == activeTexturName ? activeTextur : texture, stateObject.mainForDisplayObjects.listOfTextSpecifications)</span></span>
-<span id="cb9-220"><a href="#cb9-220"></a><span class="in">    coontrolMinMaxUniformVals(activeTextur)</span></span>
-<span id="cb9-221"><a href="#cb9-221"></a><span class="in">end</span></span>
+<span id="cb9-219"><a href="#cb9-219"></a>    stateObject.mainForDisplayObjects.listOfTextSpecifications <span class="op">=</span> <span class="fu">map</span>(texture <span class="op">-&gt;</span> texture.name <span class="op">==</span> activeTexturName ? activeTextur <span class="op">:</span> texture, stateObject.mainForDisplayObjects.listOfTextSpecifications)</span>
+<span id="cb9-220"><a href="#cb9-220"></a>    <span class="fu">coontrolMinMaxUniformVals</span>(activeTextur)</span>
+<span id="cb9-221"><a href="#cb9-221"></a><span class="kw">end</span></span>
 <span id="cb9-222"><a href="#cb9-222"></a><span class="in">```</span></span>
 <span id="cb9-223"><a href="#cb9-223"></a><span class="at">&gt; Bone windowing in CT</span></span>
 <span id="cb9-224"><a href="#cb9-224"></a></span>
@@ -1334,30 +1325,30 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-238"><a href="#cb9-238"></a>Down below, is the struct for state that handles all of the things currently related with an image:</span>
 <span id="cb9-239"><a href="#cb9-239"></a></span>
 <span id="cb9-240"><a href="#cb9-240"></a><span class="in">```julia</span></span>
-<span id="cb9-241"><a href="#cb9-241"></a><span class="in">@with_kw mutable struct StateDataFields</span></span>
-<span id="cb9-242"><a href="#cb9-242"></a><span class="in">  currentDisplayedSlice::Int = 1 # stores information what slice number we are currently displaying</span></span>
-<span id="cb9-243"><a href="#cb9-243"></a><span class="in">  mainForDisplayObjects::forDisplayObjects = forDisplayObjects() # stores objects needed to  display using OpenGL and GLFW</span></span>
-<span id="cb9-244"><a href="#cb9-244"></a><span class="in">  onScrollData::FullScrollableDat = FullScrollableDat()</span></span>
-<span id="cb9-245"><a href="#cb9-245"></a><span class="in">  textureToModifyVec::Vector{TextureSpec} = [] # texture that we want currently to modify - if list is empty it means that we do not intend to modify any texture</span></span>
-<span id="cb9-246"><a href="#cb9-246"></a><span class="in">  isSliceChanged::Bool = false # set to true when slice is changed set to false when we start interacting with this slice - thanks to this we know that when we start drawing on one slice and change the slice the line would star a new on new slice</span></span>
-<span id="cb9-247"><a href="#cb9-247"></a><span class="in">  textDispObj::ForWordsDispStruct = ForWordsDispStruct()# set of objects and constants needed for text diplay</span></span>
-<span id="cb9-248"><a href="#cb9-248"></a><span class="in">  currentlyDispDat::SingleSliceDat = SingleSliceDat() # holds the data displayed or in case of scrollable data view for accessing it</span></span>
-<span id="cb9-249"><a href="#cb9-249"></a><span class="in">  calcDimsStruct::CalcDimsStruct = CalcDimsStruct()   #data for calculations of necessary constants needed to calculate window size , mouse position ...</span></span>
-<span id="cb9-250"><a href="#cb9-250"></a><span class="in">  valueForMasToSet::valueForMasToSetStruct = valueForMasToSetStruct() # value that will be used to set  pixels where we would interact with mouse</span></span>
-<span id="cb9-251"><a href="#cb9-251"></a><span class="in">  lastRecordedMousePosition::CartesianIndex{3} = CartesianIndex(1, 1, 1) # last position of the mouse  related to right click - usefull to know onto which slice to change when dimensions of scroll change</span></span>
-<span id="cb9-252"><a href="#cb9-252"></a><span class="in">  forUndoVector::AbstractArray = [] # holds lambda functions that when invoked will  undo last operations</span></span>
-<span id="cb9-253"><a href="#cb9-253"></a><span class="in">  maxLengthOfForUndoVector::Int64 = 15 # number controls how many step at maximum we can get back</span></span>
-<span id="cb9-254"><a href="#cb9-254"></a><span class="in">  fieldKeyboardStruct::KeyboardStruct = KeyboardStruct()</span></span>
-<span id="cb9-255"><a href="#cb9-255"></a><span class="in">  displayMode::DisplayMode = SingleImage</span></span>
-<span id="cb9-256"><a href="#cb9-256"></a><span class="in">  imagePosition::Int64 = 1</span></span>
-<span id="cb9-257"><a href="#cb9-257"></a><span class="in">  switchIndex::Int = 1</span></span>
-<span id="cb9-258"><a href="#cb9-258"></a><span class="in">  mainRectFields::GlShaderAndBufferFields = GlShaderAndBufferFields()</span></span>
-<span id="cb9-259"><a href="#cb9-259"></a><span class="in">  crosshairFields::GlShaderAndBufferFields = GlShaderAndBufferFields()</span></span>
-<span id="cb9-260"><a href="#cb9-260"></a><span class="in">  textFields::GlShaderAndBufferFields = GlShaderAndBufferFields()</span></span>
-<span id="cb9-261"><a href="#cb9-261"></a><span class="in">  spacingsValue::Union{Vector{Tuple{Float64,Float64,Float64}},Tuple{Float64,Float64,Float64}} = [(1.0, 1.0, 1.0)]</span></span>
-<span id="cb9-262"><a href="#cb9-262"></a><span class="in">  originValue::Union{Vector{Tuple{Float64,Float64,Float64}},Tuple{Float64,Float64,Float64}} = [(1.0, 1.0, 1.0)]</span></span>
-<span id="cb9-263"><a href="#cb9-263"></a><span class="in">  supervoxelFields::GlShaderAndBufferFields = GlShaderAndBufferFields()</span></span>
-<span id="cb9-264"><a href="#cb9-264"></a><span class="in">end</span></span>
+<span id="cb9-241"><a href="#cb9-241"></a><span class="pp">@with_kw</span> <span class="kw">mutable struct</span> StateDataFields</span>
+<span id="cb9-242"><a href="#cb9-242"></a>  currentDisplayedSlice<span class="op">::</span><span class="dt">Int </span><span class="op">=</span> <span class="fl">1</span> <span class="co"># stores information what slice number we are currently displaying</span></span>
+<span id="cb9-243"><a href="#cb9-243"></a>  mainForDisplayObjects<span class="op">::</span><span class="dt">forDisplayObjects </span><span class="op">=</span> <span class="fu">forDisplayObjects</span>() <span class="co"># stores objects needed to  display using OpenGL and GLFW</span></span>
+<span id="cb9-244"><a href="#cb9-244"></a>  onScrollData<span class="op">::</span><span class="dt">FullScrollableDat </span><span class="op">=</span> <span class="fu">FullScrollableDat</span>()</span>
+<span id="cb9-245"><a href="#cb9-245"></a>  textureToModifyVec<span class="op">::</span><span class="dt">Vector{TextureSpec} </span><span class="op">=</span> [] <span class="co"># texture that we want currently to modify - if list is empty it means that we do not intend to modify any texture</span></span>
+<span id="cb9-246"><a href="#cb9-246"></a>  isSliceChanged<span class="op">::</span><span class="dt">Bool </span><span class="op">=</span> <span class="cn">false</span> <span class="co"># set to true when slice is changed set to false when we start interacting with this slice - thanks to this we know that when we start drawing on one slice and change the slice the line would star a new on new slice</span></span>
+<span id="cb9-247"><a href="#cb9-247"></a>  textDispObj<span class="op">::</span><span class="dt">ForWordsDispStruct </span><span class="op">=</span> <span class="fu">ForWordsDispStruct</span>()<span class="co"># set of objects and constants needed for text diplay</span></span>
+<span id="cb9-248"><a href="#cb9-248"></a>  currentlyDispDat<span class="op">::</span><span class="dt">SingleSliceDat </span><span class="op">=</span> <span class="fu">SingleSliceDat</span>() <span class="co"># holds the data displayed or in case of scrollable data view for accessing it</span></span>
+<span id="cb9-249"><a href="#cb9-249"></a>  calcDimsStruct<span class="op">::</span><span class="dt">CalcDimsStruct </span><span class="op">=</span> <span class="fu">CalcDimsStruct</span>()   <span class="co">#data for calculations of necessary constants needed to calculate window size , mouse position ...</span></span>
+<span id="cb9-250"><a href="#cb9-250"></a>  valueForMasToSet<span class="op">::</span><span class="dt">valueForMasToSetStruct </span><span class="op">=</span> <span class="fu">valueForMasToSetStruct</span>() <span class="co"># value that will be used to set  pixels where we would interact with mouse</span></span>
+<span id="cb9-251"><a href="#cb9-251"></a>  lastRecordedMousePosition<span class="op">::</span><span class="dt">CartesianIndex{3} </span><span class="op">=</span> <span class="fu">CartesianIndex</span>(<span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>) <span class="co"># last position of the mouse  related to right click - usefull to know onto which slice to change when dimensions of scroll change</span></span>
+<span id="cb9-252"><a href="#cb9-252"></a>  forUndoVector<span class="op">::</span><span class="dt">AbstractArray </span><span class="op">=</span> [] <span class="co"># holds lambda functions that when invoked will  undo last operations</span></span>
+<span id="cb9-253"><a href="#cb9-253"></a>  maxLengthOfForUndoVector<span class="op">::</span><span class="dt">Int64 </span><span class="op">=</span> <span class="fl">15</span> <span class="co"># number controls how many step at maximum we can get back</span></span>
+<span id="cb9-254"><a href="#cb9-254"></a>  fieldKeyboardStruct<span class="op">::</span><span class="dt">KeyboardStruct </span><span class="op">=</span> <span class="fu">KeyboardStruct</span>()</span>
+<span id="cb9-255"><a href="#cb9-255"></a>  displayMode<span class="op">::</span><span class="dt">DisplayMode </span><span class="op">=</span> SingleImage</span>
+<span id="cb9-256"><a href="#cb9-256"></a>  imagePosition<span class="op">::</span><span class="dt">Int64 </span><span class="op">=</span> <span class="fl">1</span></span>
+<span id="cb9-257"><a href="#cb9-257"></a>  switchIndex<span class="op">::</span><span class="dt">Int </span><span class="op">=</span> <span class="fl">1</span></span>
+<span id="cb9-258"><a href="#cb9-258"></a>  mainRectFields<span class="op">::</span><span class="dt">GlShaderAndBufferFields </span><span class="op">=</span> <span class="fu">GlShaderAndBufferFields</span>()</span>
+<span id="cb9-259"><a href="#cb9-259"></a>  crosshairFields<span class="op">::</span><span class="dt">GlShaderAndBufferFields </span><span class="op">=</span> <span class="fu">GlShaderAndBufferFields</span>()</span>
+<span id="cb9-260"><a href="#cb9-260"></a>  textFields<span class="op">::</span><span class="dt">GlShaderAndBufferFields </span><span class="op">=</span> <span class="fu">GlShaderAndBufferFields</span>()</span>
+<span id="cb9-261"><a href="#cb9-261"></a>  spacingsValue<span class="op">::</span><span class="dt">Union{Vector{Tuple{Float64,Float64,Float64}},Tuple{Float64,Float64,Float64}} </span><span class="op">=</span> [(<span class="fl">1.0</span>, <span class="fl">1.0</span>, <span class="fl">1.0</span>)]</span>
+<span id="cb9-262"><a href="#cb9-262"></a>  originValue<span class="op">::</span><span class="dt">Union{Vector{Tuple{Float64,Float64,Float64}},Tuple{Float64,Float64,Float64}} </span><span class="op">=</span> [(<span class="fl">1.0</span>, <span class="fl">1.0</span>, <span class="fl">1.0</span>)]</span>
+<span id="cb9-263"><a href="#cb9-263"></a>  supervoxelFields<span class="op">::</span><span class="dt">GlShaderAndBufferFields </span><span class="op">=</span> <span class="fu">GlShaderAndBufferFields</span>()</span>
+<span id="cb9-264"><a href="#cb9-264"></a><span class="kw">end</span></span>
 <span id="cb9-265"><a href="#cb9-265"></a><span class="in">```</span></span>
 <span id="cb9-266"><a href="#cb9-266"></a></span>
 <span id="cb9-267"><a href="#cb9-267"></a>After the integrity of the fragment shaders was verified in multi-image, voxel data for the images was integrated and further modifications to the high-level functions were made and eventually the following script produced a rather appealing result.</span>
@@ -1365,9 +1356,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-269"><a href="#cb9-269"></a>Script for loading the same NIFTI image twice in the visualizer for side-by-side display:</span>
 <span id="cb9-270"><a href="#cb9-270"></a></span>
 <span id="cb9-271"><a href="#cb9-271"></a><span class="in">```julia</span></span>
-<span id="cb9-272"><a href="#cb9-272"></a><span class="in">using MedEye3d</span></span>
-<span id="cb9-273"><a href="#cb9-273"></a><span class="in">ctNiftiImage = "/home/hurtbadly/Downloads/ct_soft_study.nii.gz"</span></span>
-<span id="cb9-274"><a href="#cb9-274"></a><span class="in">MedEye3d.SegmentationDisplay.displayImage([[ctNiftiImage],[ctNifitImage]])</span></span>
+<span id="cb9-272"><a href="#cb9-272"></a><span class="im">using</span> <span class="bu">MedEye3d</span></span>
+<span id="cb9-273"><a href="#cb9-273"></a>ctNiftiImage <span class="op">=</span> <span class="st">"/home/hurtbadly/Downloads/ct_soft_study.nii.gz"</span></span>
+<span id="cb9-274"><a href="#cb9-274"></a>MedEye3d.SegmentationDisplay.<span class="fu">displayImage</span>([[ctNiftiImage],[ctNifitImage]])</span>
 <span id="cb9-275"><a href="#cb9-275"></a><span class="in">```</span></span>
 <span id="cb9-276"><a href="#cb9-276"></a><span class="at">&gt;Results in :</span></span>
 <span id="cb9-277"><a href="#cb9-277"></a></span>

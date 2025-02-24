@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.47">
+<meta name="generator" content="quarto-1.7.6">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -92,10 +92,10 @@ div.csl-indent {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-8908c8300ec2e31702a10363d6856c6e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-412249914c5e4fcf292edda2e0469c59.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -216,13 +216,7 @@ div.csl-indent {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
-<b>Navigation &amp; Tips:</b>
-
-<ul>
-    <li>Press <b>?</b> for search</li>
-    <li><b>"&lt;/&gt; Code"</b> for code nav</li>
-</ul>
-
+<p>partials/margin_header.html</p>
 </div></div>
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
@@ -657,8 +651,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -820,7 +812,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -1144,35 +1135,35 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-94"><a href="#cb9-94"></a>Here is the sample for the startup.jl file:</span>
 <span id="cb9-95"><a href="#cb9-95"></a></span>
 <span id="cb9-96"><a href="#cb9-96"></a><span class="in">```julia</span></span>
-<span id="cb9-97"><a href="#cb9-97"></a><span class="in">using PackageCompatUI</span></span>
-<span id="cb9-98"><a href="#cb9-98"></a><span class="in">using PkgTemplates</span></span>
-<span id="cb9-99"><a href="#cb9-99"></a><span class="in">using Revise</span></span>
+<span id="cb9-97"><a href="#cb9-97"></a><span class="im">using</span> <span class="bu">PackageCompatUI</span></span>
+<span id="cb9-98"><a href="#cb9-98"></a><span class="im">using</span> <span class="bu">PkgTemplates</span></span>
+<span id="cb9-99"><a href="#cb9-99"></a><span class="im">using</span> <span class="bu">Revise</span></span>
 <span id="cb9-100"><a href="#cb9-100"></a></span>
-<span id="cb9-101"><a href="#cb9-101"></a><span class="in">###################################</span></span>
-<span id="cb9-102"><a href="#cb9-102"></a><span class="in"># HELPER FUNCTIONS</span></span>
-<span id="cb9-103"><a href="#cb9-103"></a><span class="in">###################################</span></span>
-<span id="cb9-104"><a href="#cb9-104"></a><span class="in">function template()</span></span>
-<span id="cb9-105"><a href="#cb9-105"></a><span class="in">    Template(;</span></span>
-<span id="cb9-106"><a href="#cb9-106"></a><span class="in">        user="jay-sanjay",</span></span>
-<span id="cb9-107"><a href="#cb9-107"></a><span class="in">        dir="~/FOSS",</span></span>
-<span id="cb9-108"><a href="#cb9-108"></a><span class="in">        authors="jaysanjay &lt;jaysanjay@gmail.com&gt; and contributors",</span></span>
-<span id="cb9-109"><a href="#cb9-109"></a><span class="in">        julia=v"1.6",</span></span>
-<span id="cb9-110"><a href="#cb9-110"></a><span class="in">        plugins=[</span></span>
-<span id="cb9-111"><a href="#cb9-111"></a><span class="in">            ProjectFile(; version=v"0.0.1"),</span></span>
-<span id="cb9-112"><a href="#cb9-112"></a><span class="in">            Git(),</span></span>
-<span id="cb9-113"><a href="#cb9-113"></a><span class="in">            Readme(),</span></span>
-<span id="cb9-114"><a href="#cb9-114"></a><span class="in">            License(; name="MIT"),</span></span>
-<span id="cb9-115"><a href="#cb9-115"></a><span class="in">            GitHubActions(; extra_versions=["1.6", "1", "nightly"]),</span></span>
-<span id="cb9-116"><a href="#cb9-116"></a><span class="in">            TagBot(),</span></span>
-<span id="cb9-117"><a href="#cb9-117"></a><span class="in">            Codecov(),</span></span>
-<span id="cb9-118"><a href="#cb9-118"></a><span class="in">            Documenter{GitHubActions}(),</span></span>
-<span id="cb9-119"><a href="#cb9-119"></a><span class="in">            Citation(; readme = true),</span></span>
-<span id="cb9-120"><a href="#cb9-120"></a><span class="in">            RegisterAction(),</span></span>
-<span id="cb9-121"><a href="#cb9-121"></a><span class="in">            BlueStyleBadge(),</span></span>
-<span id="cb9-122"><a href="#cb9-122"></a><span class="in">            Formatter(;style = "blue")</span></span>
-<span id="cb9-123"><a href="#cb9-123"></a><span class="in">        ],</span></span>
-<span id="cb9-124"><a href="#cb9-124"></a><span class="in">    )</span></span>
-<span id="cb9-125"><a href="#cb9-125"></a><span class="in">end</span></span>
+<span id="cb9-101"><a href="#cb9-101"></a><span class="co">###################################</span></span>
+<span id="cb9-102"><a href="#cb9-102"></a><span class="co"># HELPER FUNCTIONS</span></span>
+<span id="cb9-103"><a href="#cb9-103"></a><span class="co">###################################</span></span>
+<span id="cb9-104"><a href="#cb9-104"></a><span class="kw">function</span> <span class="fu">template</span>()</span>
+<span id="cb9-105"><a href="#cb9-105"></a>    <span class="fu">Template</span>(;</span>
+<span id="cb9-106"><a href="#cb9-106"></a>        user<span class="op">=</span><span class="st">"jay-sanjay"</span>,</span>
+<span id="cb9-107"><a href="#cb9-107"></a>        dir<span class="op">=</span><span class="st">"~/FOSS"</span>,</span>
+<span id="cb9-108"><a href="#cb9-108"></a>        authors<span class="op">=</span><span class="st">"jaysanjay &lt;jaysanjay@gmail.com&gt; and contributors"</span>,</span>
+<span id="cb9-109"><a href="#cb9-109"></a>        julia<span class="op">=</span><span class="st">v"1.6"</span>,</span>
+<span id="cb9-110"><a href="#cb9-110"></a>        plugins<span class="op">=</span>[</span>
+<span id="cb9-111"><a href="#cb9-111"></a>            <span class="fu">ProjectFile</span>(; version<span class="op">=</span><span class="st">v"0.0.1"</span>),</span>
+<span id="cb9-112"><a href="#cb9-112"></a>            <span class="fu">Git</span>(),</span>
+<span id="cb9-113"><a href="#cb9-113"></a>            <span class="fu">Readme</span>(),</span>
+<span id="cb9-114"><a href="#cb9-114"></a>            <span class="fu">License</span>(; name<span class="op">=</span><span class="st">"MIT"</span>),</span>
+<span id="cb9-115"><a href="#cb9-115"></a>            <span class="fu">GitHubActions</span>(; extra_versions<span class="op">=</span>[<span class="st">"1.6"</span>, <span class="st">"1"</span>, <span class="st">"nightly"</span>]),</span>
+<span id="cb9-116"><a href="#cb9-116"></a>            <span class="fu">TagBot</span>(),</span>
+<span id="cb9-117"><a href="#cb9-117"></a>            <span class="fu">Codecov</span>(),</span>
+<span id="cb9-118"><a href="#cb9-118"></a>            <span class="fu">Documenter</span><span class="dt">{GitHubActions}</span>(),</span>
+<span id="cb9-119"><a href="#cb9-119"></a>            <span class="fu">Citation</span>(; readme <span class="op">=</span> <span class="cn">true</span>),</span>
+<span id="cb9-120"><a href="#cb9-120"></a>            <span class="fu">RegisterAction</span>(),</span>
+<span id="cb9-121"><a href="#cb9-121"></a>            <span class="fu">BlueStyleBadge</span>(),</span>
+<span id="cb9-122"><a href="#cb9-122"></a>            <span class="fu">Formatter</span>(;style <span class="op">=</span> <span class="st">"blue"</span>)</span>
+<span id="cb9-123"><a href="#cb9-123"></a>        ],</span>
+<span id="cb9-124"><a href="#cb9-124"></a>    )</span>
+<span id="cb9-125"><a href="#cb9-125"></a><span class="kw">end</span></span>
 <span id="cb9-126"><a href="#cb9-126"></a></span>
 <span id="cb9-127"><a href="#cb9-127"></a><span class="in">```</span></span>
 <span id="cb9-128"><a href="#cb9-128"></a></span>
@@ -1189,10 +1180,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-139"><a href="#cb9-139"></a><span class="ss">2. </span>The SQL query construction and execution was done using the <span class="co">[</span><span class="ot">FunSQL.jl</span><span class="co">](https://mechanicalrabbit.github.io/FunSQL.jl/stable/)</span> library, in the below-shown manner:</span>
 <span id="cb9-140"><a href="#cb9-140"></a></span>
 <span id="cb9-141"><a href="#cb9-141"></a><span class="in">```julia</span></span>
-<span id="cb9-142"><a href="#cb9-142"></a><span class="in">sql = From(tab) |&gt;</span></span>
-<span id="cb9-143"><a href="#cb9-143"></a><span class="in">            Where(Fun.in(Get.cohort_definition_id, cohort_id...)) |&gt;</span></span>
-<span id="cb9-144"><a href="#cb9-144"></a><span class="in">            Select(Get.cohort_definition_id, Get.subject_id, Get.cohort_start_date) |&gt;</span></span>
-<span id="cb9-145"><a href="#cb9-145"></a><span class="in">            q -&gt; render(q, dialect=dialect)</span></span>
+<span id="cb9-142"><a href="#cb9-142"></a>sql <span class="op">=</span> <span class="fu">From</span>(tab) <span class="op">|&gt;</span></span>
+<span id="cb9-143"><a href="#cb9-143"></a>            <span class="fu">Where</span>(Fun.<span class="fu">in</span>(Get.cohort_definition_id, cohort_id<span class="op">...</span>)) <span class="op">|&gt;</span></span>
+<span id="cb9-144"><a href="#cb9-144"></a>            <span class="fu">Select</span>(Get.cohort_definition_id, Get.subject_id, Get.cohort_start_date) <span class="op">|&gt;</span></span>
+<span id="cb9-145"><a href="#cb9-145"></a>            q <span class="op">-&gt;</span> <span class="fu">render</span>(q, dialect<span class="op">=</span>dialect)</span>
 <span id="cb9-146"><a href="#cb9-146"></a><span class="in">```</span></span>
 <span id="cb9-147"><a href="#cb9-147"></a><span class="ss">3. </span>Executes the constructed SQL query using a database connection, fetching the results into a data frame.</span>
 <span id="cb9-148"><a href="#cb9-148"></a></span>
@@ -1200,12 +1191,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-150"><a href="#cb9-150"></a></span>
 <span id="cb9-151"><a href="#cb9-151"></a>This was then be called this:</span>
 <span id="cb9-152"><a href="#cb9-152"></a><span class="in">```julia</span></span>
-<span id="cb9-153"><a href="#cb9-153"></a><span class="in">period_prior_to_index(</span></span>
-<span id="cb9-154"><a href="#cb9-154"></a><span class="in">        cohort_id = [1, 1, 1, 1, 1], </span></span>
-<span id="cb9-155"><a href="#cb9-155"></a><span class="in">        conn; </span></span>
-<span id="cb9-156"><a href="#cb9-156"></a><span class="in">        date_prior = Day(100), </span></span>
-<span id="cb9-157"><a href="#cb9-157"></a><span class="in">        tab=cohort</span></span>
-<span id="cb9-158"><a href="#cb9-158"></a><span class="in">    )</span></span>
+<span id="cb9-153"><a href="#cb9-153"></a><span class="fu">period_prior_to_index</span>(</span>
+<span id="cb9-154"><a href="#cb9-154"></a>        cohort_id <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>], </span>
+<span id="cb9-155"><a href="#cb9-155"></a>        conn; </span>
+<span id="cb9-156"><a href="#cb9-156"></a>        date_prior <span class="op">=</span> <span class="fu">Day</span>(<span class="fl">100</span>), </span>
+<span id="cb9-157"><a href="#cb9-157"></a>        tab<span class="op">=</span>cohort</span>
+<span id="cb9-158"><a href="#cb9-158"></a>    )</span>
 <span id="cb9-159"><a href="#cb9-159"></a><span class="in">```</span></span>
 <span id="cb9-160"><a href="#cb9-160"></a></span>
 <span id="cb9-161"><a href="#cb9-161"></a></span>
@@ -1219,20 +1210,20 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-169"><a href="#cb9-169"></a>It filters the treatment history <span class="in">`DataFrame`</span> to retain only those rows where the duration between <span class="in">`drug_exposure_end`</span> and <span class="in">`drug_exposure_start`</span> is at least <span class="in">`minEraDuration`</span>.</span>
 <span id="cb9-170"><a href="#cb9-170"></a>This function can be used as follows:</span>
 <span id="cb9-171"><a href="#cb9-171"></a><span class="in">```julia</span></span>
-<span id="cb9-172"><a href="#cb9-172"></a><span class="in">#| eval: false </span></span>
+<span id="cb9-172"><a href="#cb9-172"></a><span class="co">#| eval: false </span></span>
 <span id="cb9-173"><a href="#cb9-173"></a></span>
-<span id="cb9-174"><a href="#cb9-174"></a><span class="in">calculate_era_duration(test_df, 920000)</span></span>
+<span id="cb9-174"><a href="#cb9-174"></a><span class="fu">calculate_era_duration</span>(test_df, <span class="fl">920000</span>)</span>
 <span id="cb9-175"><a href="#cb9-175"></a></span>
-<span id="cb9-176"><a href="#cb9-176"></a><span class="in">#= ... =#</span></span>
+<span id="cb9-176"><a href="#cb9-176"></a><span class="co">#= ... =#</span></span>
 <span id="cb9-177"><a href="#cb9-177"></a></span>
-<span id="cb9-178"><a href="#cb9-178"></a><span class="in">4×3 DataFrame</span></span>
-<span id="cb9-179"><a href="#cb9-179"></a><span class="in"> Row │ person_id  drug_exposure_start  drug_exposure_end </span></span>
-<span id="cb9-180"><a href="#cb9-180"></a><span class="in">     │ Int64      Float64              Int64             </span></span>
-<span id="cb9-181"><a href="#cb9-181"></a><span class="in">─────┼───────────────────────────────────────────────────</span></span>
-<span id="cb9-182"><a href="#cb9-182"></a><span class="in">   1 │         1           -3.7273e8          -364953600</span></span>
-<span id="cb9-183"><a href="#cb9-183"></a><span class="in">   2 │         1            2.90304e7           31449600</span></span>
-<span id="cb9-184"><a href="#cb9-184"></a><span class="in">   3 │         1           -8.18208e7          -80006400</span></span>
-<span id="cb9-185"><a href="#cb9-185"></a><span class="in">   4 │         1            1.32918e9         1330387200</span></span>
+<span id="cb9-178"><a href="#cb9-178"></a><span class="fl">4</span><span class="op">×</span><span class="fl">3</span> DataFrame</span>
+<span id="cb9-179"><a href="#cb9-179"></a> Row │ person_id  drug_exposure_start  drug_exposure_end </span>
+<span id="cb9-180"><a href="#cb9-180"></a>     │ <span class="dt">Int64</span>      <span class="dt">Float64</span>              <span class="dt">Int64</span>             </span>
+<span id="cb9-181"><a href="#cb9-181"></a>─────┼───────────────────────────────────────────────────</span>
+<span id="cb9-182"><a href="#cb9-182"></a>   <span class="fl">1</span> │         <span class="fl">1</span>           <span class="op">-</span><span class="fl">3.7273e8</span>          <span class="op">-</span><span class="fl">364953600</span></span>
+<span id="cb9-183"><a href="#cb9-183"></a>   <span class="fl">2</span> │         <span class="fl">1</span>            <span class="fl">2.90304e7</span>           <span class="fl">31449600</span></span>
+<span id="cb9-184"><a href="#cb9-184"></a>   <span class="fl">3</span> │         <span class="fl">1</span>           <span class="op">-</span><span class="fl">8.18208e7</span>          <span class="op">-</span><span class="fl">80006400</span></span>
+<span id="cb9-185"><a href="#cb9-185"></a>   <span class="fl">4</span> │         <span class="fl">1</span>            <span class="fl">1.32918e9</span>         <span class="fl">1330387200</span></span>
 <span id="cb9-186"><a href="#cb9-186"></a><span class="in">```</span></span>
 <span id="cb9-187"><a href="#cb9-187"></a></span>
 <span id="cb9-188"><a href="#cb9-188"></a></span>
@@ -1247,19 +1238,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-197"><a href="#cb9-197"></a></span>
 <span id="cb9-198"><a href="#cb9-198"></a>These functions can be used as follows:</span>
 <span id="cb9-199"><a href="#cb9-199"></a><span class="in">```julia</span></span>
-<span id="cb9-200"><a href="#cb9-200"></a><span class="in">#| eval: false </span></span>
+<span id="cb9-200"><a href="#cb9-200"></a><span class="co">#| eval: false </span></span>
 <span id="cb9-201"><a href="#cb9-201"></a></span>
-<span id="cb9-202"><a href="#cb9-202"></a><span class="in">#= ... =#</span></span>
+<span id="cb9-202"><a href="#cb9-202"></a><span class="co">#= ... =#</span></span>
 <span id="cb9-203"><a href="#cb9-203"></a></span>
-<span id="cb9-204"><a href="#cb9-204"></a><span class="in">EraCollapse(treatment_history = test_df, eraCollapseSize = 400000000)</span></span>
-<span id="cb9-205"><a href="#cb9-205"></a><span class="in">4×4 DataFrame</span></span>
-<span id="cb9-206"><a href="#cb9-206"></a><span class="in"> Row │ person_id  drug_exposure_start  drug_exposure_end  gap_same   </span></span>
-<span id="cb9-207"><a href="#cb9-207"></a><span class="in">     │ Int64      Float64              Int64              Float64    </span></span>
-<span id="cb9-208"><a href="#cb9-208"></a><span class="in">─────┼───────────────────────────────────────────────────────────────</span></span>
-<span id="cb9-209"><a href="#cb9-209"></a><span class="in">   1 │         1           -5.33347e8         -532483200  -1.86373e9</span></span>
-<span id="cb9-210"><a href="#cb9-210"></a><span class="in">   2 │         1           -3.7273e8          -364953600   1.59754e8</span></span>
-<span id="cb9-211"><a href="#cb9-211"></a><span class="in">   3 │         1           -8.18208e7          -80006400   2.83133e8</span></span>
-<span id="cb9-212"><a href="#cb9-212"></a><span class="in">   4 │         1            2.90304e7           31449600   1.09037e8</span></span>
+<span id="cb9-204"><a href="#cb9-204"></a><span class="fu">EraCollapse</span>(treatment_history <span class="op">=</span> test_df, eraCollapseSize <span class="op">=</span> <span class="fl">400000000</span>)</span>
+<span id="cb9-205"><a href="#cb9-205"></a><span class="fl">4</span><span class="op">×</span><span class="fl">4</span> DataFrame</span>
+<span id="cb9-206"><a href="#cb9-206"></a> Row │ person_id  drug_exposure_start  drug_exposure_end  gap_same   </span>
+<span id="cb9-207"><a href="#cb9-207"></a>     │ <span class="dt">Int64</span>      <span class="dt">Float64</span>              <span class="dt">Int64</span>              <span class="dt">Float64</span>    </span>
+<span id="cb9-208"><a href="#cb9-208"></a>─────┼───────────────────────────────────────────────────────────────</span>
+<span id="cb9-209"><a href="#cb9-209"></a>   <span class="fl">1</span> │         <span class="fl">1</span>           <span class="op">-</span><span class="fl">5.33347e8</span>         <span class="op">-</span><span class="fl">532483200</span>  <span class="op">-</span><span class="fl">1.86373e9</span></span>
+<span id="cb9-210"><a href="#cb9-210"></a>   <span class="fl">2</span> │         <span class="fl">1</span>           <span class="op">-</span><span class="fl">3.7273e8</span>          <span class="op">-</span><span class="fl">364953600</span>   <span class="fl">1.59754e8</span></span>
+<span id="cb9-211"><a href="#cb9-211"></a>   <span class="fl">3</span> │         <span class="fl">1</span>           <span class="op">-</span><span class="fl">8.18208e7</span>          <span class="op">-</span><span class="fl">80006400</span>   <span class="fl">2.83133e8</span></span>
+<span id="cb9-212"><a href="#cb9-212"></a>   <span class="fl">4</span> │         <span class="fl">1</span>            <span class="fl">2.90304e7</span>           <span class="fl">31449600</span>   <span class="fl">1.09037e8</span></span>
 <span id="cb9-213"><a href="#cb9-213"></a><span class="in">```</span></span>
 <span id="cb9-214"><a href="#cb9-214"></a></span>
 <span id="cb9-215"><a href="#cb9-215"></a></span>
@@ -1283,102 +1274,102 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-233"><a href="#cb9-233"></a>*Purpose*: This ensures that treatment gaps that are too small (less than combinationWindow) are treated as part of the same treatment window.</span>
 <span id="cb9-234"><a href="#cb9-234"></a></span>
 <span id="cb9-235"><a href="#cb9-235"></a><span class="in">```julia</span></span>
-<span id="cb9-236"><a href="#cb9-236"></a><span class="in">#| eval: false </span></span>
+<span id="cb9-236"><a href="#cb9-236"></a><span class="co">#| eval: false </span></span>
 <span id="cb9-237"><a href="#cb9-237"></a></span>
-<span id="cb9-238"><a href="#cb9-238"></a><span class="in">#= ... =#</span></span>
+<span id="cb9-238"><a href="#cb9-238"></a><span class="co">#= ... =#</span></span>
 <span id="cb9-239"><a href="#cb9-239"></a></span>
-<span id="cb9-240"><a href="#cb9-240"></a><span class="in">if -gap_previous &lt; combinationWindow &amp;&amp; !(-gap_previous in [duration_era, prev_duration_era])</span></span>
-<span id="cb9-241"><a href="#cb9-241"></a><span class="in">    treatment_history[i-1, :event_end_date] = treatment_history[i, :event_start_date]</span></span>
-<span id="cb9-242"><a href="#cb9-242"></a><span class="in">```</span></span>
-<span id="cb9-243"><a href="#cb9-243"></a>Here is the pictorial representation for the same:</span>
-<span id="cb9-244"><a href="#cb9-244"></a><span class="al">![](./case1.png)</span></span>
+<span id="cb9-240"><a href="#cb9-240"></a><span class="cf">if</span> <span class="op">-</span>gap_previous <span class="op">&lt;</span> combinationWindow <span class="op">&amp;&amp;</span> !(<span class="op">-</span>gap_previous <span class="kw">in</span> [duration_era, prev_duration_era])</span>
+<span id="cb9-241"><a href="#cb9-241"></a>    treatment_history[i<span class="op">-</span><span class="fl">1</span>, <span class="op">:</span>event_end_date] <span class="op">=</span> treatment_history[i, <span class="op">:</span>event_start_date]</span>
+<span id="cb9-242"><a href="#cb9-242"></a><span class="ss">```</span></span>
+<span id="cb9-243"><a href="#cb9-243"></a><span class="ss">Here is the pictorial representation for the same:</span></span>
+<span id="cb9-244"><a href="#cb9-244"></a><span class="ss">![](./case1.png)</span></span>
 <span id="cb9-245"><a href="#cb9-245"></a></span>
-<span id="cb9-246"><a href="#cb9-246"></a><span class="fu">### FRFS (First Row, First Shortened):</span></span>
+<span id="cb9-246"><a href="#cb9-246"></a><span class="ss">### FRFS (First Row, First Shortened):</span></span>
 <span id="cb9-247"><a href="#cb9-247"></a></span>
-<span id="cb9-248"><a href="#cb9-248"></a>*Condition*: If the gap is larger than or equal to the combinationWindow, or the gap equals the duration of one of the two treatments, and the first treatment ends before or on the same date as the second treatment.</span>
-<span id="cb9-249"><a href="#cb9-249"></a>*Action*: A new row is created where the second treatment’s event_end_date is set to the end date of the first treatment. This preserves the overlap but ensures that the earlier treatment period stays intact.</span>
-<span id="cb9-250"><a href="#cb9-250"></a>*Purpose*: This prevents unnecessary truncation of the first treatment if it spans the entire overlap window.</span>
+<span id="cb9-248"><a href="#cb9-248"></a><span class="ss">*Condition*: If the gap is larger than or equal to the combinationWindow, or the gap equals the duration of one of the two treatments, and the first treatment ends before or on the same date as the second treatment.</span></span>
+<span id="cb9-249"><a href="#cb9-249"></a><span class="ss">*Action*: A new row is created where the second treatment’s event_end_date is set to the end date of the first treatment. This preserves the overlap but ensures that the earlier treatment period stays intact.</span></span>
+<span id="cb9-250"><a href="#cb9-250"></a><span class="ss">*Purpose*: This prevents unnecessary truncation of the first treatment if it spans the entire overlap window.</span></span>
 <span id="cb9-251"><a href="#cb9-251"></a></span>
-<span id="cb9-252"><a href="#cb9-252"></a><span class="in">```julia</span></span>
-<span id="cb9-253"><a href="#cb9-253"></a><span class="in">#| eval: false </span></span>
+<span id="cb9-252"><a href="#cb9-252"></a><span class="ss">```</span>julia</span>
+<span id="cb9-253"><a href="#cb9-253"></a><span class="co">#| eval: false </span></span>
 <span id="cb9-254"><a href="#cb9-254"></a></span>
-<span id="cb9-255"><a href="#cb9-255"></a><span class="in">#= ... =#</span></span>
+<span id="cb9-255"><a href="#cb9-255"></a><span class="co">#= ... =#</span></span>
 <span id="cb9-256"><a href="#cb9-256"></a></span>
-<span id="cb9-257"><a href="#cb9-257"></a><span class="in">elseif -gap_previous &gt;= combinationWindow || -gap_previous in [duration_era, prev_duration_era]</span></span>
-<span id="cb9-258"><a href="#cb9-258"></a><span class="in">    if treatment_history[i-1, :event_end_date] &lt;= treatment_history[i, :event_end_date]</span></span>
-<span id="cb9-259"><a href="#cb9-259"></a><span class="in">        new_row = deepcopy(treatment_history[i, :])</span></span>
-<span id="cb9-260"><a href="#cb9-260"></a><span class="in">        new_row.event_end_date = treatment_history[i-1, :event_end_date]</span></span>
-<span id="cb9-261"><a href="#cb9-261"></a><span class="in">        append!(treatment_history, DataFrame(new_row'))</span></span>
-<span id="cb9-262"><a href="#cb9-262"></a><span class="in">```</span></span>
-<span id="cb9-263"><a href="#cb9-263"></a>Here is the pictorial representation for the same:</span>
-<span id="cb9-264"><a href="#cb9-264"></a><span class="al">![](./case2.png)</span></span>
+<span id="cb9-257"><a href="#cb9-257"></a><span class="cf">elseif</span> <span class="op">-</span>gap_previous <span class="op">&gt;=</span> combinationWindow <span class="op">||</span> <span class="op">-</span>gap_previous <span class="kw">in</span> [duration_era, prev_duration_era]</span>
+<span id="cb9-258"><a href="#cb9-258"></a>    <span class="cf">if</span> treatment_history[i<span class="op">-</span><span class="fl">1</span>, <span class="op">:</span>event_end_date] <span class="op">&lt;=</span> treatment_history[i, <span class="op">:</span>event_end_date]</span>
+<span id="cb9-259"><a href="#cb9-259"></a>        new_row <span class="op">=</span> <span class="fu">deepcopy</span>(treatment_history[i, <span class="op">:</span>])</span>
+<span id="cb9-260"><a href="#cb9-260"></a>        new_row.event_end_date <span class="op">=</span> treatment_history[i<span class="op">-</span><span class="fl">1</span>, <span class="op">:</span>event_end_date]</span>
+<span id="cb9-261"><a href="#cb9-261"></a>        <span class="fu">append!</span>(treatment_history, <span class="fu">DataFrame</span>(new_row<span class="op">'</span>))</span>
+<span id="cb9-262"><a href="#cb9-262"></a><span class="ss">```</span></span>
+<span id="cb9-263"><a href="#cb9-263"></a><span class="ss">Here is the pictorial representation for the same:</span></span>
+<span id="cb9-264"><a href="#cb9-264"></a><span class="ss">![](./case2.png)</span></span>
 <span id="cb9-265"><a href="#cb9-265"></a></span>
-<span id="cb9-266"><a href="#cb9-266"></a><span class="fu">### LRFS (Last Row, First Shortened):</span></span>
+<span id="cb9-266"><a href="#cb9-266"></a><span class="ss">### LRFS (Last Row, First Shortened):</span></span>
 <span id="cb9-267"><a href="#cb9-267"></a></span>
-<span id="cb9-268"><a href="#cb9-268"></a>*Condition*: If the gap is larger than or equal to the combinationWindow, or the gap equals the duration of one of the treatments, and the first treatment ends after the second treatment.</span>
-<span id="cb9-269"><a href="#cb9-269"></a>*Action*: The current treatment’s event_end_date is adjusted to match the event_end_date of the previous treatment.</span>
-<span id="cb9-270"><a href="#cb9-270"></a>*Purpose*: This handles cases where the second treatment's window should be shortened to prevent overlap with the previous treatment, merging them into a single continuous window.</span>
+<span id="cb9-268"><a href="#cb9-268"></a><span class="ss">*Condition*: If the gap is larger than or equal to the combinationWindow, or the gap equals the duration of one of the treatments, and the first treatment ends after the second treatment.</span></span>
+<span id="cb9-269"><a href="#cb9-269"></a><span class="ss">*Action*: The current treatment’s event_end_date is adjusted to match the event_end_date of the previous treatment.</span></span>
+<span id="cb9-270"><a href="#cb9-270"></a><span class="ss">*Purpose*: This handles cases where the second treatment's window should be shortened to prevent overlap with the previous treatment, merging them into a single continuous window.</span></span>
 <span id="cb9-271"><a href="#cb9-271"></a></span>
-<span id="cb9-272"><a href="#cb9-272"></a><span class="in">```julia</span></span>
-<span id="cb9-273"><a href="#cb9-273"></a><span class="in">#| eval: false </span></span>
+<span id="cb9-272"><a href="#cb9-272"></a><span class="ss">```</span>julia</span>
+<span id="cb9-273"><a href="#cb9-273"></a><span class="co">#| eval: false </span></span>
 <span id="cb9-274"><a href="#cb9-274"></a></span>
-<span id="cb9-275"><a href="#cb9-275"></a><span class="in">#= ... =#</span></span>
+<span id="cb9-275"><a href="#cb9-275"></a><span class="co">#= ... =#</span></span>
 <span id="cb9-276"><a href="#cb9-276"></a></span>
-<span id="cb9-277"><a href="#cb9-277"></a><span class="in">else</span></span>
-<span id="cb9-278"><a href="#cb9-278"></a><span class="in">    treatment_history[i, :event_end_date] = treatment_history[i-1, :event_end_date]</span></span>
-<span id="cb9-279"><a href="#cb9-279"></a><span class="in">```</span></span>
-<span id="cb9-280"><a href="#cb9-280"></a>Here is the pictorial representation for the same:</span>
-<span id="cb9-281"><a href="#cb9-281"></a><span class="al">![](./case3.png)</span></span>
+<span id="cb9-277"><a href="#cb9-277"></a><span class="cf">else</span></span>
+<span id="cb9-278"><a href="#cb9-278"></a>    treatment_history[i, <span class="op">:</span>event_end_date] <span class="op">=</span> treatment_history[i<span class="op">-</span><span class="fl">1</span>, <span class="op">:</span>event_end_date]</span>
+<span id="cb9-279"><a href="#cb9-279"></a><span class="ss">```</span></span>
+<span id="cb9-280"><a href="#cb9-280"></a><span class="ss">Here is the pictorial representation for the same:</span></span>
+<span id="cb9-281"><a href="#cb9-281"></a><span class="ss">![](./case3.png)</span></span>
 <span id="cb9-282"><a href="#cb9-282"></a></span>
 <span id="cb9-283"><a href="#cb9-283"></a></span>
-<span id="cb9-284"><a href="#cb9-284"></a><span class="at">&gt; *Note:* However, There are a few things left to cover here, most of which are the documentation and writing the test suite for the same.</span></span>
+<span id="cb9-284"><a href="#cb9-284"></a><span class="ss">&gt; *Note:* However, There are a few things left to cover here, most of which are the documentation and writing the test suite for the same.</span></span>
 <span id="cb9-285"><a href="#cb9-285"></a></span>
-<span id="cb9-286"><a href="#cb9-286"></a><span class="fu"># Contributions Beyond Coding</span></span>
+<span id="cb9-286"><a href="#cb9-286"></a><span class="ss"># Contributions Beyond Coding</span></span>
 <span id="cb9-287"><a href="#cb9-287"></a></span>
-<span id="cb9-288"><a href="#cb9-288"></a><span class="fu">## 1. Organizing Meetings and Communication</span></span>
+<span id="cb9-288"><a href="#cb9-288"></a><span class="ss">## 1. Organizing Meetings and Communication</span></span>
 <span id="cb9-289"><a href="#cb9-289"></a></span>
-<span id="cb9-290"><a href="#cb9-290"></a>Throughout the project, I regularly met with my mentor, <span class="co">[</span><span class="ot">Jacob Zelko</span><span class="co">]</span>, and co-mentor, <span class="co">[</span><span class="ot">Mounika</span><span class="co">]</span>, via weekly Zoom calls to discuss progress and seek guidance. During these meetings, we reviewed my work, identified areas where I needed help, and set clear goals for the upcoming weeks. We used Trello to organize and track these goals, ensuring that nothing was overlooked. My mentors provided detailed insights into specific technical aspects and guided me through the logic behind various functions. Outside of our scheduled meetings, they were always available for quick queries via Slack, ensuring constant support.</span>
+<span id="cb9-290"><a href="#cb9-290"></a><span class="ss">Throughout the project, I regularly met with my mentor, [Jacob Zelko], and co-mentor, [Mounika], via weekly Zoom calls to discuss progress and seek guidance. During these meetings, we reviewed my work, identified areas where I needed help, and set clear goals for the upcoming weeks. We used Trello to organize and track these goals, ensuring that nothing was overlooked. My mentors provided detailed insights into specific technical aspects and guided me through the logic behind various functions. Outside of our scheduled meetings, they were always available for quick queries via Slack, ensuring constant support.</span></span>
 <span id="cb9-291"><a href="#cb9-291"></a></span>
-<span id="cb9-292"><a href="#cb9-292"></a><span class="fu">## 2. Personal Documentation</span></span>
+<span id="cb9-292"><a href="#cb9-292"></a><span class="ss">## 2. Personal Documentation</span></span>
 <span id="cb9-293"><a href="#cb9-293"></a></span>
-<span id="cb9-294"><a href="#cb9-294"></a>In addition to the notes from our meetings, I maintained personal documentation where I recorded every step I took, including the challenges I faced and the mistakes I made. This helped me reflect on my progress and stay organized throughout the fellowship. Following my selection for GSoC 2024, I also published a blog post on <span class="co">[</span><span class="ot">Medium</span><span class="co">](https://medium.com/@landgejay124/gsoc-24-the-julia-language-62b809bbec49)</span> to share my journey and experiences with the Julia Language community.</span>
+<span id="cb9-294"><a href="#cb9-294"></a><span class="ss">In addition to the notes from our meetings, I maintained personal documentation where I recorded every step I took, including the challenges I faced and the mistakes I made. This helped me reflect on my progress and stay organized throughout the fellowship. Following my selection for GSoC 2024, I also published a blog post on [Medium](https://medium.com/@landgejay124/gsoc-24-the-julia-language-62b809bbec49) to share my journey and experiences with the Julia Language community.</span></span>
 <span id="cb9-295"><a href="#cb9-295"></a></span>
-<span id="cb9-296"><a href="#cb9-296"></a><span class="fu">## 3. Contributions To the Rest of the JuliaHealth Repositories</span></span>
+<span id="cb9-296"><a href="#cb9-296"></a><span class="ss">## 3. Contributions To the Rest of the JuliaHealth Repositories</span></span>
 <span id="cb9-297"><a href="#cb9-297"></a></span>
-<span id="cb9-298"><a href="#cb9-298"></a>Earlier I have contributed a lot to the <span class="co">[</span><span class="ot">OMOPCDMCohortCreator.jl</span><span class="co">](https://github.com/JuliaHealth/OMOPCDMCohortCreator.jl)</span> including adding new functionalities writing test suites, adding blogs including - <span class="co">[</span><span class="ot">Patient Pathways within JuliaHealth</span><span class="co">](https://github.com/JuliaHealth/juliahealth.github.io/pull/124)</span>. Apart from that I also initiated 3 new releases of this package.</span>
+<span id="cb9-298"><a href="#cb9-298"></a><span class="ss">Earlier I have contributed a lot to the [OMOPCDMCohortCreator.jl](https://github.com/JuliaHealth/OMOPCDMCohortCreator.jl) including adding new functionalities writing test suites, adding blogs including - [Patient Pathways within JuliaHealth](https://github.com/JuliaHealth/juliahealth.github.io/pull/124). Apart from that I also initiated 3 new releases of this package.</span></span>
 <span id="cb9-299"><a href="#cb9-299"></a></span>
-<span id="cb9-300"><a href="#cb9-300"></a><span class="fu"># Conclusions and Future Development</span></span>
+<span id="cb9-300"><a href="#cb9-300"></a><span class="ss"># Conclusions and Future Development</span></span>
 <span id="cb9-301"><a href="#cb9-301"></a></span>
-<span id="cb9-302"><a href="#cb9-302"></a>This project was a 350-hour large project since there were many goals to accomplish. Here is what we accomplished:</span>
+<span id="cb9-302"><a href="#cb9-302"></a><span class="ss">This project was a 350-hour large project since there were many goals to accomplish. Here is what we accomplished:</span></span>
 <span id="cb9-303"><a href="#cb9-303"></a></span>
-<span id="cb9-304"><a href="#cb9-304"></a><span class="ss">1. </span>Built a new repository in JuliaHealth land dedicated especially to treatment pathways synthesis.</span>
+<span id="cb9-304"><a href="#cb9-304"></a><span class="ss">1. Built a new repository in JuliaHealth land dedicated especially to treatment pathways synthesis.</span></span>
 <span id="cb9-305"><a href="#cb9-305"></a></span>
-<span id="cb9-306"><a href="#cb9-306"></a><span class="ss">2. </span>CI/CD for the Package and Documentation hosting.</span>
+<span id="cb9-306"><a href="#cb9-306"></a><span class="ss">2. CI/CD for the Package and Documentation hosting.</span></span>
 <span id="cb9-307"><a href="#cb9-307"></a></span>
-<span id="cb9-308"><a href="#cb9-308"></a><span class="ss">3. </span>All required basic functionalities required to build the pathways.</span>
+<span id="cb9-308"><a href="#cb9-308"></a><span class="ss">3. All required basic functionalities required to build the pathways.</span></span>
 <span id="cb9-309"><a href="#cb9-309"></a></span>
-<span id="cb9-310"><a href="#cb9-310"></a><span class="ss">4. </span>Documentation and test suites added for each.</span>
+<span id="cb9-310"><a href="#cb9-310"></a><span class="ss">4. Documentation and test suites added for each.</span></span>
 <span id="cb9-311"><a href="#cb9-311"></a></span>
-<span id="cb9-312"><a href="#cb9-312"></a>Future work would include:</span>
+<span id="cb9-312"><a href="#cb9-312"></a><span class="ss">Future work would include:</span></span>
 <span id="cb9-313"><a href="#cb9-313"></a></span>
-<span id="cb9-314"><a href="#cb9-314"></a><span class="ss">- </span>Finish this <span class="co">[</span><span class="ot">PR</span><span class="co">](https://github.com/JuliaHealth/OMOPCDMPathways.jl/pull/63)</span> test-suites and documentation are remaining for this PR. </span>
+<span id="cb9-314"><a href="#cb9-314"></a><span class="ss">- Finish this [PR](https://github.com/JuliaHealth/OMOPCDMPathways.jl/pull/63) test-suites and documentation are remaining for this PR. </span></span>
 <span id="cb9-315"><a href="#cb9-315"></a></span>
-<span id="cb9-316"><a href="#cb9-316"></a><span class="ss">- </span>Apart from that, we would need to add a <span class="co">[</span><span class="ot">function</span><span class="co">](https://github.com/JuliaHealth/OMOPCDMPathways.jl/issues/9)</span> that sews up all the functionalities of the package so that the user can run the complete pathways analysis by running just one function instead of running each of the functions manually. </span>
+<span id="cb9-316"><a href="#cb9-316"></a><span class="ss">- Apart from that, we would need to add a [function](https://github.com/JuliaHealth/OMOPCDMPathways.jl/issues/9) that sews up all the functionalities of the package so that the user can run the complete pathways analysis by running just one function instead of running each of the functions manually. </span></span>
 <span id="cb9-317"><a href="#cb9-317"></a></span>
-<span id="cb9-318"><a href="#cb9-318"></a><span class="ss">- </span>Also, in the future, we would explore what statistical functionalities we would need to further explore pathways. </span>
+<span id="cb9-318"><a href="#cb9-318"></a><span class="ss">- Also, in the future, we would explore what statistical functionalities we would need to further explore pathways. </span></span>
 <span id="cb9-319"><a href="#cb9-319"></a></span>
-<span id="cb9-320"><a href="#cb9-320"></a><span class="ss">- </span>Then, we could explore how to compose JuliaHealth with packages from ecosystems like <span class="co">[</span><span class="ot">JuliaStats</span><span class="co">](https://juliastats.org/)</span> and <span class="co">[</span><span class="ot">JuliaDSP</span><span class="co">](https://docs.juliadsp.org/stable/contents/)</span> (for time series analysis) that are mentioned in this <span class="co">[</span><span class="ot">PR</span><span class="co">](https://github.com/JuliaHealth/OMOPCDMPathways.jl/issues/8)</span>. </span>
+<span id="cb9-320"><a href="#cb9-320"></a><span class="ss">- Then, we could explore how to compose JuliaHealth with packages from ecosystems like [JuliaStats](https://juliastats.org/) and [JuliaDSP](https://docs.juliadsp.org/stable/contents/) (for time series analysis) that are mentioned in this [PR](https://github.com/JuliaHealth/OMOPCDMPathways.jl/issues/8). </span></span>
 <span id="cb9-321"><a href="#cb9-321"></a></span>
-<span id="cb9-322"><a href="#cb9-322"></a><span class="ss">- </span>And finally work on creating novel visualizations for the Pathways. Commonly used visualizations for treatment pathways (such as sunburst or icicle plots) showing which patients fall under what treatment pathways could be developed as plotting recipes to visualize various aspects of a patient’s care pathway rapidly.</span>
+<span id="cb9-322"><a href="#cb9-322"></a><span class="ss">- And finally work on creating novel visualizations for the Pathways. Commonly used visualizations for treatment pathways (such as sunburst or icicle plots) showing which patients fall under what treatment pathways could be developed as plotting recipes to visualize various aspects of a patient’s care pathway rapidly.</span></span>
 <span id="cb9-323"><a href="#cb9-323"></a></span>
-<span id="cb9-324"><a href="#cb9-324"></a><span class="fu"># Acknowledgements 🙇‍♂️</span></span>
+<span id="cb9-324"><a href="#cb9-324"></a><span class="ss"># Acknowledgements 🙇‍♂️</span></span>
 <span id="cb9-325"><a href="#cb9-325"></a></span>
-<span id="cb9-326"><a href="#cb9-326"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Jacob S. Zelko</span><span class="co">](https://jacobzelko.com)</span>: aka, <span class="co">[</span><span class="ot">TheCedarPrince</span><span class="co">](https://github.com/TheCedarPrince)</span></span>
+<span id="cb9-326"><a href="#cb9-326"></a><span class="ss">1. [Jacob S. Zelko](https://jacobzelko.com): aka, [TheCedarPrince](https://github.com/TheCedarPrince)</span></span>
 <span id="cb9-327"><a href="#cb9-327"></a></span>
-<span id="cb9-328"><a href="#cb9-328"></a><span class="ss">2. </span><span class="co">[</span><span class="ot">Mounika Thakkallapally</span><span class="co">](https://www.linkedin.com/in/mounika-thakkallapally/)</span></span>
+<span id="cb9-328"><a href="#cb9-328"></a><span class="ss">2. [Mounika Thakkallapally](https://www.linkedin.com/in/mounika-thakkallapally/)</span></span>
 <span id="cb9-329"><a href="#cb9-329"></a></span>
-<span id="cb9-330"><a href="#cb9-330"></a>Thank you for your continuous help and support throughout the fellowship.</span>
-<span id="cb9-331"><a href="#cb9-331"></a>_Note: This blog post was also written with the assistance of LLM technologies to help with grammar, flow, and spelling!_</span>
+<span id="cb9-330"><a href="#cb9-330"></a><span class="ss">Thank you for your continuous help and support throughout the fellowship.</span></span>
+<span id="cb9-331"><a href="#cb9-331"></a><span class="ss">_Note: This blog post was also written with the assistance of LLM technologies to help with grammar, flow, and spelling!_</span></span>
 <span id="cb9-332"><a href="#cb9-332"></a></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

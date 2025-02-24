@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.47">
+<meta name="generator" content="quarto-1.7.6">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -72,10 +72,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-8908c8300ec2e31702a10363d6856c6e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-412249914c5e4fcf292edda2e0469c59.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -196,13 +196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
-<b>Navigation &amp; Tips:</b>
-
-<ul>
-    <li>Press <b>?</b> for search</li>
-    <li><b>"&lt;/&gt; Code"</b> for code nav</li>
-</ul>
-
+<p>partials/margin_header.html</p>
 </div></div>
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
@@ -569,8 +563,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -732,7 +724,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -1010,20 +1001,20 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb7-48"><a href="#cb7-48"></a>To extend this to multiple GPU backends, all that is needed is to generalize the <span class="in">`gpu`</span> function to convert to either the device types of CUDA.jl, AMDGPU.jl, Metal.jl, or oneAPI.jl, depending on which backend is being used. To give an idea of what the gpu conversion code looked like before, here is a snippet:</span>
 <span id="cb7-49"><a href="#cb7-49"></a></span>
 <span id="cb7-50"><a href="#cb7-50"></a><span class="in">```julia</span></span>
-<span id="cb7-51"><a href="#cb7-51"></a><span class="in">struct KomaCUDAAdaptor end</span></span>
-<span id="cb7-52"><a href="#cb7-52"></a><span class="in">adapt_storage(to::KomaCUDAAdaptor, x) = CUDA.cu(x)</span></span>
+<span id="cb7-51"><a href="#cb7-51"></a><span class="kw">struct</span> KomaCUDAAdaptor <span class="kw">end</span></span>
+<span id="cb7-52"><a href="#cb7-52"></a><span class="fu">adapt_storage</span>(to<span class="op">::</span><span class="dt">KomaCUDAAdaptor</span>, x) <span class="op">=</span> CUDA.<span class="fu">cu</span>(x)</span>
 <span id="cb7-53"><a href="#cb7-53"></a></span>
-<span id="cb7-54"><a href="#cb7-54"></a><span class="in">function gpu(x)</span></span>
-<span id="cb7-55"><a href="#cb7-55"></a><span class="in">    check_use_cuda()</span></span>
-<span id="cb7-56"><a href="#cb7-56"></a><span class="in">    return use_cuda[] ? fmap(x -&gt; adapt(KomaCUDAAdaptor(), x), x; exclude=_isleaf) : x</span></span>
-<span id="cb7-57"><a href="#cb7-57"></a><span class="in">end</span></span>
+<span id="cb7-54"><a href="#cb7-54"></a><span class="kw">function</span> <span class="fu">gpu</span>(x)</span>
+<span id="cb7-55"><a href="#cb7-55"></a>    <span class="fu">check_use_cuda</span>()</span>
+<span id="cb7-56"><a href="#cb7-56"></a>    <span class="cf">return</span> use_cuda[] ? <span class="fu">fmap</span>(x <span class="op">-&gt;</span> <span class="fu">adapt</span>(<span class="fu">KomaCUDAAdaptor</span>(), x), x; exclude<span class="op">=</span>_isleaf) <span class="op">:</span> x</span>
+<span id="cb7-57"><a href="#cb7-57"></a><span class="kw">end</span></span>
 <span id="cb7-58"><a href="#cb7-58"></a></span>
-<span id="cb7-59"><a href="#cb7-59"></a><span class="in">#CPU adaptor</span></span>
-<span id="cb7-60"><a href="#cb7-60"></a><span class="in">struct KomaCPUAdaptor end</span></span>
-<span id="cb7-61"><a href="#cb7-61"></a><span class="in">adapt_storage(to::KomaCPUAdaptor, x::AbstractArray) = adapt(Array, x)</span></span>
-<span id="cb7-62"><a href="#cb7-62"></a><span class="in">adapt_storage(to::KomaCPUAdaptor, x::AbstractRange) = x</span></span>
+<span id="cb7-59"><a href="#cb7-59"></a><span class="co">#CPU adaptor</span></span>
+<span id="cb7-60"><a href="#cb7-60"></a><span class="kw">struct</span> KomaCPUAdaptor <span class="kw">end</span></span>
+<span id="cb7-61"><a href="#cb7-61"></a><span class="fu">adapt_storage</span>(to<span class="op">::</span><span class="dt">KomaCPUAdaptor</span>, x<span class="op">::</span><span class="dt">AbstractArray</span>) <span class="op">=</span> <span class="fu">adapt</span>(<span class="dt">Array</span>, x)</span>
+<span id="cb7-62"><a href="#cb7-62"></a><span class="fu">adapt_storage</span>(to<span class="op">::</span><span class="dt">KomaCPUAdaptor</span>, x<span class="op">::</span><span class="dt">AbstractRange</span>) <span class="op">=</span> x</span>
 <span id="cb7-63"><a href="#cb7-63"></a></span>
-<span id="cb7-64"><a href="#cb7-64"></a><span class="in">cpu(x) = fmap(x -&gt; adapt(KomaCPUAdaptor(), x), x)</span></span>
+<span id="cb7-64"><a href="#cb7-64"></a><span class="fu">cpu</span>(x) <span class="op">=</span> <span class="fu">fmap</span>(x <span class="op">-&gt;</span> <span class="fu">adapt</span>(<span class="fu">KomaCPUAdaptor</span>(), x), x)</span>
 <span id="cb7-65"><a href="#cb7-65"></a><span class="in">```</span></span>
 <span id="cb7-66"><a href="#cb7-66"></a></span>
 <span id="cb7-67"><a href="#cb7-67"></a>The <span class="in">`fmap`</span> function is from the package <span class="in">`Functors.jl`</span> and can recursively apply a function to a struct tagged with <span class="in">`@functor`</span>. The function being applied is <span class="in">`adapt`</span> from <span class="in">`Adapt.jl`</span>, which will call the lower-level <span class="in">`adapt_storage`</span> function to actually convert to / from the device type. The second parameter to <span class="in">`adapt`</span> is what is being adapted, and the first is what it is being adapted to, which in this case is a custom adapter struct <span class="in">`KomaCUDAAdapter`</span>. </span>
@@ -1035,13 +1026,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb7-73"><a href="#cb7-73"></a>Our final <span class="in">`gpu`</span> and <span class="in">`cpu`</span> functions are very simple. The <span class="in">`backend`</span> parameter is a type derived from the abstract <span class="in">`Backend`</span> type of <span class="co">[</span><span class="ot">`KernelAbstractions.jl`</span><span class="co">](https://github.com/JuliaGPU/KernelAbstractions.jl)</span>, which is extended by each of the backend packages:</span>
 <span id="cb7-74"><a href="#cb7-74"></a></span>
 <span id="cb7-75"><a href="#cb7-75"></a><span class="in">```julia</span></span>
-<span id="cb7-76"><a href="#cb7-76"></a><span class="in">import KernelAbstractions as KA</span></span>
+<span id="cb7-76"><a href="#cb7-76"></a><span class="im">import</span> <span class="bu">KernelAbstractions</span> as KA</span>
 <span id="cb7-77"><a href="#cb7-77"></a></span>
-<span id="cb7-78"><a href="#cb7-78"></a><span class="in">function gpu(x, backend::KA.GPU)</span></span>
-<span id="cb7-79"><a href="#cb7-79"></a><span class="in">    return fmap(x -&gt; adapt(backend, x), x; exclude=_isleaf)</span></span>
-<span id="cb7-80"><a href="#cb7-80"></a><span class="in">end</span></span>
+<span id="cb7-78"><a href="#cb7-78"></a><span class="kw">function</span> <span class="fu">gpu</span>(x, backend<span class="op">::</span><span class="dt">KA.GPU</span>)</span>
+<span id="cb7-79"><a href="#cb7-79"></a>    <span class="cf">return</span> <span class="fu">fmap</span>(x <span class="op">-&gt;</span> <span class="fu">adapt</span>(backend, x), x; exclude<span class="op">=</span>_isleaf)</span>
+<span id="cb7-80"><a href="#cb7-80"></a><span class="kw">end</span></span>
 <span id="cb7-81"><a href="#cb7-81"></a></span>
-<span id="cb7-82"><a href="#cb7-82"></a><span class="in">cpu(x) = fmap(x -&gt; adapt(KA.CPU(), x), x, exclude=_isleaf)</span></span>
+<span id="cb7-82"><a href="#cb7-82"></a><span class="fu">cpu</span>(x) <span class="op">=</span> <span class="fu">fmap</span>(x <span class="op">-&gt;</span> <span class="fu">adapt</span>(KA.<span class="fu">CPU</span>(), x), x, exclude<span class="op">=</span>_isleaf)</span>
 <span id="cb7-83"><a href="#cb7-83"></a><span class="in">```</span></span>
 <span id="cb7-84"><a href="#cb7-84"></a></span>
 <span id="cb7-85"><a href="#cb7-85"></a>The other work needed to generalize our GPU support involved switching to use <span class="co">[</span><span class="ot">package extensions</span><span class="co">]</span>(https://pkgdocs.julialang.org/v1/creating-packages/#Conditional-loading-of-code-in-packages-(Extensions)) to avoid having each of the backend packages as an explicit dependency, and defining some basic GPU functions for backend selection and printing information about available GPU devices. The pull request for adding support for multiple backends is linked below:</span>
@@ -1130,11 +1121,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb7-170"><a href="#cb7-170"></a><span class="ss">3. </span>Ensuring that each statement is fully broadcasted. We were surprised to see the difference between the following examples:</span>
 <span id="cb7-171"><a href="#cb7-171"></a></span>
 <span id="cb7-172"><a href="#cb7-172"></a><span class="in">```julia</span></span>
-<span id="cb7-173"><a href="#cb7-173"></a><span class="in">#Fast</span></span>
-<span id="cb7-174"><a href="#cb7-174"></a><span class="in">Bz = x .* seq.Gx' .+ y .* seq.Gy' .+ z .* seq.Gz' .+ p.Δw ./ T(2π .* γ)</span></span>
+<span id="cb7-173"><a href="#cb7-173"></a><span class="co">#Fast</span></span>
+<span id="cb7-174"><a href="#cb7-174"></a>Bz <span class="op">=</span> x <span class="op">.*</span> seq.Gx<span class="op">'</span> <span class="op">.+</span> y <span class="op">.*</span> seq.Gy<span class="op">'</span> <span class="op">.+</span> z <span class="op">.*</span> seq.Gz<span class="op">'</span> <span class="op">.+</span> p.Δw <span class="op">./</span> <span class="fu">T</span>(<span class="fl">2</span>π <span class="op">.*</span> γ)</span>
 <span id="cb7-175"><a href="#cb7-175"></a></span>
-<span id="cb7-176"><a href="#cb7-176"></a><span class="in">#Slow</span></span>
-<span id="cb7-177"><a href="#cb7-177"></a><span class="in">Bz = x .* seq.Gx' .+ y .* seq.Gy' .+ z .* seq.Gz' .+ p.Δw / T(2π * γ)</span></span>
+<span id="cb7-176"><a href="#cb7-176"></a><span class="co">#Slow</span></span>
+<span id="cb7-177"><a href="#cb7-177"></a>Bz <span class="op">=</span> x <span class="op">.*</span> seq.Gx<span class="op">'</span> <span class="op">.+</span> y <span class="op">.*</span> seq.Gy<span class="op">'</span> <span class="op">.+</span> z <span class="op">.*</span> seq.Gz<span class="op">'</span> <span class="op">.+</span> p.Δw <span class="op">/</span> <span class="fu">T</span>(<span class="fl">2</span>π <span class="op">*</span> γ)</span>
 <span id="cb7-178"><a href="#cb7-178"></a><span class="in">```</span></span>
 <span id="cb7-179"><a href="#cb7-179"></a></span>
 <span id="cb7-180"><a href="#cb7-180"></a><span class="ss">4. </span>Using the <span class="in">`cis`</span> function for complex exponentiation, which is faster than <span class="in">`exp`</span></span>
@@ -1164,51 +1155,51 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb7-204"><a href="#cb7-204"></a>The following scripts worked, with the only necessary code change to the repository being a new + function to add two RawAcquisitionData structs:</span>
 <span id="cb7-205"><a href="#cb7-205"></a></span>
 <span id="cb7-206"><a href="#cb7-206"></a><span class="in">```julia</span></span>
-<span id="cb7-207"><a href="#cb7-207"></a><span class="in">#Use multiple GPUs:</span></span>
-<span id="cb7-208"><a href="#cb7-208"></a><span class="in">using Distributed</span></span>
-<span id="cb7-209"><a href="#cb7-209"></a><span class="in">using CUDA</span></span>
+<span id="cb7-207"><a href="#cb7-207"></a><span class="co">#Use multiple GPUs:</span></span>
+<span id="cb7-208"><a href="#cb7-208"></a><span class="im">using</span> <span class="bu">Distributed</span></span>
+<span id="cb7-209"><a href="#cb7-209"></a><span class="im">using</span> <span class="bu">CUDA</span></span>
 <span id="cb7-210"><a href="#cb7-210"></a></span>
-<span id="cb7-211"><a href="#cb7-211"></a><span class="in">#Add workers based on the number of available devices</span></span>
-<span id="cb7-212"><a href="#cb7-212"></a><span class="in">addprocs(length(devices()))</span></span>
+<span id="cb7-211"><a href="#cb7-211"></a><span class="co">#Add workers based on the number of available devices</span></span>
+<span id="cb7-212"><a href="#cb7-212"></a><span class="fu">addprocs</span>(<span class="fu">length</span>(<span class="fu">devices</span>()))</span>
 <span id="cb7-213"><a href="#cb7-213"></a></span>
-<span id="cb7-214"><a href="#cb7-214"></a><span class="in">#Define inputs on each worker process</span></span>
-<span id="cb7-215"><a href="#cb7-215"></a><span class="in">@everywhere begin</span></span>
-<span id="cb7-216"><a href="#cb7-216"></a><span class="in">    using KomaMRI, CUDA</span></span>
-<span id="cb7-217"><a href="#cb7-217"></a><span class="in">    sys = Scanner()</span></span>
-<span id="cb7-218"><a href="#cb7-218"></a><span class="in">    seq = PulseDesigner.EPI_example()</span></span>
-<span id="cb7-219"><a href="#cb7-219"></a><span class="in">    obj = brain_phantom2D()</span></span>
-<span id="cb7-220"><a href="#cb7-220"></a><span class="in">    #Divide phantom</span></span>
-<span id="cb7-221"><a href="#cb7-221"></a><span class="in">    parts = kfoldperm(length(obj), nworkers())</span></span>
-<span id="cb7-222"><a href="#cb7-222"></a><span class="in">end</span></span>
+<span id="cb7-214"><a href="#cb7-214"></a><span class="co">#Define inputs on each worker process</span></span>
+<span id="cb7-215"><a href="#cb7-215"></a><span class="pp">@everywhere</span> <span class="cf">begin</span></span>
+<span id="cb7-216"><a href="#cb7-216"></a>    <span class="im">using</span> <span class="bu">KomaMRI</span>, <span class="bu">CUDA</span></span>
+<span id="cb7-217"><a href="#cb7-217"></a>    sys <span class="op">=</span> <span class="fu">Scanner</span>()</span>
+<span id="cb7-218"><a href="#cb7-218"></a>    seq <span class="op">=</span> PulseDesigner.<span class="fu">EPI_example</span>()</span>
+<span id="cb7-219"><a href="#cb7-219"></a>    obj <span class="op">=</span> <span class="fu">brain_phantom2D</span>()</span>
+<span id="cb7-220"><a href="#cb7-220"></a>    <span class="co">#Divide phantom</span></span>
+<span id="cb7-221"><a href="#cb7-221"></a>    parts <span class="op">=</span> <span class="fu">kfoldperm</span>(<span class="fu">length</span>(obj), <span class="fu">nworkers</span>())</span>
+<span id="cb7-222"><a href="#cb7-222"></a><span class="cf">end</span></span>
 <span id="cb7-223"><a href="#cb7-223"></a></span>
-<span id="cb7-224"><a href="#cb7-224"></a><span class="in">#Distribute simulation across workers</span></span>
-<span id="cb7-225"><a href="#cb7-225"></a><span class="in">raw = Distributed.@distributed (+) for i=1:nworkers()</span></span>
-<span id="cb7-226"><a href="#cb7-226"></a><span class="in">    KomaMRICore.set_device!(i-1) #Sets device for this worker, note that CUDA devices are indexed from 0</span></span>
-<span id="cb7-227"><a href="#cb7-227"></a><span class="in">    simulate(obj[parts[i]], seq, sys)</span></span>
-<span id="cb7-228"><a href="#cb7-228"></a><span class="in">end</span></span>
+<span id="cb7-224"><a href="#cb7-224"></a><span class="co">#Distribute simulation across workers</span></span>
+<span id="cb7-225"><a href="#cb7-225"></a>raw <span class="op">=</span> <span class="bu">Distributed</span>.<span class="pp">@distributed</span> (<span class="op">+</span>) <span class="cf">for</span> i<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fu">nworkers</span>()</span>
+<span id="cb7-226"><a href="#cb7-226"></a>    KomaMRICore.<span class="fu">set_device!</span>(i<span class="op">-</span><span class="fl">1</span>) <span class="co">#Sets device for this worker, note that CUDA devices are indexed from 0</span></span>
+<span id="cb7-227"><a href="#cb7-227"></a>    <span class="fu">simulate</span>(obj[parts[i]], seq, sys)</span>
+<span id="cb7-228"><a href="#cb7-228"></a><span class="cf">end</span></span>
 <span id="cb7-229"><a href="#cb7-229"></a><span class="in">```</span></span>
 <span id="cb7-230"><a href="#cb7-230"></a></span>
 <span id="cb7-231"><a href="#cb7-231"></a><span class="in">```julia</span></span>
-<span id="cb7-232"><a href="#cb7-232"></a><span class="in">#Use multiple compute nodes</span></span>
-<span id="cb7-233"><a href="#cb7-233"></a><span class="in">using Distributed</span></span>
-<span id="cb7-234"><a href="#cb7-234"></a><span class="in">using ClusterManagers</span></span>
+<span id="cb7-232"><a href="#cb7-232"></a><span class="co">#Use multiple compute nodes</span></span>
+<span id="cb7-233"><a href="#cb7-233"></a><span class="im">using</span> <span class="bu">Distributed</span></span>
+<span id="cb7-234"><a href="#cb7-234"></a><span class="im">using</span> <span class="bu">ClusterManagers</span></span>
 <span id="cb7-235"><a href="#cb7-235"></a></span>
-<span id="cb7-236"><a href="#cb7-236"></a><span class="in">#Add workers based on the specified number of SLURM tasks</span></span>
-<span id="cb7-237"><a href="#cb7-237"></a><span class="in">addprocs(SlurmManager(parse(Int, ENV["SLURM_NTASKS"])))</span></span>
+<span id="cb7-236"><a href="#cb7-236"></a><span class="co">#Add workers based on the specified number of SLURM tasks</span></span>
+<span id="cb7-237"><a href="#cb7-237"></a><span class="fu">addprocs</span>(<span class="fu">SlurmManager</span>(<span class="fu">parse</span>(<span class="dt">Int</span>, <span class="cn">ENV</span>[<span class="st">"SLURM_NTASKS"</span>])))</span>
 <span id="cb7-238"><a href="#cb7-238"></a></span>
-<span id="cb7-239"><a href="#cb7-239"></a><span class="in">#Define inputs on each worker process</span></span>
-<span id="cb7-240"><a href="#cb7-240"></a><span class="in">@everywhere begin</span></span>
-<span id="cb7-241"><a href="#cb7-241"></a><span class="in">    using KomaMRI</span></span>
-<span id="cb7-242"><a href="#cb7-242"></a><span class="in">    sys = Scanner()</span></span>
-<span id="cb7-243"><a href="#cb7-243"></a><span class="in">    seq = PulseDesigner.EPI_example()</span></span>
-<span id="cb7-244"><a href="#cb7-244"></a><span class="in">    obj = brain_phantom2D()</span></span>
-<span id="cb7-245"><a href="#cb7-245"></a><span class="in">    parts = kfoldperm(length(obj), nworkers())</span></span>
-<span id="cb7-246"><a href="#cb7-246"></a><span class="in">end</span></span>
+<span id="cb7-239"><a href="#cb7-239"></a><span class="co">#Define inputs on each worker process</span></span>
+<span id="cb7-240"><a href="#cb7-240"></a><span class="pp">@everywhere</span> <span class="cf">begin</span></span>
+<span id="cb7-241"><a href="#cb7-241"></a>    <span class="im">using</span> <span class="bu">KomaMRI</span></span>
+<span id="cb7-242"><a href="#cb7-242"></a>    sys <span class="op">=</span> <span class="fu">Scanner</span>()</span>
+<span id="cb7-243"><a href="#cb7-243"></a>    seq <span class="op">=</span> PulseDesigner.<span class="fu">EPI_example</span>()</span>
+<span id="cb7-244"><a href="#cb7-244"></a>    obj <span class="op">=</span> <span class="fu">brain_phantom2D</span>()</span>
+<span id="cb7-245"><a href="#cb7-245"></a>    parts <span class="op">=</span> <span class="fu">kfoldperm</span>(<span class="fu">length</span>(obj), <span class="fu">nworkers</span>())</span>
+<span id="cb7-246"><a href="#cb7-246"></a><span class="cf">end</span></span>
 <span id="cb7-247"><a href="#cb7-247"></a></span>
-<span id="cb7-248"><a href="#cb7-248"></a><span class="in">#Distribute simulation across workers</span></span>
-<span id="cb7-249"><a href="#cb7-249"></a><span class="in">raw = Distributed.@distributed (+) for i=1:nworkers()</span></span>
-<span id="cb7-250"><a href="#cb7-250"></a><span class="in">    simulate(obj[parts[i]], seq, sys)</span></span>
-<span id="cb7-251"><a href="#cb7-251"></a><span class="in">end</span></span>
+<span id="cb7-248"><a href="#cb7-248"></a><span class="co">#Distribute simulation across workers</span></span>
+<span id="cb7-249"><a href="#cb7-249"></a>raw <span class="op">=</span> <span class="bu">Distributed</span>.<span class="pp">@distributed</span> (<span class="op">+</span>) <span class="cf">for</span> i<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fu">nworkers</span>()</span>
+<span id="cb7-250"><a href="#cb7-250"></a>    <span class="fu">simulate</span>(obj[parts[i]], seq, sys)</span>
+<span id="cb7-251"><a href="#cb7-251"></a><span class="cf">end</span></span>
 <span id="cb7-252"><a href="#cb7-252"></a><span class="in">```</span></span>
 <span id="cb7-253"><a href="#cb7-253"></a></span>
 <span id="cb7-254"><a href="#cb7-254"></a>Pull reqeust for adding these examples to the KomaMRI documentation: https://github.com/JuliaHealth/KomaMRI.jl/pull/468</span>
